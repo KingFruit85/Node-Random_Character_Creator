@@ -1,0 +1,367 @@
+ <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+
+#statblock {
+  display: flex;
+  flex-direction: row;
+  background-color:inherit;
+  justify-content: center;
+  align-content:center;
+  font-family: Harman Retro;
+  flex-wrap: wrap;
+}
+/* add to flexbox for wrapping */
+#statblock > div {
+  background-color: White;
+  width: 80px;
+  margin: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px;
+  border-style:ridge;
+  border-width: 3px;
+  border-radius: 20px;
+  font-family: Harman Retro;
+  align-self:auto;
+
+}
+
+#upper_statblock{
+  display: flex;
+  flex-direction: row;
+  background-color:inherit;
+  justify-content: center;
+  align-content:center;
+  font-family: Harman Retro;
+  flex-wrap: wrap;
+
+}
+
+#upper_statblock > div {
+  background-color: White;
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  text-align: center;
+  line-height: 15px;
+  border-color:orange;
+  font-size: 10px;
+  border-style:ridge;
+  border-width: 3px;
+
+
+  /* border-radius: 20px; */
+  font-family: Harman Retro;
+  align-self:auto;
+}
+
+#Initiative {
+  border-color: orange;
+}
+
+#HitPoints{
+  border-color:orange;
+}
+
+#Speed{
+  border-color: orange;
+}
+
+#Armorclass{
+  border-color: orange;
+}
+
+#main{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  font-family: Harman Retro;
+  flex-wrap:wrap;
+  align-items: center;
+}
+
+
+.jumbotron{
+  height:400px;
+  text-align: center;
+  background-color: orange;
+  font-family: Harman Retro;
+  background-size:contain;
+}
+
+#stat{
+  font-size:15px;
+}
+
+#boxheaders{
+  text-align: center;
+}
+
+.list-group-item{
+    width:250px;
+    text-align: center;
+    border-width:thin;
+    border-color: black;
+    border-collapse:inherit;
+    align-items: center;
+    border-radius: 10 px;
+}
+
+#bottomButtons{
+  width: 250px;
+  height: 40px;
+  background-color: orange;
+  border-color: white;
+  border-collapse:inherit;
+  align-items: center;
+}
+
+#cbuttons{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cbuttons > div {
+    background-color: White;
+    text-align: center;
+    line-height: 15px;
+    font-size: 10px;
+    border-width: 3px;
+}
+
+    #heart {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    }
+    #heart:before,
+    #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        -moz-border-radius: 50px 50px 0 0;
+        border-radius: 50px 50px 0 0;
+        -webkit-transform: rotate(-45deg);
+           -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+             -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+           -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+             -o-transform-origin: 0 100%;
+                transform-origin: 0 100%;
+    }
+    #heart:after {
+        left: 0;
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+             -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+           -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+             -o-transform-origin: 100% 100%;
+                transform-origin :100% 100%;
+}
+
+
+
+}
+
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#myModal').modal('show');
+});
+</script>
+</head>
+
+
+  <body>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<div class="jumbotron">
+
+      <h2>You are...</h2>
+      <span><h1 style="color:White;"><%= charName %></h1></span>
+      <h2>A <%= Alignment %>,</h2>
+      <p><h2><%= charSex %> <%= charRace %> <%= charClass %>  </h2> <h5>-<%= subRace %>-</h5></p>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Your Backstory</button>
+
+
+</div>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title"><%= charName %> (<%= charSex %> <%= charClass %>): Backstory</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= backstoryLife %><%= backstoryLikes %><%= backstoryDislikes %><%= backstoryFlaws %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" value="Give me another!" onClick="history.go()">Another</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="flex-container" id ="upper_statblock">
+
+  <div class="flex-container" >
+    <ul class ="list-group" ><br><b>Initiative<br><p id="stat"><%= Initiative %></p></b></ul>
+  </div>
+  <div class="flex-container">
+    <ul class ="list-group" ><br><b>Hit Points<br><p id="stat"><%= HitPoints %></p></b></ul>
+  </div>
+  <div class="flex-container" >
+    <ul class ="list-group" ><br><b>Armor Class<br><p id="stat"><%= armorClass %></p></b></ul>
+  </div>
+  <div class="flex-container" >
+    <ul class ="list-group" ><br><b>Speed<br><p id="stat"><%= Speed %></p></b></ul>
+  </div>
+
+</div>
+
+<div class="flex-container" id ="statblock">
+  <div class="flex-container">
+    <ul class ="list-group" ><br><b>Strength<br><p id="stat"><%= Strength %>(<%=Strength_Bonus%>)</p></b></ul>
+  </div>
+  <div class="flex-container">
+    <ul class ="list-group"><br><b>Dexterity<br><p id="stat"><%= Dexterity %> (<%=Dexterity_Bonus%>)</p></b>
+  </div>
+  <div class ="flex-container">
+    <ul class ="list-group"><br><b>Constitution<br><p id="stat"><%= Constitution %> (<%=Constitution_Bonus%>)</p></b>
+  </div>
+  <div class ="flex-container">
+    <ul class ="list-group"><br><b>Intelligence<br><p id="stat"><%= Intelligence %> (<%=Intelligence_Bonus%>)</p></b>
+  </div>
+  <div class ="flex-container">
+    <ul class ="list-group"><br><b>Wisdom<br><p id="stat"><%= Wisdom %> (<%=Wisdom_Bonus%>)</p></b>
+  </div>
+  <div class ="flex-container">
+    <ul class ="list-group"><br><b>Charisma<br><p id="stat"><%= Charisma %> (<%=Charisma_Bonus%>)</p></b>
+  </div>
+</div>
+
+<div class="flex-container" id ="cbuttons">
+
+
+<div class="panel-group">
+  <div class="panel panel-default">
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse1"><p><b>Character Attributes</b></p></a>
+    <div id="collapse1" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Age: <%= Age %></li>
+        <li class="list-group-item">Primary Language: <%= PrimaryLanguage %></li>
+        <li class="list-group-item">Secondary Language: <%=SecondaryLanguage%></li>
+        <li class="list-group-item">Height:<%= Height %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+
+
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse2"><p><b>Character Skills</b></p></a>
+
+
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Athletics:<%= Athletics %></li>
+        <li class="list-group-item">Acrobatics:<%= Acrobatics %></li>
+        <li class="list-group-item">SleightOfHand:<%= SleightOfHand %></li>
+        <li class="list-group-item">Stealth:<%= Stealth %></li>
+        <li class="list-group-item">Arcana:<%= Arcana %></li>
+        <li class="list-group-item">History:<%= History %></li>
+        <li class="list-group-item">Nature:<%= Nature %></li>
+        <li class="list-group-item">Religion:<%= Religion %></li>
+        <li class="list-group-item">AnimalHandling:<%= AnimalHandling %></li>
+        <li class="list-group-item">Perception:<%= Perception %></li>
+        <li class="list-group-item">Deception:<%= Deception %></li>
+        <li class="list-group-item">Intimidation:<%= Intimidation %></li>
+        <li class="list-group-item">Performance:<%= Performance %></li>
+        <li class="list-group-item">Persuasion:<%= Persuasion %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+
+
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse3"><p><b>Character Equipment</b></p></a>
+
+
+    <div id="collapse3" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item"><%=Armor%></li>
+        <li class="list-group-item"><%=primary_weapon%></li>
+        <li class="list-group-item"><%=secondary_weapon%></li>
+        <li class="list-group-item"><%=equipment%></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+
+
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse4"><p><b>Class Features</b></p></a>
+
+
+    <div id="collapse4" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Proficiencies: <%=ProficientArmors%> , <%=ProficientWeapons%></li>
+        <li class="list-group-item">Saving Throws: <%=SavingThrows%></li>
+        <li class="list-group-item">Proficient Skills:<%=ProficientSkills%></li>
+        <li class="list-group-item">Features: <%=feats%></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+ </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "cb",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "http-server": "^0.11.1",
+    "lodash": "^4.17.5",
+    "nodemon": "^1.17.2",
+    "yargs": "^4.7.1"
+  },
+  "devDependencies": {
+    "fly": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher Long",
+  "license": "ISC",
+  "description": ""
+}
