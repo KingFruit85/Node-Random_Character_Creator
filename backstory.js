@@ -109,7 +109,8 @@ var food = [
   "melons",
   "apple sauce",
   "avocado",
-  "duck hearts"
+  "duck hearts",
+  "apples"
 ]
 
 var state = [

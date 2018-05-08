@@ -33,7 +33,7 @@ var HeavyArmor = {
 
 
 
-exports.LightArmor = LightArmor;
+exports.LightArmor =  LightArmor;
 exports.MediumArmor = MediumArmor;
 exports.HeavyArmor = HeavyArmor;
 exports.Shields = Shields;

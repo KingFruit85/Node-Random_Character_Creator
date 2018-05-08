@@ -1,4 +1,4 @@
-//functions to simulate rolling various x-sided dice
+//functions to simulate rolling various x-sided dice.
 var rollD20 = () => {
   return Math.floor(Math.random() * 20) + 1;
 }

@@ -179,7 +179,7 @@ var Wizard = {
 
 var classTemplate = {
 
-  savingThrows:[""],
+  savingThrows:[" "],
   skillProficiencies:[""],
   armorProficiencies:[""],
   weaponProficiencies:[""],

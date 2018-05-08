@@ -13,7 +13,7 @@ const races =require('./races.js');
 const backstory =require('./backstory.js')
 const classes =require('./classes.js')
 
-var app = express();
+ var app = express();
 
 // View Engine
 app.set('view engine', 'ejs');

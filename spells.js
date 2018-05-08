@@ -1,11 +1,6 @@
 
 const utils =require('./utils.js');
 
-
-
-// bardCantrips:["Dancing Lights", "Light", "Mage Hand", "Mending", "Message",
-//                   "Minor Illusion", "Prestidigitation", "True Strike", "Vicious Mockery" ],
-
 bardCantrips = {
     DancingLights:"Dancing Lights",
     Light:"Light",

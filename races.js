@@ -1,5 +1,5 @@
 var race=["Human","Dwarf","Elf","Gnome","Halfling","Dragonborn","HalfElf","HalfOrc","Tiefling"];
-// var race=["Dragonborn"]; //testing
+// var race=["Dragonborn"]; //testing.
 
 
 var sex=["Male","Female","Non-Binary"];

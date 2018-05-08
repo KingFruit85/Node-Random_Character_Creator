@@ -1,4 +1,4 @@
-//import 3rd party
+//import 3rd party.
 const _ = require ('lodash');
 //import my files
 const races =require('./races.js');
