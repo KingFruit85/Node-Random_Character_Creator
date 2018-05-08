@@ -46,14 +46,14 @@ var Character = {};          //Creates an empty Character object
   utils.calcArmorClass(Character);
   utils.getFeatures(Character);
   utils.addFeatureBonues(Character);
-  Character["Level"] = 1;
-  Character["Backstory"] = backstory.backstory();
-
+  Character.Level = 1;
+  Character.Backstory = backstory.backstory();
+    console.log(Character)
 
 
 
 // console.log(Character)
-console.log(Character)
+// console.log(Character)
 
   return Character;
 }

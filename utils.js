@@ -13,38 +13,6 @@ const tools =require('./tools.js');
 //unused functions, to be completed.
 var listChar = () => {}
 var removeChar = () => {}
-//getter functions not used at the moment, removed from exports
-
-var getCharacterName = (Characteracter) => {return Character["Name"];}
-var getCharacterClass = (Character) => {return Character.class;}
-var getCharacterSex = (Character) => {return Character["Sex"];}
-var getCharacterRace = (Character) => {return Character["Race"];}
-var getCharacterAge = (Character) => {return Character["Age"];}
-var getCharacterAlignment = (Character) => {return Character["alignment"];}
-var getCharacterLanguages = (Character) => {return Character["Languages"];}
-var getCharacterHP = (Character) => {return Character.hit_points;}
-var getCharacterInitiative = (Character) => {return Character["Initiative"];}
-var getCharacterHeight = (Character) => {return Character["Height"];}
-var getCharacterSpeed = (Character) => {return Character["Speed"];}
-var getCharacterStats = (Character) => {return Character["Stats"];}
-var getCharacterAthletics = (Character) => {return Character["Skill_Athletics"];}
-var getCharacterAcrobatics = (Character) => {return Character["Skill_Acrobatics"];}
-var getCharacterSleightOfHand = (Character) => {return Character["Skill_SleightOfHand"];}
-var getCharacterStealth = (Character) => {return Character["Skill_Stealth"];}
-var getCharacterArcana = (Character) => {return Character["Skill_Arcana"];}
-var getCharacterHistory = (Character) => {return Character["Skill_History"];}
-var getCharacterNature = (Character) => {return Character["Skill_Nature"];}
-var getCharacterReligion = (Character) => {return Character["Skill_Religion"];}
-var getCharacterAnimalHandling = (Character) => {return Character["Skill_AnimalHandling"];}
-var getCharacterInsight = (Character) => {return Character["Skill_Insight"];}
-var getCharacterMedicine = (Character) => {return Character["Skill_Medicine"];}
-var getCharacterPerception = (Character) => {return Character["Skill_Perception"];}
-var getCharacterSurvival = (Character) => {return Character["Skill_Survival"];}
-var getCharacterDeception = (Character) => {return Character["Skill_Deception"];}
-var getCharacterIntimidation = (Character) => {return Character["Skill_Intimidation"];}
-var getCharacterPerformance = (Character) => {return Character["Skill_Performance"];}
-var getCharacterPersuasion = (Character) => {return Character["Skill_Persuasion"];}
-
 
 var weaponToString = (weapons) =>{
   var string1 = "";
@@ -53,7 +21,6 @@ var weaponToString = (weapons) =>{
     string1 = string1 + " "
   }
   return string1;
-
 }
 
 
@@ -98,7 +65,7 @@ var calcMovementSpeed = (Character) => {
     case Character.Race === "HalfElf":  Character.Speed = races.HalfElf.Speed;break;
     case Character.Race === "HalfOrc":  Character.Speed = races.HalfOrc.Speed;break;
     case Character.Race === "Tiefling": Character.Speed = races.Tiefling.Speed;break;
-    default:Character.Speed = "Fell Though Switch Statement, Gutted!"
+    default:Character.Speed = "Error:Fell Through Switch Statement"
   }return Character;
 }
 
@@ -122,8 +89,8 @@ var getLanguages = (Character) => {
     case Character.Race === "HalfElf": Character["Primary Language"] = races.HalfElf.Languages; Character["Secondary Language"] = _.sample(races.HalfElf.ExtraLanguage); break;
     case Character.Race === "HalfOrc": Character["Primary Language"] = races.HalfOrc.Languages; Character["Secondary Language"] = races.HalfOrc.ExtraLanguage; break;
     case Character.Race === "Tiefling": Character["Primary Language"] = races.Tiefling.Languages; Character["Secondary Language"] = races.Tiefling.ExtraLanguage; break;
-    default:Character["Primary Language"]   = "Fell Though Switch Statement, Gutted!";
-            Character["Secondary Language"] = "Fell Though Switch Statement, Gutted!";
+    default:Character["Primary Language"]   = "Error:Fell Through Switch Statement";
+            Character["Secondary Language"] = "Error:Fell Through Switch Statement";
   }return Character;
 }
 
@@ -411,7 +378,7 @@ var calcBaseHP = (Character) => {
     case Character.class === "Sorcerer":  Character.hit_points = 6   + calcBonus(Character.Stats.CON); break;
     case Character.class === "Warlock":   Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
     case Character.class === "Wizard":    Character.hit_points = 6   + calcBonus(Character.Stats.CON); break;
-      default: "Fell Though Switch Statement, Gutted!";
+      default: "Error:Fell Through Switch Statement";
   }return Character;
 }
 
@@ -426,7 +393,7 @@ var ageCalc = (Character) => {
     case Character.Race === "HalfElf":    Character.Age = getRandomNumber( 20, 180 );  break;
     case Character.Race === "HalfOrc":    Character.Age = getRandomNumber( 14, 75 );   break;
     case Character.Race === "Tiefling":   Character.Age = getRandomNumber( 18, 120 );  break;
-      default: Character.Race = "Fell Though Switch Statement, Gutted!";
+      default: Character.Race = "Error:Fell Through Switch Statement";
   }return Character;
 }
 
@@ -445,48 +412,52 @@ var assignSpells = (Character) => {
                                       Character.spellSlots.push(calcBonus(Character.Stats.WIS)+1);break;
 
 
-    case (Character.class === "Druid"):;break;
+    case (Character.class === "Druid"):Character.cantrips.push(_.sampleSize(spells.druidCantrips,2));
+                                       Character.firstLevelSpells.push(_.sampleSize(spells.druidLevel1,2));break;
 
 
-    case (Character.class === "Sorcerer"):;break;
+    case (Character.class === "Sorcerer"):Character.cantrips.push(_.sampleSize(spells.sorcererCantrips,4));
+                                       Character.firstLevelSpells.push(_.sampleSize(spells.sorcererLevel1,2));break;
 
 
-    case (Character.class === "Warlock"):;break;
+    case (Character.class === "Warlock"):Character.cantrips.push(_.sampleSize(spells.warlockCantrips,2));
+                                       Character.firstLevelSpells.push(_.sampleSize(spells.warlockLevel1,2));break;
 
 
-    case (Character.class === "Wizard"):;break;
+    case (Character.class === "Wizard"):Character.cantrips.push(_.sampleSize(spells.wizardCantrips,3));
+                                       Character.firstLevelSpells.push(_.sampleSize(spells.wizardLevel1,2));break;
 
 
-      default:Character.cantrips = "Fell Though"
+      default:Character.cantrips = ""
 
   }
   return Character;
 
 }
-
+"Non-Binary"
 
 //generate random name based off sex/race
 var getRandomName = (Character) => {
   switch (true){
-    case (Character.Race === "Human" && Character.Sex === "Male"):          Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.humanLastNames);      break;
-    case (Character.Race === "Human" && Character.Sex === "Female"):        Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.humanLastNames);      break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Male"):          Character.Name = _.sample(races.dwarfMaleNames)         + " " + _.sample(races.dwarfLastNames);      break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Female"):        Character.Name = _.sample(races.dwarfFemaleNames)       + " " + _.sample(races.dwarfLastNames);      break;
-    case (Character.Race === "Elf" && Character.Sex === "Male"):            Character.Name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Elf" && Character.Sex === "Female"):          Character.Name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Gnome" && Character.Sex === "Male"):          Character.Name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Gnome" && Character.Sex === "Female"):        Character.Name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Halfling" && Character.Sex === "Male"):       Character.Name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Halfling" && Character.Sex === "Female"):     Character.Name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Male"):     Character.Name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Female"):   Character.Name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Male"):        Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Female"):      Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Male"):        Character.Name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Female"):      Character.Name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Male"):       Character.Name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Female"):     Character.Name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
-    default: Character.Name = "Fell Though Switch Statement, Gutted!";
+    case (Character.Race === "Human" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.humanLastNames);      break;
+    case (Character.Race === "Human" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.humanLastNames);      break;
+    case (Character.Race === "Dwarf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.dwarfMaleNames)         + " " + _.sample(races.dwarfLastNames);      break;
+    case (Character.Race === "Dwarf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.dwarfFemaleNames)       + " " + _.sample(races.dwarfLastNames);      break;
+    case (Character.Race === "Elf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):            Character.Name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "Elf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "Gnome" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.Race === "Gnome" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.Race === "Halfling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):       Character.Name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.Race === "Halfling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.Race === "Dragonborn" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.Race === "Dragonborn" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):   Character.Name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.Race === "HalfElf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "HalfElf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):      Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "HalfOrc" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
+    case (Character.Race === "HalfOrc" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):      Character.Name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
+    case (Character.Race === "Tiefling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):       Character.Name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
+    case (Character.Race === "Tiefling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
+    default: Character.Name = "Error:Fell Through Switch Statement";
     }return Character;
    }
 
@@ -494,16 +465,16 @@ var getRandomName = (Character) => {
 
 var getRandomHeight = (Character) => {
     switch (true){
-      case (Character.Race === "Human"):Character.Height = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "Dwarf"):Character.Height = _.sample(races.dwarfHeight);break;
-      case (Character.Race === "Elf"):Character.Height = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "Gnome"):Character.Height = _.sample(races.gnomeHeight);break;
-      case (Character.Race === "Halfling"):Character.Height = _.sample(races.halflingHeight);break;
+      case (Character.Race === "Human"):Character.Height      = _.sample(races.humanElfHeight);break;
+      case (Character.Race === "Dwarf"):Character.Height      = _.sample(races.dwarfHeight);break;
+      case (Character.Race === "Elf"):Character.Height        = _.sample(races.humanElfHeight);break;
+      case (Character.Race === "Gnome"):Character.Height      = _.sample(races.gnomeHeight);break;
+      case (Character.Race === "Halfling"):Character.Height   = _.sample(races.halflingHeight);break;
       case (Character.Race === "Dragonborn"):Character.Height = _.sample(races.dragonbornHeight);break;
-      case (Character.Race === "HalfElf"):Character.Height = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "HalfOrc"):Character.Height = _.sample(races.halforcHeight);break;
-      case (Character.Race === "Tiefling"):Character.Height = _.sample(races.humanElfHeight);break;
-      default:Character.Height = "Fell Though Switch Statement, Gutted!";
+      case (Character.Race === "HalfElf"):Character.Height    = _.sample(races.humanElfHeight);break;
+      case (Character.Race === "HalfOrc"):Character.Height    = _.sample(races.halforcHeight);break;
+      case (Character.Race === "Tiefling"):Character.Height   = _.sample(races.humanElfHeight);break;
+      default:Character.Height = "Error:Fell Through Switch Statement";
     }return Character;
   }
 
@@ -515,9 +486,12 @@ var getRandomRace = (Character) => {
 }
 
 //get random class
+var lastClass = "";
+var genClass = "";
+
 var getRandomClass = (Character) => {
-  Character.class = _.sample(classes.classes);
-  return Character;
+Character.class = _.sample(classes.classes);
+return Character;
 }
 
 //get random alignment

@@ -2,7 +2,7 @@ var race=["Human","Dwarf","Elf","Gnome","Halfling","Dragonborn","HalfElf","HalfO
 // var race=["Dragonborn"]; //testing
 
 
-var sex=["Male","Female"];
+var sex=["Male","Female","Non-Binary"];
 
 var alignment=["Lawful Good"," Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral"," Lawful Evil","Neutral Evil","Chaotic Evil"];
 

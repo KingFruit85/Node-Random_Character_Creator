@@ -73,7 +73,6 @@ app.get('/', function(req, res){
     defaultEquipment:randomChar["equipment"],
     primary_weapon:utils.weaponToString(randomChar.primary_weapon),
     secondary_weapon:utils.weaponToString(randomChar.secondary_weapon),
-
     equipment:randomChar.equipment,
     SavingThrows:randomChar.saving_throws,
     RacialTraits:randomChar["Racial Traits"],
@@ -85,7 +84,9 @@ app.get('/', function(req, res){
     ProficientSkills:randomChar.proficient_skills,
     ProficientArmors:randomChar.proficient_armor,
     ProficientWeapons:randomChar.proficient_weapons,
-    feats:randomChar.feats
+    feats:randomChar.feats,
+    cantrips:randomChar.cantrips,
+    firstLevelSpells:randomChar.firstLevelSpells
   });
 });
 
