@@ -54,7 +54,7 @@ var Character = {};          //Creates an empty Character object
 
 // console.log(Character)
 // console.log(Character)
-
+//this is a test
   return Character;
 }
 
