@@ -17,10 +17,10 @@
   flex-direction: row;
   background-color:inherit;
   justify-content: center;
-  align-content:center;
-  font-family: Harman Retro;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
+
 }
+
 /* add to flexbox for wrapping */
 #statblock > div {
   background-color: White;
@@ -29,10 +29,7 @@
   text-align: center;
   line-height: 20px;
   font-size: 10px;
-  border-style:ridge;
-  border-width: 3px;
-  border-radius: 20px;
-  font-family: Harman Retro;
+
   align-self:auto;
 
 }
@@ -142,51 +139,40 @@
     border-width: 3px;
 }
 
-    #heart {
-    position: relative;
-    width: 100px;
-    height: 90px;
-    }
-    #heart:before,
-    #heart:after {
-        position: absolute;
-        content: "";
-        left: 50px;
-        top: 0;
-        width: 50px;
-        height: 80px;
-        background: red;
-        -moz-border-radius: 50px 50px 0 0;
-        border-radius: 50px 50px 0 0;
-        -webkit-transform: rotate(-45deg);
-           -moz-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-             -o-transform: rotate(-45deg);
-                transform: rotate(-45deg);
-        -webkit-transform-origin: 0 100%;
-           -moz-transform-origin: 0 100%;
-            -ms-transform-origin: 0 100%;
-             -o-transform-origin: 0 100%;
-                transform-origin: 0 100%;
-    }
-    #heart:after {
-        left: 0;
-        -webkit-transform: rotate(45deg);
-           -moz-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-             -o-transform: rotate(45deg);
-                transform: rotate(45deg);
-        -webkit-transform-origin: 100% 100%;
-           -moz-transform-origin: 100% 100%;
-            -ms-transform-origin: 100% 100%;
-             -o-transform-origin: 100% 100%;
-                transform-origin :100% 100%;
+
+/* Container holding the image and the text */
+
+.container {
+    position:relative;
+    text-align: center;
+
+    border-style: solid;
 }
 
 
 
+/* Centered text */
+
+.defaultText {
+
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    font-family: Harman Retro;
+
+
 }
 
+
+
+.flex-container {
+
+  display:inline-flex;
+
+
+
+
+}
 
 </style>
 
@@ -240,7 +226,6 @@ $(document).ready(function(){
   </div>
 </div>
 
-
 <div class="flex-container" id ="upper_statblock">
 
   <div class="flex-container" >
@@ -259,25 +244,38 @@ $(document).ready(function(){
 </div>
 
 <div class="flex-container" id ="statblock">
-  <div class="flex-container">
-    <ul class ="list-group" ><br><b>Strength<br><p id="stat"><%= Strength %>(<%=Strength_Bonus%>)</p></b></ul>
+  <div class="container">
+      <p class="defaultText">Strength</p>
+      <img src="Strength.svg" alt="Strength" height="50" width="50">
+      <div class="defaultText"><%= Strength %>(<%=Strength_Bonus%>)</div>
   </div>
-  <div class="flex-container">
-    <ul class ="list-group"><br><b>Dexterity<br><p id="stat"><%= Dexterity %> (<%=Dexterity_Bonus%>)</p></b>
+  <div class="container">
+    <p class="defaultText">Dexterity</p>
+      <img src="Dexterity.svg" alt="Dexterity" height="50" width="50">
+      <div class="defaultText"><%= Dexterity %> (<%=Dexterity_Bonus%>)</div>
   </div>
-  <div class ="flex-container">
-    <ul class ="list-group"><br><b>Constitution<br><p id="stat"><%= Constitution %> (<%=Constitution_Bonus%>)</p></b>
+  <div class="container">
+    <p class="defaultText">Constitution</p>
+      <img src="Constitution.svg" alt="Con" height="50" width="50">
+      <div class="defaultText"><%= Constitution %> (<%=Constitution_Bonus%>)</div>
   </div>
-  <div class ="flex-container">
-    <ul class ="list-group"><br><b>Intelligence<br><p id="stat"><%= Intelligence %> (<%=Intelligence_Bonus%>)</p></b>
+  <div class="container">
+    <p class="defaultText">Intelligence</p>
+      <img src="Intelligence.svg" alt="Int" height="50" width="50">
+      <div class="defaultText"><%= Intelligence %> (<%=Intelligence_Bonus%>)</div>
   </div>
-  <div class ="flex-container">
-    <ul class ="list-group"><br><b>Wisdom<br><p id="stat"><%= Wisdom %> (<%=Wisdom_Bonus%>)</p></b>
+  <div class="container">
+    <p class="defaultText">Wisdom</p>
+      <img src="wisdom.svg" alt="Wis" height="50" width="50">
+      <div class="defaultText"><%= Wisdom %> (<%=Wisdom_Bonus%>)</div>
   </div>
-  <div class ="flex-container">
-    <ul class ="list-group"><br><b>Charisma<br><p id="stat"><%= Charisma %> (<%=Charisma_Bonus%>)</p></b>
+  <div class="container">
+    <p class="defaultText">Charisma</p>
+      <img src="Charisma.svg" alt="Cha" height="50" width="50">
+      <div class="defaultText"><%= Charisma %> (<%=Charisma_Bonus%>)</div>
   </div>
 </div>
+
 
 <div class="flex-container" id ="cbuttons">
 
@@ -377,8 +375,6 @@ $(document).ready(function(){
 </div>
 
 
-<!-- Optional JavaScript -->
-   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
  </body>
 </html>
