@@ -64,7 +64,6 @@ clericLevel1 = {
 }
 
 
-
 druidCantrips = {
   Guidance:"Guidance",
   Mending:"Mending",

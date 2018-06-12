@@ -48,13 +48,11 @@ var Character = {};          //Creates an empty Character object
   utils.addFeatureBonues(Character);
   Character.Level = 1;
   Character.Backstory = backstory.backstory();
-  console.log(Character)
+  // console.log(Character)
 
 
 
-// console.log(Character)
-// console.log(Character)
-//this is a test
+
   return Character;
 }
 

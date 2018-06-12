@@ -8,7 +8,7 @@ const spells =require('./spells.js')
 classes = ["Bard","Fighter","Barbarian","Cleric","Druid","Monk","Paladin","Ranger"
             ,"Rogue","Sorcerer","Warlock","Wizard"];
 
-// classes = ["Bard"];
+// classes = ["Cleric"];
 
 
 

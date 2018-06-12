@@ -16,104 +16,47 @@
   display: flex;
   flex-direction: row;
   background-color:inherit;
+
   justify-content: center;
   flex-wrap:wrap;
+  flex-shrink: 2;
+  padding-right: 25px;
 
 }
 
 /* add to flexbox for wrapping */
 #statblock > div {
-  background-color: White;
+  /* background-color: White; */
   width: 80px;
   margin: 10px;
   text-align: center;
   line-height: 20px;
   font-size: 10px;
 
-  align-self:auto;
 
 }
 
-#upper_statblock{
-  display: flex;
-  flex-direction: row;
-  background-color:inherit;
-  justify-content: center;
-  align-content:center;
-  font-family: Harman Retro;
-  flex-wrap: wrap;
-
+.subtitle{
+  font-weight: bold;
+  font-size: 15px;
+  padding-left: 5px;
 }
 
-#upper_statblock > div {
-  background-color: White;
-  width: 70px;
-  height: 70px;
-  margin: 10px;
-  text-align: center;
-  line-height: 15px;
-  border-color:orange;
-  font-size: 10px;
-  border-style:ridge;
-  border-width: 3px;
-
-
-  /* border-radius: 20px; */
-  font-family: Harman Retro;
-  align-self:auto;
+.subsubtitle{
+  font-weight: bold;
+  width: 75;
 }
-
-#Initiative {
-  border-color: orange;
-}
-
-#HitPoints{
-  border-color:orange;
-}
-
-#Speed{
-  border-color: orange;
-}
-
-#Armorclass{
-  border-color: orange;
-}
-
-#main{
-  display: flex;
-  flex-direction:column;
-  justify-content:center;
-  font-family: Harman Retro;
-  flex-wrap:wrap;
-  align-items: center;
-}
-
 
 .jumbotron{
-  height:400px;
+
   text-align: center;
   background-color: orange;
-  font-family: Harman Retro;
+
   background-size:contain;
 }
 
-#stat{
-  font-size:15px;
-}
 
-#boxheaders{
-  text-align: center;
-}
 
-.list-group-item{
-    width:250px;
-    text-align: center;
-    border-width:thin;
-    border-color: black;
-    border-collapse:inherit;
-    align-items: center;
-    border-radius: 10 px;
-}
 
 #bottomButtons{
   width: 250px;
@@ -140,39 +83,95 @@
 }
 
 
-/* Container holding the image and the text */
-
 .container {
     position:relative;
     text-align: center;
-
-    border-style: solid;
 }
-
-
-
 /* Centered text */
 
 .defaultText {
 
-    font-size: 15px;
-    color: black;
-    font-weight: bold;
-    font-family: Harman Retro;
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: White;
+     padding-left: 20px;
+     padding-top: 130px;
+     padding-bottom: 30px;
+     width:100px;
 
 }
-
 
 
 .flex-container {
-
   display:inline-flex;
 
+}
 
+.text-right{
+  text-align: right !important;
+}
+
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor:pointer;
+    width: 75px;
+    height: 75px;
 
 
 }
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
 
 </style>
 
@@ -180,7 +179,13 @@
 $(document).ready(function(){
   $('#myModal').modal('show');
 });
+
 </script>
+
+
+
+
+
 </head>
 
 
@@ -197,11 +202,47 @@ $(document).ready(function(){
       <span><h1 style="color:White;"><%= charName %></h1></span>
       <h2>A <%= Alignment %>,</h2>
       <p><h2><%= charSex %> <%= charRace %> <%= charClass %>  </h2> <h5>-<%= subRace %>-</h5></p>
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Your Backstory</button>
 
+      <div class="flex-container" id ="statblock">
+        <div class="container">
+            <img src="Strength2.svg" height="70" width="70">
+            <p class="subtitle">Strength</p>
+            <div class="defaultText"><%= Strength %>(<%=Strength_Bonus%>)</div>
+        </div>
+        <div class="container">
+            <img src="Dexterity2.svg" alt="Dexterity" height="70" width="70">
+            <p class="subtitle">Dexterity</p>
+            <div class="defaultText"><%= Dexterity %>(<%=Dexterity_Bonus%>)</div>
+        </div>
+        <div class="container">
+            <img src="Constitution2.svg" alt="Constitution" height="70" width="70">
+            <p class="subtitle">Constitution</p>
+            <div class="defaultText"><%= Constitution %> (<%=Constitution_Bonus%>)</div>
+        </div>
+        <div class="container">
+            <img src="Intelligence2.svg" alt="Intelligence" height="70" width="70">
+            <p class="subtitle">Intelligence</p>
+            <div class="defaultText"><%= Intelligence %> (<%=Intelligence_Bonus%>)</div>
+        </div>
+        <div class="container">
+            <img src="wisdom2.svg" alt="Wisdom" height="70" width="70">
+            <p class="subtitle">Wisdom</p>
+            <div class="defaultText"><%= Wisdom %> (<%=Wisdom_Bonus%>)</div>
+        </div>
+        <div class="container">
+            <img src="Charisma2.svg" alt="Charisma" height="70" width="70">
+            <p class="subtitle">Charisma</p>
+            <div class="defaultText"><%= Charisma %>(<%=Charisma_Bonus%>)</div>
+        </div>
+      </div>
+      <br>
+      <br>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Your Backstory</button>
+
+            <form method="post" action="/sheets/add">
+              <input type="submit" value="Save">
 
 </div>
-
 
 
 <!-- Modal -->
@@ -226,57 +267,55 @@ $(document).ready(function(){
   </div>
 </div>
 
-<div class="flex-container" id ="upper_statblock">
 
-  <div class="flex-container" >
-    <ul class ="list-group" ><br><b>Initiative<br><p id="stat"><%= Initiative %></p></b></ul>
-  </div>
-  <div class="flex-container">
-    <ul class ="list-group" ><br><b>Hit Points<br><p id="stat"><%= HitPoints %></p></b></ul>
-  </div>
-  <div class="flex-container" >
-    <ul class ="list-group" ><br><b>Armor Class<br><p id="stat"><%= armorClass %></p></b></ul>
-  </div>
-  <div class="flex-container" >
-    <ul class ="list-group" ><br><b>Speed<br><p id="stat"><%= Speed %></p></b></ul>
-  </div>
 
-</div>
+
 
 <div class="flex-container" id ="statblock">
-  <div class="container">
-      <p class="defaultText">Strength</p>
-      <img src="Strength.svg" alt="Strength" height="50" width="50">
-      <div class="defaultText"><%= Strength %>(<%=Strength_Bonus%>)</div>
+
+  <div class="container" >
+
+    <div class="popup" onclick="showInitiative()">
+      <span class="popuptext" id="Initiative">Initiative</span>
+      <img src="Initiative.png" alt="Initiative" height="50" width="50">
+      <p class="subsubtitle">Initiative <br> <%= Initiative %></p>
+    </div>
+
+
   </div>
+
   <div class="container">
-    <p class="defaultText">Dexterity</p>
-      <img src="Dexterity.svg" alt="Dexterity" height="50" width="50">
-      <div class="defaultText"><%= Dexterity %> (<%=Dexterity_Bonus%>)</div>
+
+    <div class="popup" onclick="showHitpoints()">
+      <span class="popuptext" id="HitPoints">Hit Points</span>
+      <img src="hitpoints.svg" alt="Hit Points" height="50" width="50">
+      <p class="subsubtitle">Hitpoints <br> <%= HitPoints %></p>
+    </div>
+
+
   </div>
+
   <div class="container">
-    <p class="defaultText">Constitution</p>
-      <img src="Constitution.svg" alt="Con" height="50" width="50">
-      <div class="defaultText"><%= Constitution %> (<%=Constitution_Bonus%>)</div>
+    <div class="popup" onclick="showArmorClass()">
+      <span class="popuptext" id="ArmorClass">Armor Class</span>
+      <img src="armorclass.svg" alt="Armor Class" height="50" width="50">
+      <p class="subsubtitle">Armor Class <br> <%=armorClass%></p>
+    </div>
+
   </div>
-  <div class="container">
-    <p class="defaultText">Intelligence</p>
-      <img src="Intelligence.svg" alt="Int" height="50" width="50">
-      <div class="defaultText"><%= Intelligence %> (<%=Intelligence_Bonus%>)</div>
-  </div>
-  <div class="container">
-    <p class="defaultText">Wisdom</p>
-      <img src="wisdom.svg" alt="Wis" height="50" width="50">
-      <div class="defaultText"><%= Wisdom %> (<%=Wisdom_Bonus%>)</div>
-  </div>
-  <div class="container">
-    <p class="defaultText">Charisma</p>
-      <img src="Charisma.svg" alt="Cha" height="50" width="50">
-      <div class="defaultText"><%= Charisma %> (<%=Charisma_Bonus%>)</div>
+
+  <div class="container" >
+
+    <div class="popup" onclick="showSpeed()">
+      <span class="popuptext" id="Speed">Speed</span>
+      <img src="speed.svg" alt="Speed" height="50" width="50">
+      <p class="subsubtitle">Speed <br> <%=Speed%></p>
+    </div>
+
   </div>
 </div>
 
-
+<br>
 <div class="flex-container" id ="cbuttons">
 
 
@@ -376,5 +415,21 @@ $(document).ready(function(){
 
 
 
+
+
  </body>
+
+
+ <div class="container bt-light mt-4 pt-4 pb-4">
+         <div class="text-right">
+             <small>
+                 <div>Created by Christopher Long</div>
+                 <div>All content owned by <a href="https://www.wizards.com" target="_blank">Wizards of the Coast</a></div>
+                 <div><a href="https://github.com/KingFruit85/Node-Random_Character_Creator" target="_blank"><i class="mdi mdi-github-circle"></i> View on Github</a></div>
+             </small>
+         </div>
+     </div>
+
+
+
 </html>

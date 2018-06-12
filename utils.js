@@ -95,9 +95,17 @@ var getLanguages = (Character) => {
 }
 
 var calcBonus = (stat) => {
-  stat = (stat - 10) / 2;
-  return Math.floor(stat);
+  stat = Math.floor( ( stat - 10 ) / 2 );
+  if (stat > 0){
+    stat = "+" + stat;
+    return stat;
+  }else return stat;
+
 };
+
+var altCalcBonus = (stat) => {
+  return Math.floor( ( stat - 10 ) / 2 );
+}
 
 //get default equipment
 var getDefaultEquipment = (Character) => {
@@ -352,13 +360,13 @@ return Character;
 
  var calcArmorClass = (Character) => {
    switch (true) {
-     case (Object.values(Character.armor)[0].Name === "Padded Armor"):          Character.armor_class += 11 + calcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "Leather Armor"):         Character.armor_class += 11 + calcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "Studded Leather Armor"): Character.armor_class += 12 + calcBonus(Character.Stats.DEX);break;
+     case (Object.values(Character.armor)[0].Name === "Padded Armor"):          Character.armor_class += 11 + altCalcBonus(Character.Stats.DEX);break;
+     case (Object.values(Character.armor)[0].Name === "Leather Armor"):         Character.armor_class += 11 + altCalcBonus(Character.Stats.DEX);break;
+     case (Object.values(Character.armor)[0].Name === "Studded Leather Armor"): Character.armor_class += 12 + altCalcBonus(Character.Stats.DEX);break;
      case (Object.values(Character.armor)[0].Name === "Chain Mail"):            Character.armor_class += 16;break;
-     case (Object.values(Character.armor)[0].Name === "Hide Armor"):            Character.armor_class += 12 + _.inRange(calcBonus(Character.Stats.DEX),2);break;
-     case (Object.values(Character.armor)[0].Name === "Scale Mail"):            Character.armor_class += 14 + calcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "No Armor"):              Character.armor_class += 10 + calcBonus(Character.Stats.DEX) + calcBonus(Character.Stats.CON);break;
+     case (Object.values(Character.armor)[0].Name === "Hide Armor"):            Character.armor_class += 12 + _.inRange(altCalcBonus(Character.Stats.DEX),2);break;
+     case (Object.values(Character.armor)[0].Name === "Scale Mail"):            Character.armor_class += 14 + altCalcBonus(Character.Stats.DEX);break;
+     case (Object.values(Character.armor)[0].Name === "No Armor"):              Character.armor_class += 10 + altCalcBonus(Character.Stats.DEX) + altCalcBonus(Character.Stats.CON);break;
       default: Character.armor_class.push("Fell Through")
    }return Character;
  }
@@ -366,18 +374,18 @@ return Character;
 //calc starting hit points, using first level hitpoints plus con modifier
 var calcBaseHP = (Character) => {
   switch (true) {
-    case Character.class === "Barbarian": Character.hit_points = 12  + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Bard":      Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Fighter":   Character.hit_points = 10  + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Cleric":    Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Druid" :    Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Monk"  :    Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Paladin":   Character.hit_points = 10  + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Ranger":    Character.hit_points = 10  + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Rogue":     Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Sorcerer":  Character.hit_points = 6   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Warlock":   Character.hit_points = 8   + calcBonus(Character.Stats.CON); break;
-    case Character.class === "Wizard":    Character.hit_points = 6   + calcBonus(Character.Stats.CON); break;
+    case Character.class === "Barbarian": Character.hit_points = 12  + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Bard":      Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Fighter":   Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Cleric":    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Druid" :    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Monk"  :    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Paladin":   Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Ranger":    Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Rogue":     Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Sorcerer":  Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Warlock":   Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
+    case Character.class === "Wizard":    Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
       default: "Error:Fell Through Switch Statement";
   }return Character;
 }
@@ -408,7 +416,7 @@ var assignSpells = (Character) => {
                                       Character.spellSlots.push(2);break;
 
     case (Character.class === "Cleric"):Character.cantrips.push(_.sampleSize(spells.clericCantrips,3));
-                                      Character.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.Stats.WIS)+1))
+                                      Character.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.Stats.WIS +1 )))
                                       Character.spellSlots.push(calcBonus(Character.Stats.WIS)+1);break;
 
 
@@ -864,38 +872,18 @@ var calcInitiative = (Character) => {
 }
 
 var calcPassPerception = (Character) => {
-  Character["Passive Perception"] = 10 + calcBonus(Character["Stats"]["WIS"]) + Character["Proficiency Bonus"]
+  Character["Passive Perception"] = 10 + altCalcBonus(Character["Stats"]["WIS"]) + Character["Proficiency Bonus"]
   return Character;
 }
 
 
 
-//calculate stat modifiers To-Do :-> ideally positive numbers will include a "+" prefix
-//To-Do :-> surely this can be refactored?
-var calcBonus = (stat) => {
-  if(stat === 1){return statMod = -5;}
-  else if(stat >= 2 && stat <= 3){return statMod = -4;}
-  else if(stat >= 4 && stat <= 5){return statMod= -3;}
-  else if(stat >= 6 && stat <= 7){return statMod = -2;}
-  else if(stat >= 8 && stat <= 9){return statMod = -1;}
-  else if (stat >= 10 && stat <=11){return statMod= 0;}
-  else if (stat >= 12 && stat <=13){return statMod= +1;}
-  else if (stat >= 14 && stat <=15){return statMod = +2;}
-  else if (stat >= 16 && stat <=17){return statMod = +3;}
-  else if (stat >= 18 && stat <=19){return statMod = +4;}
-  else if (stat >= 20 && stat <=21){return statMod = +5;}
-  else if (stat >= 22 && stat <=23){return statMod = +6;}
-  else if (stat >= 24 && stat <=25){return statMod = +7;}
-  else if (stat >= 26 && stat <=27){return statMod = +8;}
-  else if (stat >= 28 && stat <=29){return statMod= +9;}
-  else if (stat === 30){return statMod = +10;}
-  else{return "not caught";}
-}
 
 
 
 
 
+exports.altCalcBonus = altCalcBonus;
 exports.weaponToString = weaponToString;
 exports.addFeatureBonues = addFeatureBonues;
 exports.getFeatures = getFeatures;
