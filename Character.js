@@ -1,13 +1,7 @@
-
-//import 3rd party
-const _ = require ('lodash');
 //import my files
 const utils =require('./utils.js');
 const backstory =require('./backstory.js')
-const armor =require('./armor.js')
-const weapons =require('./weapons.js')
-const tools =require('./tools.js')
-const classes =require('./classes.js')
+
 
 //creates a randomised Character object
 var newCharacter = () => {   //Declares a new function named newCharacter
@@ -20,6 +14,7 @@ var Character = {};          //Creates an empty Character object
   utils.getRandomRace(Character);//////  These functions must be
   utils.assignStats(Character);////////  called in this order
   utils.addSubRaceBonus(Character);////
+  console.log(Character)
 ///////////////////////////////////////
 
   utils.getRandomSex(Character);
@@ -40,15 +35,12 @@ var Character = {};          //Creates an empty Character object
   utils.getDefaultEquipment(Character);
   utils.calcMovementSpeed(Character);
   utils.getSavingThrows(Character);
-
   utils.assignSpells(Character);
-
   utils.calcArmorClass(Character);
   utils.getFeatures(Character);
   utils.addFeatureBonues(Character);
   Character.Level = 1;
   Character.Backstory = backstory.backstory();
-  // console.log(Character)
 
 
 

@@ -16,15 +16,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
 const NodeCouchDb = require('node-couchdb');
+const popper = require('popper');
 
 //import my files
 
 const utils =require('./utils.js');
-const dice =require('./dice.js');
 const character =require('./Character.js');
-const races =require('./races.js');
-const backstory =require('./backstory.js')
-const classes =require('./classes.js')
+
+
 
 const couch = new NodeCouchDb({auth:{user:'admin',password:'admin'}});
 const dbName = 'sheets';
@@ -46,22 +45,24 @@ var globalChar = {};
 app.get('/', function(req, res){
 let randomChar = character.newCharacter()
 res.render('index',{
-  charName:randomChar["Name"],
-  charClass:randomChar["class"],
-  charSex:randomChar["Sex"],
-  charRace:randomChar["Race"],
-  subRace:randomChar["Subrace"],
-  Age:randomChar["Age"],
-  armorClass:randomChar["armor_class"],
-  Alignment:randomChar["Alignment"],
+  charName:randomChar.Name,
+  charClass:randomChar.class,
+  charClassLink:randomChar.classLink,
+  charSex:randomChar.Sex,
+  charRace:randomChar.Race,
+  charRaceLink:randomChar.raceLink,
+  subRace:randomChar.Subrace,
+  Age:randomChar.Age,
+  armorClass:randomChar.armor_class,
+  Alignment:randomChar.Alignment,
   PrimaryLanguage:randomChar["Primary Language"],
   SecondaryLanguage:randomChar["Secondary Language"],
   HitPoints:randomChar.hit_points,
-  Initiative:randomChar["Initiative"],
-  Height:randomChar["Height"],
-  Speed:randomChar["Speed"],
-  Stats:randomChar["Stats"],
-  Strength:randomChar.Stats["STR"],
+  Initiative:randomChar.Initiative,
+  Height:randomChar.Height,
+  Speed:randomChar.Speed,
+  Stats:randomChar.Stats,
+  Strength:randomChar.Stats.STR,
   Strength_Bonus:randomChar["Strength Bonus"],
   Dexterity:randomChar.Stats["DEX"],
   Dexterity_Bonus:randomChar["Dexterity Bonus"],
@@ -116,7 +117,6 @@ globalChar = randomChar;
 
 app.get('/about', function(req,res){
   couch.get(dbName, viewUrl).then(({data, headers, status}) => {
-      console.log(data.rows);
       res.render('about',{
         test:data.rows
             });
@@ -129,6 +129,10 @@ app.get('/about', function(req,res){
       // ...or err.code=EDOCMISSING if document is missing
       // ...or err.code=EUNKNOWN if statusCode is unexpected
   });
+});
+
+app.get('/license', function(req,res){
+      res.render('license');
 });
 
 
@@ -201,9 +205,11 @@ app.post("/sheets/add", function(req,res){
       feats:globalChar.feats,
       cantrips:globalChar.cantrips,
       firstLevelSpells:globalChar.firstLevelSpells
+    }).then(function(data, headers, status){
+            res.redirect('/about')});
 
-    })
   });
+
 
 
 });

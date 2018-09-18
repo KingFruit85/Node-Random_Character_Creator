@@ -1,15 +1,54 @@
+<html lang="en">
+ <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+   <!-- Bootstrap CSS -->
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<style>
+.jumbotron{
+
+  text-align: center;
+  background-color: orange;
+
+  background-size:contain;
+}
+</style>
+
+
+<body>
+<div class="jumbotron">
+  <h1>Saved Characters</h1>
+</div>
 <ul>
-<% test.forEach(function(){ %>
-  <li><%= test %></li>
+<% test.forEach(function(test){ %>
+  <li>
+    <h4>Name: <%= test.value.name %></h4>
+    <ul>
+      <li>Class: <%= test.value.charClass %></li>
+      <li>Race: <%= test.value.race %> (<%= test.value.racialTraits %>)</li>
+      <li>Age: <%= test.value.age %></li>
+      <li>Alignment: <%= test.value.alignment %></li>
+      <li>Height: <%= test.value.Height %></li>
+      <li>Speed: <%= test.value.Speed %></li>
+      <li>Armor Class: <%= test.value.armorClass %></li>
+      <h4>Stats:STR:<%=test.value.strength%>(<%=test.value.strength_Bonus %>)
+                DEX:<%=test.value.dexterity%>(<%=test.value.dexterity_Bonus %>)
+                CON:<%=test.value.constitution%>(<%=test.value.constitution_Bonus %>)
+                INT:<%=test.value.intelligence%>(<%=test.value.intelligence_Bonus %>)
+                WIS:<%=test.value.wisdom%>(<%=test.value.wisdom_Bonus %>)
+                CHA:<%=test.value.charisma%>(<%=test.value.charisma_Bonus %>)</h4>
+
+
+    </ul>
+  </li>
+
 <% }); %>
-</ul>
-
-<h4><%= test[0].value.name %></h4>
-<h4><%= test[0].value.race %></h4>
-<h4><%= test[0].value.charClass %></h4>
-<h4><%= test[0].value.age %></h4>
-
-<h4><%= test[1].value.name %></h4>
-<h4><%= test[1].value.race %></h4>
-<h4><%= test[1].value.charClass %></h4>
-<h4><%= test[1].value.age %></h4>
+</body>

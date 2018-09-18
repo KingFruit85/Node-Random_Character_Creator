@@ -1,26 +1,15 @@
+const utils =require('./utils.js');
+
 //functions to simulate rolling various x-sided dice.
-var rollD20 = () => {
-  return Math.floor(Math.random() * 20) + 1;
-}
+var rollD20 = () => {return utils.getRandomNumber( 1 , 20 );}
 
-var rollD10 = () => {
-  return Math.floor(Math.random() * 10) + 1;
-}
+var rollD10 = () => {return utils.getRandomNumber( 1 , 10 );}
 
-var rollD8 = () => {
-  return Math.floor(Math.random() * 8) + 1;
-}
+var rollD8 = () => {return utils.getRandomNumber( 1 , 8 );}
 
+var rollD4 = () => {return utils.getRandomNumber( 1 , 4 );}
 
-
-var rollD4 = () => {
-  return Math.floor(Math.random() * 4) + 1;
-}
-
-//Roll a six sided dice (D6)
-var rollD6 = () => {
-  return Math.floor(Math.random() * 6) + 1; //produces a number between 1 - 6 randomly
-}
+var rollD6 = () => {return utils.getRandomNumber( 1 , 6 );}
 
 //finds the smallest number in an array and removes it, used in rollstat
 var findSmallest = (numbers) => {

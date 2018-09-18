@@ -4,15 +4,11 @@ const _ = require ('lodash');
 const races =require('./races.js');
 const dice =require('./dice.js');
 const classes =require('./classes.js');
-const character =require('./Character.js');
 const weapons =require('./weapons.js');
 const spells =require('./spells.js');
 const armor =require('./armor.js');
 const tools =require('./tools.js');
 
-//unused functions, to be completed.
-var listChar = () => {}
-var removeChar = () => {}
 
 var weaponToString = (weapons) =>{
   var string1 = "";
@@ -22,9 +18,6 @@ var weaponToString = (weapons) =>{
   }
   return string1;
 }
-
-
-
 
 
 var getRandomNumber = (min, max) => {
@@ -48,7 +41,7 @@ var getSavingThrows = (Character) => {
     case Character.class === "Sorcerer":Character.saving_throws = classes.Sorcerer.savingThrows;break;
     case Character.class === "Warlock":Character.saving_throws = classes.Warlock.savingThrows;break;
     case Character.class === "Wizard":Character.saving_throws = classes.Wizard.savingThrows;break;
-      default:"Error: Fell Though Switch Statement"
+      default:"Error: Fell Though Switch Statement(getSavingThrows)"
   }
   return Character;
 }
@@ -65,7 +58,7 @@ var calcMovementSpeed = (Character) => {
     case Character.Race === "HalfElf":  Character.Speed = races.HalfElf.Speed;break;
     case Character.Race === "HalfOrc":  Character.Speed = races.HalfOrc.Speed;break;
     case Character.Race === "Tiefling": Character.Speed = races.Tiefling.Speed;break;
-    default:Character.Speed = "Error:Fell Through Switch Statement"
+    default:Character.Speed = "Error:Fell Through Switch Statement(calcMovementSpeed)"
   }return Character;
 }
 
@@ -89,8 +82,8 @@ var getLanguages = (Character) => {
     case Character.Race === "HalfElf": Character["Primary Language"] = races.HalfElf.Languages; Character["Secondary Language"] = _.sample(races.HalfElf.ExtraLanguage); break;
     case Character.Race === "HalfOrc": Character["Primary Language"] = races.HalfOrc.Languages; Character["Secondary Language"] = races.HalfOrc.ExtraLanguage; break;
     case Character.Race === "Tiefling": Character["Primary Language"] = races.Tiefling.Languages; Character["Secondary Language"] = races.Tiefling.ExtraLanguage; break;
-    default:Character["Primary Language"]   = "Error:Fell Through Switch Statement";
-            Character["Secondary Language"] = "Error:Fell Through Switch Statement";
+    default:Character["Primary Language"]   = "Error:Fell Through Switch Statement(getLanguages)";
+            Character["Secondary Language"] = "Error:Fell Through Switch Statement(getLanguages)";
   }return Character;
 }
 
@@ -123,7 +116,7 @@ var getDefaultEquipment = (Character) => {
       case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Rapier);break;
       case (r === 2):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Longsword) ;break;
       case (r === 3):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-      default:       Character.primary_weapon.push("Error: Fell Though Switch Case")};
+      default:       Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
 
       Character.equipment.push(_.sample(classes.Bard.equipment))
       Character.equipment.push(_.sample(tools.Tools.MusicalInstruments).Name);
@@ -136,13 +129,13 @@ var getDefaultEquipment = (Character) => {
     switch (true) {
       case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Greataxe);break;
       case (r === 2):Character.primary_weapon.push(_.sample(weapons.MartialMeleeWeapons)) ;break;
-      default:Character.primary_weapon.push("Error: Fell Though Switch Case")};
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
 
     switch (true) {
       case (r === 1):Character.secondary_weapon.push(weapons.SimpleWeapons.Handaxe);break;
       case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
 
-      default:Character.primary_weapon.push("Error: Fell Though Switch Case")};
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
     Character.armor.push(armor.LightArmor.No_Armor);
     Character.equipment.push(["Explorers Pack", "4 x Javelins"]);
 
@@ -165,13 +158,13 @@ var getDefaultEquipment = (Character) => {
       switch (true) {
        case (r === 1):Character.armor.push(armor.LightArmor.Leather);Character.equipment.push(classes.Fighter.defaultEquipment);break;
        case (r === 2):Character.armor.push(armor.HeavyArmor.ChainMail);break;
-        default:Character.secondary_weapon.push("Error: Fell Though Switch Case")}
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       r=getRandomNumber( 1 , 2 )
       switch (true) {
         case (r === 1):Character.secondary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
         case (r === 2):Character.secondary_weapon.push(weapons.SimpleWeapons.Handaxe);break;
-        default:Character.secondary_weapon.push("Error: Fell Though Switch Case")}
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
         Character.equipment.push(_.sample(["Dungeoneers Pack", "Explorers Pack"]));
 
@@ -190,13 +183,13 @@ var getDefaultEquipment = (Character) => {
      case (r === 1):Character.armor.push(armor.MediumArmor.ScaleMail);break;
      case (r === 2):Character.armor.push(armor.LightArmor.Leather);break;
      case (r === 3):Character.armor.push(armor.HeavyArmor.ChainMail);break;
-     default:Character.armor.push("Error: Fell Though Switch Case")}
+     default:Character.armor.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
    r = getRandomNumber( 1 , 2 )
    switch (true) {
      case (r === 1):Character.secondary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
      case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-     default:Character.secondary_weapon.push("Error: Fell Though Switch Case")}
+     default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
      Character.equipment.push(_.sample([["Priests Pack"],["Explorers Pack"]]));
      Character.equipment.push("Holy Symbol");
@@ -210,13 +203,13 @@ else if (Character.class === "Druid"){
   switch (true) {
     case (r === 1):Character.primary_weapon.push(armor.Shields.Shield);break;
     case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-      default: Character.primary_weapon.push("Error: fell though switch case")}
+      default: Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
   r = getRandomNumber( 1 , 2 )
   switch(true) {
     case (r === 1):Character.secondary_weapon.push(weapons.MartialMeleeWeapons.Scimitar);break;
     case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-      default:Character.secondary_weapon.push("Error: fell though switch case")}
+      default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
     Character.armor.push(armor.LightArmor.Leather);
     Character.equipment.push(classes.Druid.equipment);
@@ -228,12 +221,12 @@ else if (Character.class === "Monk"){
 
     case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
     case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-      default:Character.primary_weapon.push("Error: fell though switch case")}
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
   r = getRandomNumber( 1 , 2 )
     switch (true) {
       case (r === 1):Character.equipment.push(_.sample(tools.Tools.ArtisansTools).Name);break;
       case (r === 2):Character.equipment.push(_.sample(tools.Tools.MusicalInstruments).Name);break;
-      default:Character.equipment.push("Error:Fell though switch case")
+      default:Character.equipment.push("Error: Fell Though Switch Case(getDefaultEquipment)")
 
     }
 
@@ -254,13 +247,13 @@ else if (Character.class === "Paladin"){
 
     case (r === 1):Character.primary_weapon = {...{firstWeapon},...{secondWeapon}} ;break;
     case (r === 2):Character.primary_weapon = {...{firstWeapon},...{shield}} ;break;
-      default:Character.primary_weapon.push("Error: fell though switch case")}
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
   r = getRandomNumber( 1 , 2 )
   switch(true) {
     case (r === 1):Character.secondary_weapon = Array(5).fill(weapons.SimpleWeapons.Javelin);break;
     case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
-      default:Character.secondary_weapon.push("Error: fell though switch case")}
+      default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.armor.push(armor.HeavyArmor.ChainMail);
       Character.equipment.push(_.sample(classes.Paladin.equipment)) ;
@@ -275,7 +268,7 @@ else if (Character.class === "Ranger"){
 
     case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword,weapons.MartialMeleeWeapons.Shortsword);break;
     case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons),_.sample(weapons.SimpleWeapons));break;
-      default:Character.primary_weapon.push("Error: fell though switch case")}
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.secondary_weapon.push(weapons.MartialRangedWeapons.Longbow);
 
@@ -283,7 +276,7 @@ else if (Character.class === "Ranger"){
     switch (true) {
       case r === 1:Character.armor.push(armor.LightArmor.Leather);break;
       case r === 2:Character.armor.push(armor.MediumArmor.ScaleMail);break;
-      default:Character.armor.push("Error: fell though switch case")}
+      default:Character.armor.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.equipment.push(_.sample([["Dungeoneers Pack"],["Explorers Pack"]]));
     }
@@ -295,13 +288,13 @@ else if (Character.class === "Ranger"){
     switch (true) {
       case r === 1:Character.primary_weapon.push(weapons.MartialMeleeWeapons.Rapier);break;
       case r === 2:Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
-        default:Character.primary_weapon.push("Error: fell though switch case")}
+        default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
     r = getRandomNumber( 1 , 2 )
     switch(true) {
       case r === 1:Character.secondary_weapon.push(weapons.SimpleRangedWeapons.Shortbow);break;
       case r === 2:Character.secondary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
-        default:Character.secondary_weapon.push("Error: fell though switch case")}
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.armor.push(armor.LightArmor.Leather);
       Character.equipment.push(_.sample([["Burglars Pack"],
@@ -318,7 +311,7 @@ else if (Character.class === "Ranger"){
     switch (true) {
       case r === 1:Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
       case r === 2:Character.primary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
-        default:Character.primary_weapon.push("Error: fell though switch case")}
+        default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
     Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger, weapons.SimpleWeapons.Dagger);
     Character.equipment.push(_.sample(["Dungeoneers Pack"],["Explorers Pack"]));
@@ -332,7 +325,7 @@ else if (Character.class === "Warlock"){
   switch (true) {
     case r === 1:Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
     case r === 2:Character.primary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
-      default:Character.primary_weapon.push("Error: fell though switch case")}
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));
       Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger,weapons.SimpleWeapons.Dagger);
@@ -347,7 +340,7 @@ else if (Character.class === "Wizard"){
   switch (true) {
     case r === 1:Character.primary_weapon.push(weapons.SimpleWeapons.Quarterstaff);break;
     case r === 2:Character.primary_weapon.push(weapons.SimpleWeapons.Dagger);break;
-      default:Character.primary_weapon.push("Error: fell though switch case")}
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
       Character.equipment.push(_.sample(["Scholars Pack"],["Explorers Pack"]));
       Character.equipment.push(_.sample(["Component Pouch"],["Arcane Focus"]));
@@ -367,7 +360,7 @@ return Character;
      case (Object.values(Character.armor)[0].Name === "Hide Armor"):            Character.armor_class += 12 + _.inRange(altCalcBonus(Character.Stats.DEX),2);break;
      case (Object.values(Character.armor)[0].Name === "Scale Mail"):            Character.armor_class += 14 + altCalcBonus(Character.Stats.DEX);break;
      case (Object.values(Character.armor)[0].Name === "No Armor"):              Character.armor_class += 10 + altCalcBonus(Character.Stats.DEX) + altCalcBonus(Character.Stats.CON);break;
-      default: Character.armor_class.push("Fell Through")
+      default: Character.armor_class.push("Fell Through(calcArmorClass)")
    }return Character;
  }
 
@@ -386,7 +379,7 @@ var calcBaseHP = (Character) => {
     case Character.class === "Sorcerer":  Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
     case Character.class === "Warlock":   Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
     case Character.class === "Wizard":    Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
-      default: "Error:Fell Through Switch Statement";
+      default: "Error:Fell Through Switch Statement(calcBaseHP)";
   }return Character;
 }
 
@@ -401,7 +394,7 @@ var ageCalc = (Character) => {
     case Character.Race === "HalfElf":    Character.Age = getRandomNumber( 20, 180 );  break;
     case Character.Race === "HalfOrc":    Character.Age = getRandomNumber( 14, 75 );   break;
     case Character.Race === "Tiefling":   Character.Age = getRandomNumber( 18, 120 );  break;
-      default: Character.Race = "Error:Fell Through Switch Statement";
+      default: Character.Age = "Error:Fell Through Switch Statement (ageCalc)";
   }return Character;
 }
 
@@ -411,13 +404,15 @@ var assignSpells = (Character) => {
   Character.spellSlots = [];
 
   switch (true) {
-    case (Character.class === "Bard"):Character.cantrips.push(_.sampleSize(spells.bardCantrips,2));
-                                      Character.firstLevelSpells.push(_.sampleSize(spells.bardLevel1,4))
-                                      Character.spellSlots.push(2);break;
+    case (Character.class === "Bard"):
+    Character.cantrips.push(_.sampleSize(spells.bardCantrips,2));
+    Character.firstLevelSpells.push(_.sampleSize(spells.bardLevel1,4))
+    Character.spellSlots.push(2);break;
 
-    case (Character.class === "Cleric"):Character.cantrips.push(_.sampleSize(spells.clericCantrips,3));
-                                      Character.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.Stats.WIS +1 )))
-                                      Character.spellSlots.push(calcBonus(Character.Stats.WIS)+1);break;
+    case (Character.class === "Cleric"):
+    Character.cantrips.push(_.sampleSize(spells.clericCantrips,3));
+    Character.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.Stats.WIS +1 )))
+    Character.spellSlots.push(calcBonus(Character.Stats.WIS)+1);break;
 
 
     case (Character.class === "Druid"):Character.cantrips.push(_.sampleSize(spells.druidCantrips,2));
@@ -447,26 +442,48 @@ var assignSpells = (Character) => {
 //generate random name based off sex/race
 var getRandomName = (Character) => {
   switch (true){
-    case (Character.Race === "Human" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.humanLastNames);      break;
-    case (Character.Race === "Human" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.humanLastNames);      break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.dwarfMaleNames)         + " " + _.sample(races.dwarfLastNames);      break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.dwarfFemaleNames)       + " " + _.sample(races.dwarfLastNames);      break;
-    case (Character.Race === "Elf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):            Character.Name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Elf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Gnome" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):          Character.Name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Gnome" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Halfling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):       Character.Name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Halfling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):   Character.Name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):      Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):        Character.Name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):      Character.Name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):       Character.Name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):     Character.Name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
-    default: Character.Name = "Error:Fell Through Switch Statement";
-    }return Character;
+    case (Character.Race === "Human" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.humanMaleNames)  + " " + _.sample(races.humanLastNames);
+          break;
+    case (Character.Race === "Human" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.humanFemaleNames) + " " + _.sample(races.humanLastNames);
+          break;
+    case (Character.Race === "Dwarf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.dwarfMaleNames) + " " + _.sample(races.dwarfLastNames);
+          break;
+    case (Character.Race === "Dwarf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.dwarfFemaleNames) + " " + _.sample(races.dwarfLastNames);
+          break;
+    case (Character.Race === "Elf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "Elf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "Gnome" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.Race === "Gnome" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.Race === "Halfling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.Race === "Halfling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.Race === "Dragonborn" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.Race === "Dragonborn" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.Race === "HalfElf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "HalfElf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
+    case (Character.Race === "HalfOrc" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
+    case (Character.Race === "HalfOrc" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
+    case (Character.Race === "Tiefling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
+    case (Character.Race === "Tiefling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
+          Character.Name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
+    default: Character.Name = "Error:Fell Through Switch Statement (getRandomName)";
+  }return Character;
    }
 
 
@@ -489,7 +506,9 @@ var getRandomHeight = (Character) => {
 
 //get random race
 var getRandomRace = (Character) => {
-  Character["Race"] = _.sample(races.race);
+  raceInfo = _.sample(races.race)
+  Character.Race = raceInfo.race
+  Character.raceLink = raceInfo.www
   return Character;
 }
 
@@ -498,7 +517,9 @@ var lastClass = "";
 var genClass = "";
 
 var getRandomClass = (Character) => {
-Character.class = _.sample(classes.classes);
+classInfo = _.sample(classes.classes)
+Character.class = classInfo.class
+Character.classLink = classInfo.www
 return Character;
 }
 
@@ -643,12 +664,12 @@ var assignStats = (Character) => {
   else if (Character.class === "Bard"){
     var statList = dice.statList();
     statList.sort(function(a,b){return b - a});
-    Character["Stats"]["CHA"] = statList[0]      //Here you can see the Bard has a different ordering of desirable ability scores.
-    Character["Stats"]["DEX"] = statList[1]
-    Character["Stats"]["CON"] = statList[2]
-    Character["Stats"]["WIS"] = statList[3]
-    Character["Stats"]["STR"] = statList[4]
-    Character["Stats"]["INT"] = statList[5]
+    Character.Stats.CHA = statList[0]      //Here you can see the Bard has a different ordering of desirable ability scores.
+    Character.Stats.DEX = statList[1]
+    Character.Stats.CON = statList[2]
+    Character.Stats.WIS = statList[3]
+    Character.Stats.STR = statList[4]
+    Character.Stats.INT = statList[5]
   }
   else if(Character.class === "Fighter")
   {

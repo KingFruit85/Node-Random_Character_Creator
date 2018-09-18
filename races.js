@@ -1,6 +1,15 @@
-var race=["Human","Dwarf","Elf","Gnome","Halfling","Dragonborn","HalfElf","HalfOrc","Tiefling"];
+// var race=["Human","Dwarf","Elf","Gnome","Halfling","Dragonborn","HalfElf","HalfOrc","Tiefling"];
 // var race=["Dragonborn"]; //testing.
 
+var race=[{race: "Human", www: "https://www.dndbeyond.com/characters/races/human"},
+          {race: "Dwarf", www: "https://www.dndbeyond.com/characters/races/dwarf"},
+          {race: "Elf", www: "https://www.dndbeyond.com/characters/races/elf"},
+          {race: "Gnome", www: "https://www.dndbeyond.com/characters/races/gnome"},
+          {race: "Halfling", www: "https://www.dndbeyond.com/characters/races/halfling"},
+          {race: "Dragonborn", www: "https://www.dndbeyond.com/characters/races/dragonborn"},
+          {race: "HalfElf", www: "https://www.dndbeyond.com/characters/races/half-elf"},
+          {race: "HalfOrc", www: "https://www.dndbeyond.com/characters/races/half-orc"},
+          {race: "Tiefling", www: "https://www.dndbeyond.com/characters/races/tiefling"}];
 
 var sex=["Male","Female","Non-Binary"];
 

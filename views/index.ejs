@@ -201,8 +201,9 @@ $(document).ready(function(){
       <h2>You are...</h2>
       <span><h1 style="color:White;"><%= charName %></h1></span>
       <h2>A <%= Alignment %>,</h2>
-      <p><h2><%= charSex %> <%= charRace %> <%= charClass %>  </h2> <h5>-<%= subRace %>-</h5></p>
-
+      <p><h2><%= charSex %> <a href=<%= charRaceLink %> target="_blank"><%= charRace %></a>
+                            <a href=<%= charClassLink %> target="_blank"><%= charClass %></a>  </h2> <h5>-<%= subRace %>-</h5></p>
+                            
       <div class="flex-container" id ="statblock">
         <div class="container">
             <img src="Strength2.svg" height="70" width="70">
@@ -321,7 +322,7 @@ $(document).ready(function(){
 
 <div class="panel-group">
   <div class="panel panel-default">
-        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse1"><p><b>Character Attributes</b></p></a>
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse1"><p><b>V Character Attributes V</b></p></a>
     <div id="collapse1" class="panel-collapse collapse">
       <ul class="list-group">
         <li class="list-group-item">Age: <%= Age %></li>
@@ -337,7 +338,7 @@ $(document).ready(function(){
   <div class="panel panel-default">
 
 
-        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse2"><p><b>Character Skills</b></p></a>
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse2"><p><b>V Character Skills V </b></p></a>
 
 
     <div id="collapse2" class="panel-collapse collapse">
@@ -365,7 +366,7 @@ $(document).ready(function(){
   <div class="panel panel-default">
 
 
-        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse3"><p><b>Character Equipment</b></p></a>
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse3"><p><b>V Character Equipment V</b></p></a>
 
 
     <div id="collapse3" class="panel-collapse collapse">
@@ -383,7 +384,7 @@ $(document).ready(function(){
   <div class="panel panel-default">
 
 
-        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse4"><p><b>Class Features</b></p></a>
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse4"><p><b>V Class Features V</b></p></a>
 
 
     <div id="collapse4" class="panel-collapse collapse">
@@ -401,7 +402,7 @@ $(document).ready(function(){
   <div class="panel panel-default">
 
 
-        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse5"><p><b>Spells</b></p></a>
+        <a  id ="bottomButtons" type="button" class="btn btn-success" data-toggle="collapse" href="#collapse5"><p><b>V Spells V</b></p></a>
 
 
     <div id="collapse5" class="panel-collapse collapse">
@@ -425,7 +426,9 @@ $(document).ready(function(){
              <small>
                  <div>Created by Christopher Long</div>
                  <div>All content owned by <a href="https://www.wizards.com" target="_blank">Wizards of the Coast</a></div>
+                 <div>SVG Icons made by Freepik from www.flaticon.com</div>
                  <div><a href="https://github.com/KingFruit85/Node-Random_Character_Creator" target="_blank"><i class="mdi mdi-github-circle"></i> View on Github</a></div>
+                 <div><a href="https://www.Dndrandomise.me/license" target="_blank">OGL License</a></div>
              </small>
          </div>
      </div>

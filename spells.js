@@ -1,6 +1,4 @@
 
-const utils =require('./utils.js');
-
 bardCantrips = {
     DancingLights:"Dancing Lights",
     Light:"Light",

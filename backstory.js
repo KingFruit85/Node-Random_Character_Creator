@@ -184,28 +184,29 @@ var life = () => {
   const r = utils.getRandomNumber(1,23); //picks a random number between 1 - 23
   switch (true){ //selects a case based of the value of “r”
     case r === 1: return "You grew up in a farming village where you tended " + _.sample(animals) + "s and " + _.sample(animals)+"s";
-    case r === 2: return "You were rased in a cult, believing you alone have the power to stop the prophecy coming true...";
+    case r === 2: return "You were raised in a cult, believing you alone have the power to stop the prophecy coming true...";
     case r === 3: return "You didn't see the light of day until you were " + utils.getRandomNumber(1, 10); + "years old";
     case r === 4: return "You were abandoned at birth by your parents and fended for youself on the streets";
-    case r === 5: return "You were rased in a now disgrased noble family and are trying to reclaim your previous status";
+    case r === 5: return "You were raised in a now disgraced noble family and are trying to reclaim your previous status";
     case r === 6: return "You were a divine birth conceived between lesser Gods and Demons, abandoned at birth you have been seeking out your parents";
     case r === 7: return "You were raised in a perfectly stable family that was wiped out by " + _.sample(mentalState) + " " + _.sample(animals)+"s";
     case r === 8: return "You were dropped on your head as a child, ever since then you believe you can speak to " + _.sample(animals) +"s";
     case r === 9: return "You and your siblings learnt to speak backwards perfectly as children to pass each other secret messages";
     case r === 10: return "After a freak wizard accident you permanently lost all hair over your body";
-    case r === 11: return "You were hit in the head recently and lost all your memories, you now believe you are an extremly elderly member of the oposite sex";
+    case r === 11: return "You were hit in the head recently and lost all your memories, you now believe you are an extremely elderly member of the opposite sex";
     case r === 12: return "You were raised in a " + _.sample(buildings) + " where you became addicted to " + _.sample(state) + " " + _.sample(food);
     case r === 13: return "You grew up in a " + _.sample(buildings) + ", and you only friend was a " + _.sample(mentalState) + " " + _.sample(animals);
     case r === 14: return "You grew up poor and shunned by others. In your adolescence you joined a street gang, after a failed robbery you had a bounty placed on your head and had to flee";
     case r === 15: return "Your life has been spent cheating death, trouble seems to find you around every corner";
     case r === 16: return "You grew up in magical floating city despite not believing in magic";
     case r === 17: return "You were sold into slavery at a young age. You grew up in the slave pits, fighting for the amusement of others. During your final fight you blacked out after receiving a mortal wound and woke up fully healed in a " + _.sample(buildings);
-    case r === 18: return "You grew up in a haunted castle and due to your experiences there you are now downright racist to living skeletons";
-    case r === 19: return "You grew up in a boarding school for middle class wizards who you did not care for at all";
+    case r === 18: return "You grew up in a haunted castle and due to your experiences, there you are now downright racist to living skeletons";
+    case r === 19: return "You grew up i n a boarding school for middle class wizards who you did not care for at all";
     case r === 20: return "You took a vow of non-silence when you were " + utils.getRandomNumber(1, 15); +  "years old and constantly make some sort of noise";
     case r === 21: return "Your life has been a cruel collection of practical jokes made at your expense. You finally snapped one day and do not speak about what happened to anyone";
     case r === 22: return "You were abandoned at birth and grew up in a scary forest cared for by " + _.sample(animals) + "s";
     case r === 23: return "Your best friend growing up convinced you that the world had a solid gold core. You are always hatching schemes to claim the gold core for your own";
+
 
   }
 
@@ -271,13 +272,13 @@ var flaws = () => {
   const r = utils.getRandomNumber(1,39);
   switch (true){
     case r === 1: return     ". You never back down from a fight, even if it's unwinnable.";
-    case r === 2: return     ". You constantly, incorrectly correct other peoples grammar.";
-    case r === 3: return     ". You live as if you are the main hero in a bards tale and cannot lose.";
-    case r === 4: return     ". You have a nervous tick that causes you to flap you arms like a bird when you are embarrassed.";
+    case r === 2: return     ". You constantly, incorrectly correct other people’s grammar.";
+    case r === 3: return     ". You live as if you are the main hero in a bard’s tale and cannot lose.";
+    case r === 4: return     ". You have a nervous tick that causes you to flap your arms like a bird when you are embarrassed.";
     case r === 5: return     ". You are constantly distracted by your own mortality.";
     case r === 6: return     ". If you see a horse, you HAVE to pull its tail.";
     case r === 7: return     ". You eat with your mouth open.";
-    case r === 8: return     ". You have awful personal hygine.";
+    case r === 8: return     ". You have awful personal hygiene.";
     case r === 9: return     ". You refer to other races as lesser beings.";
     case r === 10: return    ". You believe you were a king in your past life (you were not). ";
     case r === 11: return    ". You snore very loudly.";
@@ -309,6 +310,7 @@ var flaws = () => {
     case r === 37: return    ". you are absolutely astonished by jugglers.";
     case r === 38: return    ". you find it impossible to speak to members of the opposite sex.";
     case r === 39: return    ". you tend to end every conversation passive-aggressively."
+
   }
 
 }
