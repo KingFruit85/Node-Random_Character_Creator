@@ -1,0 +1,5 @@
+update variable names to lowercase/camelCase format
+Change the character abilities to objects with the ability description included (or use an API? http://www.dnd5eapi.co/)
+Calculate weapon/spell damage
+Skills really need to be encapsulated in an object (housekeeping)
+the backstory generator needs to be totally reworked

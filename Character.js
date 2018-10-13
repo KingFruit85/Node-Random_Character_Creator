@@ -5,16 +5,22 @@ const backstory =require('./backstory.js')
 
 //creates a randomised Character object
 var newCharacter = () => {   //Declares a new function named newCharacter
-var Character = {};          //Creates an empty Character object
+var Character = {
+  proficiencies:{},
+  character_attributes:{},
+  combat_attributes:{},
+  spells:{}
+};          //Creates an empty Character object
 //start adding properties, order is important here are some properties..
 //..are derived from existing properties
 
 ///////////////////////////////////////
   utils.getRandomClass(Character);/////
   utils.getRandomRace(Character);//////  These functions must be
+  utils.calcMovementSpeed(Character);
   utils.assignStats(Character);////////  called in this order
   utils.addSubRaceBonus(Character);////
-  console.log(Character)
+
 ///////////////////////////////////////
 
   utils.getRandomSex(Character);
@@ -33,7 +39,7 @@ var Character = {};          //Creates an empty Character object
   utils.getLanguages(Character);
   utils.getRandomHeight(Character);
   utils.getDefaultEquipment(Character);
-  utils.calcMovementSpeed(Character);
+
   utils.getSavingThrows(Character);
   utils.assignSpells(Character);
   utils.calcArmorClass(Character);
@@ -42,10 +48,12 @@ var Character = {};          //Creates an empty Character object
   Character.Level = 1;
   Character.Backstory = backstory.backstory();
 
-
-
-
   return Character;
 }
+
+x = newCharacter()
+
+console.log(JSON.stringify(x, undefined, 2))
+
 
 exports.newCharacter = newCharacter

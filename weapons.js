@@ -2,7 +2,7 @@ var SimpleWeapons = {
 
 
   Club:{Name:"Club", Cost:"1sp", Damage:"1d4 bludgeoning", Weight:"2lb", Properties:"Light"},
-  Dagger:{Name:"Dagger" , Cost:"	2 gp" , Damage: "1d4 piercing", Weight:"1lb" , Properties:"Finesse, light, thrown (range 20/60)"},
+  Dagger:{Name:"Dagger" , Cost:"2gp" , Damage: "1d4 piercing", Weight:"1lb" , Properties:"Finesse, light, thrown (range 20/60)"},
   Greatclub:{Name:"Greatclub" , Cost:"2sp" , Damage: "1d8 bludgeoning	", Weight:"10 lb" , Properties:"Two-handed"},
   Handaxe:{Name:"Handaxe" , Cost:"5gp" , Damage: "1d6 slashing", Weight:"2lb" , Properties:"Light, thrown (range 20/60)"},
   Javelin:{Name:"Javelin" , Cost:"5sp" , Damage: "1d6 piercing", Weight:"2lb" , Properties:"Thrown (range 30/120)"},
@@ -12,6 +12,10 @@ var SimpleWeapons = {
   Sickle:{Name:"Sickle" , Cost:"1gp" , Damage: "1d4 slashing", Weight:"2lb" , Properties:"Light"},
   Spear:{Name:"Spear" , Cost:"1gp" , Damage: "1d6 piercing", Weight:"3lb" , Properties:"Thrown (range 20/60), versatile (1d8)"}
 
+}
+var barbWeps = {
+  BarbJavelin:{Name:"4 x Javelin", Cost:"5sp (each)", Damage:"1d6 piercing (each)", Weight:"2lb (each)" , Properties:"Thrown (range 30/120)"},
+  barbHandaxe:{Name:"2 x Handaxe" ,Cost:"5gp (each)", Damage:"1d6 slashing (each)", Weight:"2lb (each)" , Properties:"Light, thrown (range 20/60)"}
 }
 
 
@@ -62,6 +66,7 @@ var MartialRangedWeapons = {
 }
 
 exports.SimpleWeapons = SimpleWeapons;
+exports.barbWeps = barbWeps;
 exports.SimpleRangedWeapons = SimpleRangedWeapons;
 exports.MartialMeleeWeapons = MartialMeleeWeapons;
 exports.MartialRangedWeapons = MartialRangedWeapons;

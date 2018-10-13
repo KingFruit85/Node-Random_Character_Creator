@@ -201,7 +201,7 @@ var life = () => {
     case r === 16: return "You grew up in magical floating city despite not believing in magic";
     case r === 17: return "You were sold into slavery at a young age. You grew up in the slave pits, fighting for the amusement of others. During your final fight you blacked out after receiving a mortal wound and woke up fully healed in a " + _.sample(buildings);
     case r === 18: return "You grew up in a haunted castle and due to your experiences, there you are now downright racist to living skeletons";
-    case r === 19: return "You grew up i n a boarding school for middle class wizards who you did not care for at all";
+    case r === 19: return "You grew up in a boarding school for middle class wizards who you did not care for at all";
     case r === 20: return "You took a vow of non-silence when you were " + utils.getRandomNumber(1, 15); +  "years old and constantly make some sort of noise";
     case r === 21: return "Your life has been a cruel collection of practical jokes made at your expense. You finally snapped one day and do not speak about what happened to anyone";
     case r === 22: return "You were abandoned at birth and grew up in a scary forest cared for by " + _.sample(animals) + "s";
@@ -213,13 +213,13 @@ var life = () => {
 }
 
 var likes = () => {
-  const r = utils.getRandomNumber(1,23);
+  const r = utils.getRandomNumber(4,5);  //1-23
   switch (true){
     case r === 1: return ". You love the smell of " + _.sample(things);
     case r === 2: return ". You are addicted to " + _.sample(animals) + " milk";
     case r === 3: return ". You collect various preserves";
-    case r === 4: return ". You love "+ _.sample(races.race) + " chocolate";
-    case r === 5: return ". You love " + _.sample(races.race) + " honey";
+    case r === 4: raceInfo = _.sample(races.race); return ". You love " + raceInfo.race + " chocolate";
+    case r === 5: raceInfo = _.sample(races.race); return ". You love " + raceInfo.race + " honey";
     case r === 6: return ". You are very proud of your body and like to wear as little clothes as possible when appropriate";
     case r === 7: return ". You love a " + _.sample(state)+ " " + _.sample(food);
     case r === 8: return ". You do not eat meat of any kind";
@@ -295,7 +295,7 @@ var flaws = () => {
     case r === 22: return    ". You have a very pronounced overbite.";
     case r === 23: return    ". You think moustaches are ridiculously cool but have never been able to grow one yourself.";
     case r === 24: return    ". You didn't choose the Skux life, the Skux life chose you.";
-    case r === 25: return    ". You are convinced the " + _.sample(races.race) + "s are up to something.";
+    case r === 25: raceInfo = _.sample(races.race); return    ". You are convinced the " + raceInfo.race + "s are up to something.";
     case r === 26: return    ". You are slightly cross-eyed.";
     case r === 27: return    ". You are slightly boss-eyed.";
     case r === 28: return    ". You blindly follow orders from anyone taller than you.";

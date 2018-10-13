@@ -27,20 +27,20 @@ var getRandomNumber = (min, max) => {
 }
 
 var getSavingThrows = (Character) => {
-  Character.saving_throws = [];
+  Character.combat_attributes.saving_throws = {};
   switch (true) {
-    case Character.class === "Barbarian":Character.saving_throws = classes.Barbarian.savingThrows;break;
-    case Character.class === "Bard":Character.saving_throws = classes.Bard.savingThrows;break;
-    case Character.class === "Fighter":Character.saving_throws = classes.Fighter.savingThrows;break;
-    case Character.class === "Cleric":Character.saving_throws = classes.Cleric.savingThrows;break;
-    case Character.class === "Druid":Character.saving_throws = classes.Druid.savingThrows;break;
-    case Character.class === "Monk":Character.saving_throws = classes.Monk.savingThrows;break;
-    case Character.class === "Paladin":Character.saving_throws = classes.Paladin.savingThrows;break;
-    case Character.class === "Ranger":Character.saving_throws = classes.Ranger.savingThrows;break;
-    case Character.class === "Rogue":Character.saving_throws = classes.Rogue.savingThrows;break;
-    case Character.class === "Sorcerer":Character.saving_throws = classes.Sorcerer.savingThrows;break;
-    case Character.class === "Warlock":Character.saving_throws = classes.Warlock.savingThrows;break;
-    case Character.class === "Wizard":Character.saving_throws = classes.Wizard.savingThrows;break;
+    case Character.character_attributes.class === "Barbarian":Character.combat_attributes.saving_throws = classes.Barbarian.savingThrows;break;
+    case Character.character_attributes.class === "Bard":Character.combat_attributes.saving_throws = classes.Bard.savingThrows;break;
+    case Character.character_attributes.class === "Fighter":Character.combat_attributes.saving_throws = classes.Fighter.savingThrows;break;
+    case Character.character_attributes.class === "Cleric":Character.combat_attributes.saving_throws = classes.Cleric.savingThrows;break;
+    case Character.character_attributes.class === "Druid":Character.combat_attributes.saving_throws = classes.Druid.savingThrows;break;
+    case Character.character_attributes.class === "Monk":Character.combat_attributes.saving_throws = classes.Monk.savingThrows;break;
+    case Character.character_attributes.class === "Paladin":Character.combat_attributes.saving_throws = classes.Paladin.savingThrows;break;
+    case Character.character_attributes.class === "Ranger":Character.combat_attributes.saving_throws = classes.Ranger.savingThrows;break;
+    case Character.character_attributes.class === "Rogue":Character.combat_attributes.saving_throws = classes.Rogue.savingThrows;break;
+    case Character.character_attributes.class === "Sorcerer":Character.combat_attributes.saving_throws = classes.Sorcerer.savingThrows;break;
+    case Character.character_attributes.class === "Warlock":Character.combat_attributes.saving_throws = classes.Warlock.savingThrows;break;
+    case Character.character_attributes.class === "Wizard":Character.combat_attributes.saving_throws = classes.Wizard.savingThrows;break;
       default:"Error: Fell Though Switch Statement(getSavingThrows)"
   }
   return Character;
@@ -49,23 +49,23 @@ var getSavingThrows = (Character) => {
 //calculate movement speed based on race
 var calcMovementSpeed = (Character) => {
   switch (true) {
-    case Character.Race === "Human":    Character.Speed = races.Human.Speed;break;
-    case Character.Race === "Dwarf":    Character.Speed = races.Dwarf.Speed;break;
-    case Character.Race === "Elf":      Character.Speed = races.Elf.Speed;break;
-    case Character.Race === "Gnome":    Character.Speed = races.Gnome.Speed;break;
-    case Character.Race === "Halfling": Character.Speed = races.Halfling.Speed;break;
-    case Character.Race === "Dragonborn":Character.Speed = races.Dragonborn.Speed;break;
-    case Character.Race === "HalfElf":  Character.Speed = races.HalfElf.Speed;break;
-    case Character.Race === "HalfOrc":  Character.Speed = races.HalfOrc.Speed;break;
-    case Character.Race === "Tiefling": Character.Speed = races.Tiefling.Speed;break;
-    default:Character.Speed = "Error:Fell Through Switch Statement(calcMovementSpeed)"
+    case Character.character_attributes.race === "Human":     Character.combat_attributes.speed = races.Human.speed;break;
+    case Character.character_attributes.race === "Dwarf":     Character.combat_attributes.speed = races.Dwarf.speed;break;
+    case Character.character_attributes.race === "Elf":       Character.combat_attributes.speed = races.Elf.speed;break;
+    case Character.character_attributes.race === "Gnome":     Character.combat_attributes.speed = races.Gnome.speed;break;
+    case Character.character_attributes.race === "Halfling":  Character.combat_attributes.speed = races.Halfling.speed;break;
+    case Character.character_attributes.race === "Dragonborn":Character.combat_attributes.speed = races.Dragonborn.speed;break;
+    case Character.character_attributes.race === "HalfElf":   Character.combat_attributes.speed = races.HalfElf.speed;break;
+    case Character.character_attributes.race === "HalfOrc":   Character.combat_attributes.speed = races.HalfOrc.speed;break;
+    case Character.character_attributes.race === "Tiefling":  Character.combat_attributes.speed = races.Tiefling.speed;break;
+    default:Character.combat_attributes.speed = "Error:Fell Through Switch Statement(calcMovementSpeed)"
   }return Character;
 }
 
 //Since all characters start at level 1, for the time being this can be set to 2
 //Will need to be updated when character levels become randomised/chosen
 var getProBonus = (Character) => {
-  Character["Proficiency Bonus"] = 2;
+  Character.proficiencies.proficiency_bonus = 2;
   return Character;
 }
 
@@ -73,17 +73,17 @@ var getProBonus = (Character) => {
 
 var getLanguages = (Character) => {
   switch (true) {
-    case Character.Race === "Dwarf": Character["Primary Language"] = races.Dwarf.Languages; Character["Secondary Language"] = races.Dwarf.ExtraLanguage; break;
-    case Character.Race === "Human": Character["Primary Language"] = races.Human.Languages; Character["Secondary Language"] = _.sample(races.Human.ExtraLanguage); break;
-    case Character.Race === "Elf": Character["Primary Language"] = races.Elf.Languages; Character["Secondary Language"] = races.Elf.ExtraLanguage; break;
-    case Character.Race === "Gnome": Character["Primary Language"] = _.sample(races.Gnome.Languages); Character["Secondary Language"] = races.Gnome.ExtraLanguage; break;
-    case Character.Race === "Halfling": Character["Primary Language"] = races.Halfling.Languages; Character["Secondary Language"] = races.Halfling.ExtraLanguage; break;
-    case Character.Race === "Dragonborn": Character["Primary Language"] = races.Dragonborn.Languages; Character["Secondary Language"] = races.Dragonborn.ExtraLanguage; break;
-    case Character.Race === "HalfElf": Character["Primary Language"] = races.HalfElf.Languages; Character["Secondary Language"] = _.sample(races.HalfElf.ExtraLanguage); break;
-    case Character.Race === "HalfOrc": Character["Primary Language"] = races.HalfOrc.Languages; Character["Secondary Language"] = races.HalfOrc.ExtraLanguage; break;
-    case Character.Race === "Tiefling": Character["Primary Language"] = races.Tiefling.Languages; Character["Secondary Language"] = races.Tiefling.ExtraLanguage; break;
-    default:Character["Primary Language"]   = "Error:Fell Through Switch Statement(getLanguages)";
-            Character["Secondary Language"] = "Error:Fell Through Switch Statement(getLanguages)";
+    case Character.character_attributes.race === "Dwarf": Character.character_attributes.primary_language = races.Dwarf.Languages; Character.character_attributes.secondary_language = races.Dwarf.ExtraLanguage; break;
+    case Character.character_attributes.race === "Human": Character.character_attributes.primary_language = races.Human.Languages; Character.character_attributes.secondary_language = _.sample(races.Human.ExtraLanguage); break;
+    case Character.character_attributes.race === "Elf": Character.character_attributes.primary_language = races.Elf.Languages; Character.character_attributes.secondary_language = races.Elf.ExtraLanguage; break;
+    case Character.character_attributes.race === "Gnome": Character.character_attributes.primary_language = _.sample(races.Gnome.Languages); Character.character_attributes.secondary_language = races.Gnome.ExtraLanguage; break;
+    case Character.character_attributes.race === "Halfling": Character.character_attributes.primary_language = races.Halfling.Languages; Character.character_attributes.secondary_language = races.Halfling.ExtraLanguage; break;
+    case Character.character_attributes.race === "Dragonborn": Character.character_attributes.primary_language = races.Dragonborn.Languages; Character.character_attributes.secondary_language = races.Dragonborn.ExtraLanguage; break;
+    case Character.character_attributes.race === "HalfElf": Character.character_attributes.primary_language = races.HalfElf.Languages; Character.character_attributes.secondary_language = _.sample(races.HalfElf.ExtraLanguage); break;
+    case Character.character_attributes.race === "HalfOrc": Character.character_attributes.primary_language = races.HalfOrc.Languages; Character.character_attributes.secondary_language = races.HalfOrc.ExtraLanguage; break;
+    case Character.character_attributes.race === "Tiefling": Character.character_attributes.primary_language = races.Tiefling.Languages; Character.character_attributes.secondary_language = races.Tiefling.ExtraLanguage; break;
+    default:Character.character_attributes.primary_language   = "Error:Fell Through Switch Statement(getLanguages)";
+            Character.character_attributes.secondary_language = "Error:Fell Through Switch Statement(getLanguages)";
   }return Character;
 }
 
@@ -107,8 +107,10 @@ var getDefaultEquipment = (Character) => {
   Character.armor = [];
   Character.armor_class = [];
   Character.equipment = [];
+  Character.primary_weapon_info = [];
 
   if(Character.class === "Bard"){
+
 
     r = getRandomNumber( 1 , 3 );
 
@@ -351,87 +353,88 @@ else if (Character.class === "Wizard"){
 return Character;
 }
 
+
  var calcArmorClass = (Character) => {
    switch (true) {
-     case (Object.values(Character.armor)[0].Name === "Padded Armor"):          Character.armor_class += 11 + altCalcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "Leather Armor"):         Character.armor_class += 11 + altCalcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "Studded Leather Armor"): Character.armor_class += 12 + altCalcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "Chain Mail"):            Character.armor_class += 16;break;
-     case (Object.values(Character.armor)[0].Name === "Hide Armor"):            Character.armor_class += 12 + _.inRange(altCalcBonus(Character.Stats.DEX),2);break;
-     case (Object.values(Character.armor)[0].Name === "Scale Mail"):            Character.armor_class += 14 + altCalcBonus(Character.Stats.DEX);break;
-     case (Object.values(Character.armor)[0].Name === "No Armor"):              Character.armor_class += 10 + altCalcBonus(Character.Stats.DEX) + altCalcBonus(Character.Stats.CON);break;
-      default: Character.armor_class.push("Fell Through(calcArmorClass)")
+     case (Object.values(Character.armor)[0] === "Padded Armor"):          Character.combat_attributes.armor_class += 11 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Leather Armor"):         Character.combat_attributes.armor_class += 11 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Studded Leather Armor"): Character.combat_attributes.armor_class += 12 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Chain Mail"):            Character.combat_attributes.armor_class += 16;break;
+     case (Object.values(Character.armor)[0] === "Hide Armor"):            Character.combat_attributes.armor_class += 12 + _.inRange(altCalcBonus(Character.stats.DEX),2);break;
+     case (Object.values(Character.armor)[0] === "Scale Mail"):            Character.combat_attributes.armor_class += 14 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "No Armor"):              Character.combat_attributes.armor_class += 10 + altCalcBonus(Character.stats.DEX) + altCalcBonus(Character.stats.CON);break;
+      default: Character.combat_attributes.armor_class = ("Fell Through(calcArmorClass)")
    }return Character;
  }
 
 //calc starting hit points, using first level hitpoints plus con modifier
 var calcBaseHP = (Character) => {
   switch (true) {
-    case Character.class === "Barbarian": Character.hit_points = 12  + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Bard":      Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Fighter":   Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Cleric":    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Druid" :    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Monk"  :    Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Paladin":   Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Ranger":    Character.hit_points = 10  + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Rogue":     Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Sorcerer":  Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Warlock":   Character.hit_points = 8   + altCalcBonus(Character.Stats.CON); break;
-    case Character.class === "Wizard":    Character.hit_points = 6   + altCalcBonus(Character.Stats.CON); break;
+    case Character.character_attributes.class === "Barbarian": Character.combat_attributes.hit_points = 12  + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Bard":      Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Fighter":   Character.combat_attributes.hit_points = 10  + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Cleric":    Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Druid" :    Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Monk"  :    Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Paladin":   Character.combat_attributes.hit_points = 10  + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Ranger":    Character.combat_attributes.hit_points = 10  + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Rogue":     Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Sorcerer":  Character.combat_attributes.hit_points = 6   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Warlock":   Character.combat_attributes.hit_points = 8   + altCalcBonus(Character.stats.CON); break;
+    case Character.character_attributes.class === "Wizard":    Character.combat_attributes.hit_points = 6   + altCalcBonus(Character.stats.CON); break;
       default: "Error:Fell Through Switch Statement(calcBaseHP)";
   }return Character;
 }
 
 var ageCalc = (Character) => {
   switch (true) {
-    case Character.Race === "Human":      Character.Age = getRandomNumber( 18, 100 );  break;
-    case Character.Race === "Dwarf":      Character.Age = getRandomNumber( 50, 350 );  break;
-    case Character.Race === "Elf":        Character.Age = getRandomNumber( 100, 750 ); break;
-    case Character.Race === "Gnome":      Character.Age = getRandomNumber( 40, 500 );  break;
-    case Character.Race === "Halfling":   Character.Age = getRandomNumber( 20, 250 );  break;
-    case Character.Race === "Dragonborn": Character.Age = getRandomNumber( 15, 80 );   break;
-    case Character.Race === "HalfElf":    Character.Age = getRandomNumber( 20, 180 );  break;
-    case Character.Race === "HalfOrc":    Character.Age = getRandomNumber( 14, 75 );   break;
-    case Character.Race === "Tiefling":   Character.Age = getRandomNumber( 18, 120 );  break;
-      default: Character.Age = "Error:Fell Through Switch Statement (ageCalc)";
+    case Character.character_attributes.race === "Human":      Character.character_attributes.age = getRandomNumber( 18, 100 );  break;
+    case Character.character_attributes.race === "Dwarf":      Character.character_attributes.age = getRandomNumber( 50, 350 );  break;
+    case Character.character_attributes.race === "Elf":        Character.character_attributes.age = getRandomNumber( 100, 750 ); break;
+    case Character.character_attributes.race === "Gnome":      Character.character_attributes.age = getRandomNumber( 40, 500 );  break;
+    case Character.character_attributes.race === "Halfling":   Character.character_attributes.age = getRandomNumber( 20, 250 );  break;
+    case Character.character_attributes.race === "Dragonborn": Character.character_attributes.age = getRandomNumber( 15, 80 );   break;
+    case Character.character_attributes.race === "HalfElf":    Character.character_attributes.age = getRandomNumber( 20, 180 );  break;
+    case Character.character_attributes.race === "HalfOrc":    Character.character_attributes.age = getRandomNumber( 14, 75 );   break;
+    case Character.character_attributes.race === "Tiefling":   Character.character_attributes.age = getRandomNumber( 18, 120 );  break;
+      default: Character.character_attributes.age = "Error:Fell Through Switch Statement (ageCalc)";
   }return Character;
 }
 
 var assignSpells = (Character) => {
-  Character.cantrips = [];
-  Character.firstLevelSpells = [];
-  Character.spellSlots = [];
+  Character.spells.cantrips = [];
+  Character.spells.firstLevelSpells = [];
+  Character.spells.spellSlots = [];
 
   switch (true) {
-    case (Character.class === "Bard"):
-    Character.cantrips.push(_.sampleSize(spells.bardCantrips,2));
-    Character.firstLevelSpells.push(_.sampleSize(spells.bardLevel1,4))
-    Character.spellSlots.push(2);break;
+    case (Character.character_attributes.class === "Bard"):
+    Character.spells.cantrips.push(_.sampleSize(spells.bardCantrips,2));
+    Character.spells.firstLevelSpells.push(_.sampleSize(spells.bardLevel1,4))
+    Character.spells.spellSlots.push(2);break;
 
-    case (Character.class === "Cleric"):
-    Character.cantrips.push(_.sampleSize(spells.clericCantrips,3));
-    Character.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.Stats.WIS +1 )))
-    Character.spellSlots.push(calcBonus(Character.Stats.WIS)+1);break;
-
-
-    case (Character.class === "Druid"):Character.cantrips.push(_.sampleSize(spells.druidCantrips,2));
-                                       Character.firstLevelSpells.push(_.sampleSize(spells.druidLevel1,2));break;
+    case (Character.character_attributes.class === "Cleric"):
+    Character.spells.cantrips.push(_.sampleSize(spells.clericCantrips,3));
+    Character.spells.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.stats.WIS +1 )))
+    Character.spells.spellSlots.push(calcBonus(Character.stats.WIS)+1);break;
 
 
-    case (Character.class === "Sorcerer"):Character.cantrips.push(_.sampleSize(spells.sorcererCantrips,4));
-                                       Character.firstLevelSpells.push(_.sampleSize(spells.sorcererLevel1,2));break;
+    case (Character.character_attributes.class === "Druid"):Character.spells.cantrips.push(_.sampleSize(spells.druidCantrips,2));
+                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.druidLevel1,2));break;
 
 
-    case (Character.class === "Warlock"):Character.cantrips.push(_.sampleSize(spells.warlockCantrips,2));
-                                       Character.firstLevelSpells.push(_.sampleSize(spells.warlockLevel1,2));break;
+    case (Character.character_attributes.class === "Sorcerer"):Character.spells.cantrips.push(_.sampleSize(spells.sorcererCantrips,4));
+                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.sorcererLevel1,2));break;
 
 
-    case (Character.class === "Wizard"):Character.cantrips.push(_.sampleSize(spells.wizardCantrips,3));
-                                       Character.firstLevelSpells.push(_.sampleSize(spells.wizardLevel1,2));break;
+    case (Character.character_attributes.class === "Warlock"):Character.spells.cantrips.push(_.sampleSize(spells.warlockCantrips,2));
+                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.warlockLevel1,2));break;
 
 
-      default:Character.cantrips = ""
+    case (Character.character_attributes.class === "Wizard"):Character.spells.cantrips.push(_.sampleSize(spells.wizardCantrips,3));
+                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.wizardLevel1,2));break;
+
+
+      default:Character.spells.cantrips = ""
 
   }
   return Character;
@@ -442,47 +445,47 @@ var assignSpells = (Character) => {
 //generate random name based off sex/race
 var getRandomName = (Character) => {
   switch (true){
-    case (Character.Race === "Human" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.humanMaleNames)  + " " + _.sample(races.humanLastNames);
+    case (Character.character_attributes.race === "Human" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.humanMaleNames)  + " " + _.sample(races.humanLastNames);
           break;
-    case (Character.Race === "Human" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.humanFemaleNames) + " " + _.sample(races.humanLastNames);
+    case (Character.character_attributes.race === "Human" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.humanFemaleNames) + " " + _.sample(races.humanLastNames);
           break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.dwarfMaleNames) + " " + _.sample(races.dwarfLastNames);
+    case (Character.character_attributes.race === "Dwarf" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.dwarfMaleNames) + " " + _.sample(races.dwarfLastNames);
           break;
-    case (Character.Race === "Dwarf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.dwarfFemaleNames) + " " + _.sample(races.dwarfLastNames);
+    case (Character.character_attributes.race === "Dwarf" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.dwarfFemaleNames) + " " + _.sample(races.dwarfLastNames);
           break;
-    case (Character.Race === "Elf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Elf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "Gnome" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Gnome" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
-    case (Character.Race === "Halfling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Halfling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "Dragonborn" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfElf" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "HalfOrc" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Male"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
-    case (Character.Race === "Tiefling" && Character.Sex === "Female"||Character.Sex === "Non-Binary" ):
-          Character.Name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
-    default: Character.Name = "Error:Fell Through Switch Statement (getRandomName)";
+    case (Character.character_attributes.race === "Elf" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.elfMaleNames)           + " " + _.sample(races.elfLastNames);        break;
+    case (Character.character_attributes.race === "Elf" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.elfFemaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.character_attributes.race === "Gnome" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.gnomeMaleNames)         + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.character_attributes.race === "Gnome" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.gnomeFemaleNames)       + " " + _.sample(races.gnomeLastNames);      break;
+    case (Character.character_attributes.race === "Halfling" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.halflingMaleNames)      + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.character_attributes.race === "Halfling" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.halflingFemaleNames)    + " " + _.sample(races.halflingLastNames);   break;
+    case (Character.character_attributes.race === "Dragonborn" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.dragonbornMaleNames)    + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.character_attributes.race === "Dragonborn" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.dragonbornFemaleNames)  + " " + _.sample(races.dragonbornLastNames); break;
+    case (Character.character_attributes.race === "HalfElf" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.humanMaleNames)         + " " + _.sample(races.elfLastNames);        break;
+    case (Character.character_attributes.race === "HalfElf" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.humanFemaleNames)       + " " + _.sample(races.elfLastNames);        break;
+    case (Character.character_attributes.race === "HalfOrc" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.halforcMaleNames)       + " " + _.sample(races.halforcLastName);     break;
+    case (Character.character_attributes.race === "HalfOrc" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.halforcFemaleNames)     + " " + _.sample(races.halforcLastName);     break;
+    case (Character.character_attributes.race === "Tiefling" && Character.character_attributes.sex === "Male"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.tieflingMaleNames)      + " " + _.sample(races.tieflingLastNames);   break;
+    case (Character.character_attributes.race === "Tiefling" && Character.character_attributes.sex === "Female"||Character.character_attributes.sex === "Non-Binary" ):
+          Character.character_attributes.name = _.sample(races.tieflingFemaleNames)    + " " + _.sample(races.tieflingLastNames);   break;
+    default: Character.character_attributes.name = "Error:Fell Through Switch Statement (getRandomName)";
   }return Character;
    }
 
@@ -490,16 +493,16 @@ var getRandomName = (Character) => {
 
 var getRandomHeight = (Character) => {
     switch (true){
-      case (Character.Race === "Human"):Character.Height      = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "Dwarf"):Character.Height      = _.sample(races.dwarfHeight);break;
-      case (Character.Race === "Elf"):Character.Height        = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "Gnome"):Character.Height      = _.sample(races.gnomeHeight);break;
-      case (Character.Race === "Halfling"):Character.Height   = _.sample(races.halflingHeight);break;
-      case (Character.Race === "Dragonborn"):Character.Height = _.sample(races.dragonbornHeight);break;
-      case (Character.Race === "HalfElf"):Character.Height    = _.sample(races.humanElfHeight);break;
-      case (Character.Race === "HalfOrc"):Character.Height    = _.sample(races.halforcHeight);break;
-      case (Character.Race === "Tiefling"):Character.Height   = _.sample(races.humanElfHeight);break;
-      default:Character.Height = "Error:Fell Through Switch Statement";
+      case (Character.character_attributes.race === "Human"):Character.character_attributes.height      = _.sample(races.humanElfHeight);break;
+      case (Character.character_attributes.race === "Dwarf"):Character.character_attributes.height      = _.sample(races.dwarfHeight);break;
+      case (Character.character_attributes.race === "Elf"):Character.character_attributes.height        = _.sample(races.humanElfHeight);break;
+      case (Character.character_attributes.race === "Gnome"):Character.character_attributes.height      = _.sample(races.gnomeHeight);break;
+      case (Character.character_attributes.race === "Halfling"):Character.character_attributes.height   = _.sample(races.halflingHeight);break;
+      case (Character.character_attributes.race === "Dragonborn"):Character.character_attributes.height = _.sample(races.dragonbornHeight);break;
+      case (Character.character_attributes.race === "HalfElf"):Character.character_attributes.height    = _.sample(races.humanElfHeight);break;
+      case (Character.character_attributes.race === "HalfOrc"):Character.character_attributes.height    = _.sample(races.halforcHeight);break;
+      case (Character.character_attributes.race === "Tiefling"):Character.character_attributes.height   = _.sample(races.humanElfHeight);break;
+      default:Character.character_attributes.height = "Error:Fell Through Switch Statement (getRandomHeight)";
     }return Character;
   }
 
@@ -507,52 +510,51 @@ var getRandomHeight = (Character) => {
 //get random race
 var getRandomRace = (Character) => {
   raceInfo = _.sample(races.race)
-  Character.Race = raceInfo.race
-  Character.raceLink = raceInfo.www
+  Character.character_attributes.race = raceInfo.race
+  Character.character_attributes.raceLink = raceInfo.www
   return Character;
 }
 
-//get random class
-var lastClass = "";
-var genClass = "";
 
 var getRandomClass = (Character) => {
 classInfo = _.sample(classes.classes)
-Character.class = classInfo.class
-Character.classLink = classInfo.www
+Character.character_attributes.class = classInfo.class
+Character.character_attributes.classLink = classInfo.www
 return Character;
 }
 
 //get random alignment
 var getRandomAlignment = (Character) => {
-  Character["Alignment"] = _.sample(races.alignment);
+  Character.character_attributes.alignment = _.sample(races.alignment);
   return Character;
 }
 
 var getFeatures = (Character) => {
-  Character.feats = [];
+  Character.abilities = [];
   switch (true) {
-    case Character.class === "Barbarian":Character.feats = classes.Barbarian.feats;break;
-    case Character.class === "Bard":Character.feats = classes.Bard.feats;break;
-    case Character.class === "Fighter":Character.feats.push(classes.Fighter.feats),
-                                       Character.feats.push(_.sample(classes.Fighter.extraFeats));break;
-    case Character.class === "Cleric":Character.feats = classes.Cleric.feats;break;
-    case Character.class === "Druid":Character.feats = classes.Druid.feats;break;
-    case Character.class === "Paladin":Character.feats = classes.Paladin.feats;break;
-    case Character.class === "Ranger":Character.feats = classes.Ranger.feats;break;
-    case Character.class === "Rogue":Character.feats = classes.Rogue.feats;break;
-    case Character.class === "Sorcerer":Character.feats = classes.Sorcerer.feats;break;
-    case Character.class === "Warlock":Character.feats = classes.Warlock.feats;break;
-    case Character.class === "Wizard":Character.feats = classes.Wizard.feats;break;
-
-      default:Character.feats = "Error:Fell Though Switch Statement";
+    case Character.character_attributes.class === "Barbarian":Character.abilities.push(classes.Barbarian.abilities);break;
+    case Character.character_attributes.class === "Bard":Character.abilities.push(classes.Bard.abilities);break;
+    case Character.character_attributes.class === "Fighter":Character.abilities.push(classes.Fighter.abilities),
+                                       Character.abilities.push(_.sample(classes.Fighter.extraAbilities));break;
+    case Character.character_attributes.class === "Cleric":Character.abilities.push(classes.Cleric.abilities);break;
+    case Character.character_attributes.class === "Druid":Character.abilities.push(classes.Druid.abilities);break;
+    case Character.character_attributes.class === "Paladin":Character.abilities.push(classes.Paladin.abilities);break;
+    case Character.character_attributes.class === "Ranger":Character.abilities.push(classes.Ranger.abilities);break;
+    case Character.character_attributes.class === "Rogue":Character.abilities.push(classes.Rogue.abilities);break;
+    case Character.character_attributes.class === "Sorcerer":Character.abilities.push(classes.Sorcerer.abilities);break;
+    case Character.character_attributes.class === "Warlock":Character.abilities.push(classes.Warlock.abilities);break;
+    case Character.character_attributes.class === "Wizard":Character.abilities.push(classes.Wizard.abilities);break;
+    case Character.character_attributes.class === "Monk":Character.abilities.push(classes.Monk.abilities);break;
+      default:Character.abilities = "Error:Fell Though Switch Statement";
 
   }return Character;
+
 }
+
 
 var addFeatureBonues = (Character) => {
   switch (true) {
-    case Character.feats.includes("Defense"):Character.armor_class ++;break;
+    case Character.abilities.includes("Defense"):Character.armor_class ++;break;
     default:"Nothing"
   }return Character;
 }
@@ -560,61 +562,61 @@ var addFeatureBonues = (Character) => {
 
 //get random sex
 var getRandomSex = (Character) => {
-  Character.Sex = _.sample(races.sex);
+  Character.character_attributes.sex = _.sample(races.sex);
   return Character;
 }
 
 //get class based Proficiencies
 var getRandomProSkills = (Character) => {
-  Character.proficient_skills =[];
+  Character.proficiencies.proficient_skills =[];
   switch (true) {
-    case (Character.class === "Barbarian"):Character.proficient_skills =
+    case (Character.character_attributes.class === "Barbarian"):Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Barbarian.skillProficiencies, 2);break;
-    case (Character.class === "Bard"):     Character.proficient_skills =
+    case (Character.character_attributes.class === "Bard"):     Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Bard.skillProficiencies, 3);break;
-    case (Character.class === "Fighter")  :Character.proficient_skills =
+    case (Character.character_attributes.class === "Fighter")  :Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Fighter.skillProficiencies, 2);break;
-    case (Character.class) === "Cleric":   Character.proficient_skills =
+    case (Character.character_attributes.class) === "Cleric":   Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Cleric.skillProficiencies,2);break;
-    case (Character.class === "Druid")     :Character.proficient_skills =
+    case (Character.character_attributes.class === "Druid")     :Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Druid.skillProficiencies, 2);break;
-    case (Character.class === "Monk")      :Character.proficient_skills =
+    case (Character.character_attributes.class === "Monk")      :Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Monk.skillProficiencies, 2);break;
-    case (Character.class === "Paladin")      :Character.proficient_skills =
+    case (Character.character_attributes.class === "Paladin")      :Character.proficiencies.proficient_skills =
                                            _.sampleSize(classes.Paladin.skillProficiencies, 2);break;
-    case (Character.class === "Ranger")  :Character.proficient_skills =
+    case (Character.character_attributes.class === "Ranger")  :Character.proficiencies.proficient_skills =
                                           _.sampleSize(classes.Ranger.skillProficiencies, 3);break;
-    case (Character.class) === "Rogue":   Character.proficient_skills =
+    case (Character.character_attributes.class) === "Rogue":   Character.proficiencies.proficient_skills =
                                           _.sampleSize(classes.Rogue.skillProficiencies,4);break;
-    case (Character.class === "Sorcerer")     :Character.proficient_skills =
+    case (Character.character_attributes.class === "Sorcerer")     :Character.proficiencies.proficient_skills =
                                           _.sampleSize(classes.Sorcerer.skillProficiencies, 2);break;
-    case (Character.class === "Warlock")      :Character.proficient_skills =
+    case (Character.character_attributes.class === "Warlock")      :Character.proficiencies.proficient_skills =
                                           _.sampleSize(classes.Warlock.skillProficiencies, 2);break;
-    case (Character.class === "Wizard")      :Character.proficient_skills =
+    case (Character.character_attributes.class === "Wizard")      :Character.proficiencies.proficient_skills =
                                           _.sampleSize(classes.Wizard.skillProficiencies, 2);break;
 
-    default:Character.proficient_skills = "Error: Fell Though switch case"
+    default:Character.proficiencies.proficient_skills = "Error: Fell Though switch case"
 }
 return Character;
 }
 
 //get armor Proficiencies
 var getArmorSkills = (Character) => {
-Character.proficient_armor = [];
+Character.proficiencies.proficient_armor = [];
 switch (true) {
-  case (Character.class === "Barbarian"):Character.proficient_armor = classes.Barbarian.armorProficiencies;break;
-  case (Character.class === "Bard"):Character.proficient_armor = classes.Bard.armorProficiencies;break;
-  case (Character.class === "Fighter"):Character.proficient_armor = classes.Fighter.armorProficiencies;break;
-  case (Character.class === "Cleric"):Character.proficient_armor = classes.Cleric.armorProficiencies;break;
-  case (Character.class === "Druid"):Character.proficient_armor = classes.Druid.armorProficiencies;break;
-  case (Character.class === "Monk"):Character.proficient_armor = classes.Monk.armorProficiencies;break;
-  case (Character.class === "Paladin"):Character.proficient_armor = classes.Paladin.armorProficiencies;break;
-  case (Character.class === "Ranger"):Character.proficient_armor = classes.Ranger.armorProficiencies;break;
-  case (Character.class === "Rogue"):Character.proficient_armor = classes.Rogue.armorProficiencies;break;
-  case (Character.class === "Sorcerer"):Character.proficient_armor = classes.Sorcerer.armorProficiencies;break;
-  case (Character.class === "Warlock"):Character.proficient_armor = classes.Warlock.armorProficiencies;break;
-  case (Character.class === "Wizard"):Character.proficient_armor = classes.Wizard.armorProficiencies;break;
-  default:Character.proficient_armor = "Error: Fell though switch case"
+  case (Character.character_attributes.class === "Barbarian"):Character.proficiencies.proficient_armor = classes.Barbarian.armorProficiencies;break;
+  case (Character.character_attributes.class === "Bard"):Character.proficiencies.proficient_armor = classes.Bard.armorProficiencies;break;
+  case (Character.character_attributes.class === "Fighter"):Character.proficiencies.proficient_armor = classes.Fighter.armorProficiencies;break;
+  case (Character.character_attributes.class === "Cleric"):Character.proficiencies.proficient_armor = classes.Cleric.armorProficiencies;break;
+  case (Character.character_attributes.class === "Druid"):Character.proficiencies.proficient_armor = classes.Druid.armorProficiencies;break;
+  case (Character.character_attributes.class === "Monk"):Character.proficiencies.proficient_armor = classes.Monk.armorProficiencies;break;
+  case (Character.character_attributes.class === "Paladin"):Character.proficiencies.proficient_armor = classes.Paladin.armorProficiencies;break;
+  case (Character.character_attributes.class === "Ranger"):Character.proficiencies.proficient_armor = classes.Ranger.armorProficiencies;break;
+  case (Character.character_attributes.class === "Rogue"):Character.proficiencies.proficient_armor = classes.Rogue.armorProficiencies;break;
+  case (Character.character_attributes.class === "Sorcerer"):Character.proficiencies.proficient_armor = classes.Sorcerer.armorProficiencies;break;
+  case (Character.character_attributes.class === "Warlock"):Character.proficiencies.proficient_armor = classes.Warlock.armorProficiencies;break;
+  case (Character.character_attributes.class === "Wizard"):Character.proficiencies.proficient_armor = classes.Wizard.armorProficiencies;break;
+  default:Character.proficiencies.proficient_armor = "Error: Fell though switch case"
 
 }
 return Character;
@@ -623,21 +625,21 @@ return Character;
 
 //get weapon Proficiencies
 var getWeaponSkills = (Character) => {
-Character.proficient_weapons = [];
+Character.proficiencies.proficient_weapons = [];
 switch (true) {
-  case (Character.class === "Barbarian"):Character.proficient_weapons = classes.Barbarian.weaponProficiencies;break;
-  case (Character.class === "Bard"):Character.proficient_weapons = classes.Bard.weaponProficiencies;break;
-  case (Character.class === "Fighter"):Character.proficient_weapons = classes.Fighter.weaponProficiencies;break;
-  case (Character.class === "Cleric"):Character.proficient_weapons = classes.Cleric.weaponProficiencies;break;
-  case (Character.class === "Druid"):Character.proficient_weapons = classes.Druid.weaponProficiencies;break;
-  case (Character.class === "Monk"):Character.proficient_weapons = classes.Monk.weaponProficiencies;break;
-  case (Character.class === "Paladin"):Character.proficient_weapons = classes.Paladin.weaponProficiencies;break;
-  case (Character.class === "Ranger"):Character.proficient_weapons = classes.Ranger.weaponProficiencies;break;
-  case (Character.class === "Rogue"):Character.proficient_weapons = classes.Rogue.weaponProficiencies;break;
-  case (Character.class === "Sorcerer"):Character.proficient_weapons = classes.Sorcerer.weaponProficiencies;break;
-  case (Character.class === "Warlock"):Character.proficient_weapons = classes.Warlock.weaponProficiencies;break;
-  case (Character.class === "Wizard"):Character.proficient_weapons = classes.Wizard.weaponProficiencies;break;
-    default:Character.proficient_weapons ="Error: Fell though switch case"
+  case (Character.character_attributes.class === "Barbarian"):Character.proficiencies.proficient_weapons = classes.Barbarian.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Bard"):Character.proficiencies.proficient_weapons = classes.Bard.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Fighter"):Character.proficiencies.proficient_weapons = classes.Fighter.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Cleric"):Character.proficiencies.proficient_weapons = classes.Cleric.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Druid"):Character.proficiencies.proficient_weapons = classes.Druid.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Monk"):Character.proficiencies.proficient_weapons = classes.Monk.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Paladin"):Character.proficiencies.proficient_weapons = classes.Paladin.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Ranger"):Character.proficiencies.proficient_weapons = classes.Ranger.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Rogue"):Character.proficiencies.proficient_weapons = classes.Rogue.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Sorcerer"):Character.proficiencies.proficient_weapons = classes.Sorcerer.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Warlock"):Character.proficiencies.proficient_weapons = classes.Warlock.weaponProficiencies;break;
+  case (Character.character_attributes.class === "Wizard"):Character.proficiencies.proficient_weapons = classes.Wizard.weaponProficiencies;break;
+    default:Character.character_attributes.proficient_weapons ="Error: Fell though switch case(getWeaponSkills)"
 }
 return Character;
 }
@@ -648,210 +650,210 @@ return Character;
 //orders stats based on character class
 var assignStats = (Character) => {
 
-  Character["Stats"] = {};                       //Creates an array inside the Character object
+  Character.stats = {};                       //Creates an array inside the Character object
 
-  if(Character.class === "Barbarian")         //Checks the class and executes its code block if true
+  if(Character.character_attributes.class === "Barbarian")         //Checks the class and executes its code block if true
   {
     var statList = dice.statList();              //invokes the statList() function from dice.js and stores the return values in a variable
     statList.sort(function(a,b){return b - a});  //Sorts the statList variable in a descending order
-    Character.Stats.STR = statList[0]      //Assigns the highest(first after ordering) score the first ability score in the codeblock
-    Character.Stats.CON = statList[1]      //And so on...
-    Character.Stats.DEX = statList[2]
-    Character.Stats.WIS = statList[3]
-    Character.Stats.CHA = statList[4]
-    Character.Stats.INT = statList[5]
+    Character.stats.STR = statList[0]      //Assigns the highest(first after ordering) score the first ability score in the codeblock
+    Character.stats.CON = statList[1]      //And so on...
+    Character.stats.DEX = statList[2]
+    Character.stats.WIS = statList[3]
+    Character.stats.CHA = statList[4]
+    Character.stats.INT = statList[5]
   }
-  else if (Character.class === "Bard"){
+  else if (Character.character_attributes.class === "Bard"){
     var statList = dice.statList();
     statList.sort(function(a,b){return b - a});
-    Character.Stats.CHA = statList[0]      //Here you can see the Bard has a different ordering of desirable ability scores.
-    Character.Stats.DEX = statList[1]
-    Character.Stats.CON = statList[2]
-    Character.Stats.WIS = statList[3]
-    Character.Stats.STR = statList[4]
-    Character.Stats.INT = statList[5]
+    Character.stats.CHA = statList[0]      //Here you can see the Bard has a different ordering of desirable ability scores.
+    Character.stats.DEX = statList[1]
+    Character.stats.CON = statList[2]
+    Character.stats.WIS = statList[3]
+    Character.stats.STR = statList[4]
+    Character.stats.INT = statList[5]
   }
-  else if(Character.class === "Fighter")
+  else if(Character.character_attributes.class === "Fighter")
   {
     var statList = dice.statList();
     statList.sort(function(a,b){return b - a});
-    Character.Stats.STR = statList[0]
-    Character.Stats.CON = statList[1]
-    Character.Stats.DEX = statList[2]
-    Character.Stats.WIS = statList[3]
-    Character.Stats.CHA = statList[4]
-    Character.Stats.INT = statList[5]
+    Character.stats.STR = statList[0]
+    Character.stats.CON = statList[1]
+    Character.stats.DEX = statList[2]
+    Character.stats.WIS = statList[3]
+    Character.stats.CHA = statList[4]
+    Character.stats.INT = statList[5]
   }
-  else if(Character.class === "Cleric")
+  else if(Character.character_attributes.class === "Cleric")
   {
     var statList = dice.statList();
     statList.sort(function(a,b){return b - a});
-    Character.Stats.WIS = statList[0]
-    Character.Stats.STR = statList[1]
-    Character.Stats.CON = statList[2]
-    Character.Stats.DEX = statList[3]
-    Character.Stats.CHA = statList[4]
-    Character.Stats.INT = statList[5]
+    Character.stats.WIS = statList[0]
+    Character.stats.STR = statList[1]
+    Character.stats.CON = statList[2]
+    Character.stats.DEX = statList[3]
+    Character.stats.CHA = statList[4]
+    Character.stats.INT = statList[5]
 }
-else if(Character.class === "Druid")
+else if(Character.character_attributes.class === "Druid")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.WIS = statList[0]
-  Character.Stats.DEX = statList[1]
-  Character.Stats.CON = statList[2]
-  Character.Stats.CHA = statList[3]
-  Character.Stats.INT = statList[4]
-  Character.Stats.STR = statList[5]
-}
-
-else if(Character.class === "Monk")
-{
-  var statList = dice.statList();
-  statList.sort(function(a,b){return b - a});
-  Character.Stats.DEX = statList[0]
-  Character.Stats.WIS = statList[1]
-  Character.Stats.CON = statList[2]
-  Character.Stats.STR = statList[3]
-  Character.Stats.CHA = statList[4]
-  Character.Stats.INT = statList[5]
+  Character.stats.WIS = statList[0]
+  Character.stats.DEX = statList[1]
+  Character.stats.CON = statList[2]
+  Character.stats.CHA = statList[3]
+  Character.stats.INT = statList[4]
+  Character.stats.STR = statList[5]
 }
 
-else if(Character.class === "Paladin")
+else if(Character.character_attributes.class === "Monk")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.STR = statList[0]
-  Character.Stats.CHA = statList[1]
-  Character.Stats.CON = statList[2]
-  Character.Stats.WIS = statList[3]
-  Character.Stats.DEX = statList[4]
-  Character.Stats.INT = statList[5]
+  Character.stats.DEX = statList[0]
+  Character.stats.WIS = statList[1]
+  Character.stats.CON = statList[2]
+  Character.stats.STR = statList[3]
+  Character.stats.CHA = statList[4]
+  Character.stats.INT = statList[5]
 }
 
-else if(Character.class === "Ranger")
+else if(Character.character_attributes.class === "Paladin")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.DEX = statList[0]
-  Character.Stats.CON = statList[1]
-  Character.Stats.WIS = statList[2]
-  Character.Stats.STR = statList[3]
-  Character.Stats.CHA = statList[4]
-  Character.Stats.INT = statList[5]
+  Character.stats.STR = statList[0]
+  Character.stats.CHA = statList[1]
+  Character.stats.CON = statList[2]
+  Character.stats.WIS = statList[3]
+  Character.stats.DEX = statList[4]
+  Character.stats.INT = statList[5]
 }
 
-else if(Character.class === "Rogue")
+else if(Character.character_attributes.class === "Ranger")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.DEX = statList[0]
-  Character.Stats.CON = statList[1]
-  Character.Stats.WIS = statList[2]
-  Character.Stats.CHA = statList[3]
-  Character.Stats.INT = statList[4]
-  Character.Stats.STR = statList[5]
+  Character.stats.DEX = statList[0]
+  Character.stats.CON = statList[1]
+  Character.stats.WIS = statList[2]
+  Character.stats.STR = statList[3]
+  Character.stats.CHA = statList[4]
+  Character.stats.INT = statList[5]
 }
 
-else if(Character.class === "Sorcerer")
+else if(Character.character_attributes.class === "Rogue")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.CHA = statList[0]
-  Character.Stats.CON = statList[1]
-  Character.Stats.INT = statList[2]
-  Character.Stats.WIS = statList[3]
-  Character.Stats.DEX = statList[4]
-  Character.Stats.STR = statList[5]
+  Character.stats.DEX = statList[0]
+  Character.stats.CON = statList[1]
+  Character.stats.WIS = statList[2]
+  Character.stats.CHA = statList[3]
+  Character.stats.INT = statList[4]
+  Character.stats.STR = statList[5]
 }
 
-else if(Character.class === "Warlock")
+else if(Character.character_attributes.class === "Sorcerer")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.CHA = statList[0]
-  Character.Stats.CON = statList[1]
-  Character.Stats.DEX = statList[2]
-  Character.Stats.WIS = statList[3]
-  Character.Stats.INT = statList[4]
-  Character.Stats.STR = statList[5]
+  Character.stats.CHA = statList[0]
+  Character.stats.CON = statList[1]
+  Character.stats.INT = statList[2]
+  Character.stats.WIS = statList[3]
+  Character.stats.DEX = statList[4]
+  Character.stats.STR = statList[5]
 }
 
-else if(Character.class === "Wizard")
+else if(Character.character_attributes.class === "Warlock")
 {
   var statList = dice.statList();
   statList.sort(function(a,b){return b - a});
-  Character.Stats.INT = statList[0]
-  Character.Stats.CON = statList[1]
-  Character.Stats.DEX = statList[2]
-  Character.Stats.WIS = statList[3]
-  Character.Stats.CHA = statList[4]
-  Character.Stats.STR = statList[5]
+  Character.stats.CHA = statList[0]
+  Character.stats.CON = statList[1]
+  Character.stats.DEX = statList[2]
+  Character.stats.WIS = statList[3]
+  Character.stats.INT = statList[4]
+  Character.stats.STR = statList[5]
+}
+
+else if(Character.character_attributes.class === "Wizard")
+{
+  var statList = dice.statList();
+  statList.sort(function(a,b){return b - a});
+  Character.stats.INT = statList[0]
+  Character.stats.CON = statList[1]
+  Character.stats.DEX = statList[2]
+  Character.stats.WIS = statList[3]
+  Character.stats.CHA = statList[4]
+  Character.stats.STR = statList[5]
 }
 
 return Character;
 }
 
 var addSubRaceBonus = (Character) => {
-  if (Character["Race"] === "Dwarf"){
-    Character["Stats"]["WIS"]+=1;
-    Character["Stats"]["CON"]+=2;
-    Character.hit_points++;
+  if (Character.character_attributes.race === "Dwarf"){
+    Character.stats.WIS +=1;
+    Character.stats.CON +=2;
+    Character.hit_points ++;
     Character["Racial Traits"] = ["Darkvision "," Dwarven Resilience "," Dwarven Combat Training "," Stonecunning "];
-    Character["Subrace"] = ["Hill Dwarf"];
+    Character.Subrace = ["Hill Dwarf"];
   }
-  else if (Character["Race"] === "Human") {
-    Character["Stats"]["STR"]+=1;
-    Character["Stats"]["DEX"]+=1;
-    Character["Stats"]["CON"]+=1;
-    Character["Stats"]["WIS"]+=1;
-    Character["Stats"]["INT"]+=1;
-    Character["Stats"]["CHA"]+=1;
+  else if (Character.character_attributes.race === "Human") {
+    Character.stats.STR +=1;
+    Character.stats.DEX +=1;
+    Character.stats.CON +=1;
+    Character.stats.WIS +=1;
+    Character.stats.INT +=1;
+    Character.stats.CHA +=1;
     Character["Racial Traits"] = [];
-    Character["Subrace"] = [];
+    Character.Subrace = [];
   }
-  else if (Character["Race"] === "Elf") {
-    Character["Stats"]["INT"]+=1;
-    Character["Stats"]["DEX"]+=2;
+  else if (Character.character_attributes.race === "Elf") {
+    Character.stats.INT +=1;
+    Character.stats.DEX +=2;
     Character["Racial Traits"] = ["Darkvision","Keen Senses","Fey Ancestry", "Trance"];
-    Character["Subrace"] = ["High Elf"];
+    Character.Subrace = ["High Elf"];
   }
-  else if (Character["Race"] === "Gnome"){
-    Character["Stats"]["Int"]+=2;
-    Character["Stats"]["Con"]+=1;
+  else if (Character.character_attributes.race === "Gnome"){
+    Character.stats.INT +=2;
+    Character.stats.Con +=1;
     Character["Racial Traits"] = ["Gnome Cunning","Artificer’s Lore","Tinker"];
-    Character["Subrace"] = ["Rock Gnome"];
+    Character.Subrace = ["Rock Gnome"];
   }
-  else if (Character["Race"] === "Halfling"){
-    Character["Stats"]["DEX"]+=2;
-    Character["Stats"]["CHA"]+=1;
+  else if (Character.character_attributes.race === "Halfling"){
+    Character.stats.DEX +=2;
+    Character.stats.CHA +=1;
     Character["Racial Traits"] = ["Lucky","Brave","Halfling Nimbleness", "Naturally Stealty"];
-    Character["Subrace"] = ["Lightfoot"];
+    Character.Subrace = ["Lightfoot"];
   }
-  else if (Character["Race"] === "Dragonborn"){
-    Character["Stats"]["STR"]+=2;
-    Character["Stats"]["CHA"]+=1;
+  else if (Character.character_attributes.race === "Dragonborn"){
+    Character.stats.STR +=2;
+    Character.stats.CHA +=1;
     Character["Racial Traits"] = ["Draconic Ancestry", "Breath Weapon","Damage Resistance"];
-    Character["Subrace"] = _.sample(races.dragonbornColour);
+    Character.Subrace = _.sample(races.dragonbornColour);
   }
-  else if (Character["Race"] === "HalfElf"){
+  else if (Character.character_attributes.race === "HalfElf"){
     var stats = ["STR","DEX","CON","WIS","INT"];
     var a = _.sample(stats);
     _.pull(stats,a)
     var b = _.sample(stats);
-    Character["Stats"]["CHA"]+=2;
-    Character["Stats"][a]+=1;
-    Character["Stats"][b]+=1;
+    Character.stats.CHA +=2;
+    Character.stats[a]  +=1;
+    Character.stats[b]  +=1;
     Character["Racial Traits"] = ["Darkvision", "Fey Ancestry", "Skill Versatility"]
   }
-  else if (Character["Race"] === "HalfOrc"){
-    Character["Stats"]["STR"]+=2;
-    Character["Stats"]["CON"]+=1;
+  else if (Character.character_attributes.race === "HalfOrc"){
+    Character.stats.STR +=2;
+    Character.stats.CON +=1;
     Character["Racial Traits"] = ["Darkvision", "Menacing","Relentless Endurance","Savage Attacks"];
   }
-  else if (Character["Race"] === "Tiefling"){
-    Character["Stats"]["INT"]+=1;
-    Character["Stats"]["CHA"]+=2;
+  else if (Character.character_attributes.race === "Tiefling"){
+    Character.stats.INT +=1;
+    Character.stats.CHA +=2;
     Character["Racial Traits"] = ["Darkvision", "Hellish Resistance","Infernal Legacy"];
     }
     return Character;
@@ -861,39 +863,41 @@ var addSubRaceBonus = (Character) => {
 
 
 var calcStats = (Character) => {
-  Character.Skill_Athletics = calcBonus(Character.Stats.STR);
-  Character.Skill_Acrobatics = calcBonus(Character.Stats.DEX);
-  Character.Skill_SleightOfHand = calcBonus(Character.Stats.DEX);
-  Character.Skill_Stealth = calcBonus(Character.Stats.DEX);
-  Character.Skill_Arcana = calcBonus(Character.Stats.INT);
-  Character.Skill_History = calcBonus(Character.Stats.WIS);
-  Character.Skill_Nature = calcBonus(Character.Stats.INT);
-  Character.Skill_Religion = calcBonus(Character.Stats.WIS);
-  Character.Skill_AnimalHandling = calcBonus(Character.Stats.WIS);
-  Character.Skill_Insight = calcBonus(Character.Stats.WIS);
-  Character.Skill_Medicine = calcBonus(Character.Stats.WIS);
-  Character.Skill_Perception = calcBonus(Character.Stats.WIS);
-  Character.Skill_Survival = calcBonus(Character.Stats.WIS);
-  Character.Skill_Deception = calcBonus(Character.Stats.CHA);
-  Character.Skill_Intimidation = calcBonus(Character.Stats.CHA);
-  Character.Skill_Performance = calcBonus(Character.Stats.CHA);
-  Character.Skill_Persuasion = calcBonus(Character.Stats.CHA);
-  Character["Strength Bonus"] = calcBonus(Character.Stats.STR);
-  Character["Dexterity Bonus"] = calcBonus(Character.Stats.DEX);
-  Character["Constitution Bonus"] = calcBonus(Character.Stats.CON);
-  Character["Intelligence Bonus"] = calcBonus(Character.Stats.INT);
-  Character["Wisdom Bonus"] = calcBonus(Character.Stats.WIS);
-  Character["Charisma Bonus"] = calcBonus(Character.Stats.CHA);
+  Character.skills = {};
+  Character.ability_bonuses = {};
+  Character.skills.skill_athletics = calcBonus(Character.stats.STR);
+  Character.skills.skill_acrobatics = calcBonus(Character.stats.DEX);
+  Character.skills.skill_sleightOfHand = calcBonus(Character.stats.DEX);
+  Character.skills.skill_stealth = calcBonus(Character.stats.DEX);
+  Character.skills.skill_arcana = calcBonus(Character.stats.INT);
+  Character.skills.skill_history = calcBonus(Character.stats.WIS);
+  Character.skills.skill_nature = calcBonus(Character.stats.INT);
+  Character.skills.skill_religion = calcBonus(Character.stats.WIS);
+  Character.skills.skill_animalHandling = calcBonus(Character.stats.WIS);
+  Character.skills.skill_insight = calcBonus(Character.stats.WIS);
+  Character.skills.skill_medicine = calcBonus(Character.stats.WIS);
+  Character.skills.skill_perception = calcBonus(Character.stats.WIS);
+  Character.skills.skill_survival = calcBonus(Character.stats.WIS);
+  Character.skills.skill_deception = calcBonus(Character.stats.CHA);
+  Character.skills.skill_intimidation = calcBonus(Character.stats.CHA);
+  Character.skills.skill_performance = calcBonus(Character.stats.CHA);
+  Character.skills.skill_persuasion = calcBonus(Character.stats.CHA);
+  Character.ability_bonuses.strength_bonus = calcBonus(Character.stats.STR);
+  Character.ability_bonuses.dexterity_bonus = calcBonus(Character.stats.DEX);
+  Character.ability_bonuses.constitution_bonus = calcBonus(Character.stats.CON);
+  Character.ability_bonuses.intelligence_bonus = calcBonus(Character.stats.INT);
+  Character.ability_bonuses.wisdom_bonus = calcBonus(Character.stats.WIS);
+  Character.ability_bonuses.charisma_bonus = calcBonus(Character.stats.CHA);
   return Character;
 }
 
 var calcInitiative = (Character) => {
-  Character["Initiative"] = calcBonus(Character["Stats"]["DEX"]);
+  Character.combat_attributes.initiative = calcBonus(Character.stats.DEX);
   return Character;
 }
 
 var calcPassPerception = (Character) => {
-  Character["Passive Perception"] = 10 + altCalcBonus(Character["Stats"]["WIS"]) + Character["Proficiency Bonus"]
+  Character.combat_attributes.passive_perception = 10 + altCalcBonus(Character.stats.WIS) + Character.proficiencies.proficiency_bonus;
   return Character;
 }
 

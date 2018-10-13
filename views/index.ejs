@@ -10,6 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
 <style>
 
 #statblock {
@@ -126,52 +129,6 @@
 
 }
 
-/* The actual popup (appears on top) */
-.popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-}
-
 
 </style>
 
@@ -182,14 +139,10 @@ $(document).ready(function(){
 
 </script>
 
-
-
-
-
 </head>
 
 
-  <body>
+<body>
 
 
 <meta charset="utf-8">
@@ -203,7 +156,11 @@ $(document).ready(function(){
       <h2>A <%= Alignment %>,</h2>
       <p><h2><%= charSex %> <a href=<%= charRaceLink %> target="_blank"><%= charRace %></a>
                             <a href=<%= charClassLink %> target="_blank"><%= charClass %></a>  </h2> <h5>-<%= subRace %>-</h5></p>
-                            
+
+
+
+
+
       <div class="flex-container" id ="statblock">
         <div class="container">
             <img src="Strength2.svg" height="70" width="70">
@@ -277,7 +234,7 @@ $(document).ready(function(){
   <div class="container" >
 
     <div class="popup" onclick="showInitiative()">
-      <span class="popuptext" id="Initiative">Initiative</span>
+
       <img src="Initiative.png" alt="Initiative" height="50" width="50">
       <p class="subsubtitle">Initiative <br> <%= Initiative %></p>
     </div>
@@ -288,7 +245,7 @@ $(document).ready(function(){
   <div class="container">
 
     <div class="popup" onclick="showHitpoints()">
-      <span class="popuptext" id="HitPoints">Hit Points</span>
+
       <img src="hitpoints.svg" alt="Hit Points" height="50" width="50">
       <p class="subsubtitle">Hitpoints <br> <%= HitPoints %></p>
     </div>
@@ -298,7 +255,7 @@ $(document).ready(function(){
 
   <div class="container">
     <div class="popup" onclick="showArmorClass()">
-      <span class="popuptext" id="ArmorClass">Armor Class</span>
+
       <img src="armorclass.svg" alt="Armor Class" height="50" width="50">
       <p class="subsubtitle">Armor Class <br> <%=armorClass%></p>
     </div>
@@ -308,7 +265,7 @@ $(document).ready(function(){
   <div class="container" >
 
     <div class="popup" onclick="showSpeed()">
-      <span class="popuptext" id="Speed">Speed</span>
+
       <img src="speed.svg" alt="Speed" height="50" width="50">
       <p class="subsubtitle">Speed <br> <%=Speed%></p>
     </div>
@@ -372,8 +329,7 @@ $(document).ready(function(){
     <div id="collapse3" class="panel-collapse collapse">
       <ul class="list-group">
         <li class="list-group-item"><%=Armor%></li>
-        <li class="list-group-item"><%=primary_weapon%></li>
-        <li class="list-group-item"><%=secondary_weapon%></li>
+
         <li class="list-group-item"><%=equipment%></li>
       </ul>
     </div>

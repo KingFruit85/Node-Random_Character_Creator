@@ -1,93 +1,64 @@
 const weapons =require('./weapons.js');
+const armor =require('./armor.js');
+const equipment =require("./equipment");
 const _ = require ('lodash');
 
+const request = require('request');
 
 
-classes = ["Bard","Fighter","Barbarian","Cleric","Druid","Monk","Paladin","Ranger"
-            ,"Rogue","Sorcerer","Warlock","Wizard"];
-
-classes = [{class:"Bard", www:"https://www.dndbeyond.com/characters/classes/bard"},
-           {class:"Fighter", www:"https://www.dndbeyond.com/characters/classes/fighter"},
+classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"},
+           {class:"Fighter",   www:"https://www.dndbeyond.com/characters/classes/fighter"},
            {class:"Barbarian", www:"https://www.dndbeyond.com/characters/classes/barbarian"},
-           {class:"Cleric", www:"https://www.dndbeyond.com/characters/classes/cleric"},
-           {class:"Druid", www:"https://www.dndbeyond.com/characters/classes/druid"},
-           {class:"Monk", www:"https://www.dndbeyond.com/characters/classes/monk"},
-           {class:"Paladin", www:"https://www.dndbeyond.com/characters/classes/paladin"},
-           {class:"Ranger", www:"https://www.dndbeyond.com/characters/classes/ranger"},
-           {class:"Rogue", www:"https://www.dndbeyond.com/characters/classes/rogue"},
-           {class:"Sorcerer", www:"https://www.dndbeyond.com/characters/classes/Sorcerer"},
-           {class:"Warlock", www:"https://www.dndbeyond.com/characters/classes/Warlock"},
-           {class:"Wizard", www:"https://www.dndbeyond.com/characters/classes/Wizard"}
+           {class:"Cleric",    www:"https://www.dndbeyond.com/characters/classes/cleric"},
+           {class:"Druid",     www:"https://www.dndbeyond.com/characters/classes/druid"},
+           {class:"Monk",      www:"https://www.dndbeyond.com/characters/classes/monk"},
+           {class:"Paladin",   www:"https://www.dndbeyond.com/characters/classes/paladin"},
+           {class:"Ranger",    www:"https://www.dndbeyond.com/characters/classes/ranger"},
+           {class:"Rogue",     www:"https://www.dndbeyond.com/characters/classes/rogue"},
+           {class:"Sorcerer",  www:"https://www.dndbeyond.com/characters/classes/Sorcerer"},
+           {class:"Warlock",   www:"https://www.dndbeyond.com/characters/classes/Warlock"},
+           {class:"Wizard",    www:"https://www.dndbeyond.com/characters/classes/Wizard"}
 ]
 
-// classes = ["Cleric"];
 
 
 
 var Barbarian = {
   description: "A fierce warrior of primitive background who can enter a battle rage.",
-
   firstLevelHP:12,
-
   savingThrows:["Strength", "Constitution"],
-
   skillProficiencies:["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"],
   armorProficiencies:["Light Armor", "Medium Armor", "Shields"],
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:["None"],
-
-  defaultEquipment: ["Greataxe","Battleaxe","Flail","Glaive","Greataxe","Greatsword","Halberd","Lance",
-                      "Longsword","Maul","Morningstar","Pike","Rapier","Scimitar","Shortsword","Trident",
-                      "War Pick","Warhammer","Whip"],
-  startingWeapons: ["two handaxes","Club","Dagger","GreatClub","Handaxe","Javelin","Light Hammer","Mace",
-                    "Quarterstaff","Sickle","Spear"],
-  defaultArmor:["No Armor"],
-  equipment:["Explorers Pack","Four Javelins"],
-  feats:["Rage","Unarmored Defence"]
+  abilities:["Rage","Unarmored Defence"]
+  
 
 }
 
 var Bard = {
   description: "The bard uses music and magic to support and inspire the rest of the party.",
-
   firstLevelHP:8,
-
   savingThrows:["Dexterity", "Charisma"],
-
   skillProficiencies:["Athletics","Acrobatics","Sleight Of Hand","Stealth","Arcana","History",
                       "Investigation","Nature","Religion","Animal Handling","Insight","Medicine",
                       "Perception","Survival","Deception","Intimidation","Performance","Persuasion"],
   armorProficiencies:["Light Armor"],
-  weaponProficiencies:["Simple Weapons",	"handCrossbows", "longswords",	"\n rapiers",	"shortswords"],
-  toolProficiencies:["harpsichord", "piano", "pipe organ","bells", "chimes", "drums", "gong","fiddle", "harp", "lute",
+  weaponProficiencies:["Simple Weapons",	"HandCrossbows", "Longswords",	"\n Rapiers",	"Shortswords"],
+  toolProficiencies:["Harpsichord", "Piano", "Pipe organ","bells", "chimes", "drums", "gong","fiddle", "harp", "lute",
                       "mandolin","flute", "pan pipes", "recorder", "shawm", "trumpet"],
-
-  defaultWeapon: [weapons.SimpleWeapons["Dagger"]["Name"]],
-  defaultArmor: ["Leather Armor"],
-  equipment:["Diplomats Pack","Entertainers Pack"],
-  MusicalInstruments: ["Bagpipes","Drum","Dulcimer","Flute","Lute","Lyre","Horn","Pan flute","Shawm","Viol"],
-  feats:["Spellcasting","Ritual Casting","Bardic Inspiration"]
-
+  abilities:["Spellcasting","Ritual Casting","Bardic Inspiration"]
 
 }
 
 var Fighter = {
-
   savingThrows:["Strength",	"Constitution"],
-  skillProficiencies:["Acrobatics",	"Animal","Handling",	"Athletics",	"History",	"Insight",	"Intimidation",
-                      "Perception",	"Survival"],
+  skillProficiencies:["Acrobatics",	"Animal","Handling",	"Athletics",	"History",	"Insight",	"Intimidation","Perception",	"Survival"],
   armorProficiencies:["All Armor", "Shields"],
   weaponProficiencies:["Simple Weapons",	"Martial Weapons"],
   toolProficiencies:["None"],
-
-  defaultEquipment:["Longbow"],
-
-  defaultArmor:["Leather Armor","Chain Mail"],
-  defaultWeapon:["Light Crossbow", "Two Handaxes"],
-  equipment:["Dungeoneer’s	Pack","Explorer’s	Pack"],
-
-  feats:["Second Wind"],
-  extraFeats:["Archery","Defense","Dueling","Great Weapon Fighting","Protection ","Two-Weapon Fighting"]
+  abilities:["Second Wind"],
+  extraAbilities:["Archery","Defense","Dueling","Great Weapon Fighting","Protection ","Two-Weapon Fighting"]
 }
 
 
@@ -98,8 +69,7 @@ var Cleric = {
   armorProficiencies:["Light Armor", "Medium Armor","Heavy Armor", "Shields"],
   weaponProficiencies:["Simple Weapons"],
   toolProficiencies:["None"],
-  equipment:["Priests Pack","Explorers Pack"],
-  feats:["Spellcasting","Life Domain","Disciple Of Life"]
+  abilities:["Spellcasting","Life Domain","Disciple Of Life"]
 }
 
 var Druid = {
@@ -111,7 +81,7 @@ var Druid = {
   weaponProficiencies:[	"Clubs",	"Daggers",	"Darts",	"Javelins",	"Maces",
                         "Quarterstaffs \n",	"Scimitars",	"Sickles",	"Slings",	"Spears"],
   toolProficiencies:[""],
-  feats:["Druidic",	"Spellcasting"],
+  abilities:["Druidic",	"Spellcasting"],
   equipment:["Explorers Pack", "Druidic focus", "Herbalism	Kit"]
 }
 
@@ -122,7 +92,7 @@ var Monk = {
   weaponProficiencies:["Simple Weapons", "Shortswords"],
   toolProficiencies:[""],
   equipment:["Dungeoneer’s	Pack","Explorer’s	Pack"],
-  feats:["Unarmored Defense", "Martial Arts"]
+  abilities:["Unarmored Defense", "Martial Arts"]
 }
 
 var Paladin = {
@@ -132,7 +102,7 @@ var Paladin = {
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:[""],
   equipment:["Priests	Pack","Explorer’s	Pack"],
-  feats:[	"Divine Sense", "Lay on Hands"]
+  abilities:[	"Divine Sense", "Lay on Hands"]
 }
 
 var Ranger = {
@@ -142,7 +112,7 @@ var Ranger = {
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:[""],
   equipment:["Dungeoneer’s	Pack","Explorer’s	Pack"],
-  feats:["Favored Enemy", "Natural Explorer"]
+  abilities:["Favored Enemy", "Natural Explorer"]
 }
 
 var Rogue = {
@@ -152,7 +122,7 @@ var Rogue = {
   weaponProficiencies:["Simple Weapons", "Hand Crossbows", "Longswords", "Rapiers", "Shortswords"],
   toolProficiencies:["Thieves tools"],
   equipment:["Burglars Pack", "Dungeoneers Pack", "Explorers Pack"],
-  feats:["Expertise", "Sneak Attack", "Thieves Cant"]
+  abilities:["Expertise", "Sneak Attack", "Thieves Cant"]
 }
 
 var Sorcerer = {
@@ -162,7 +132,7 @@ var Sorcerer = {
   weaponProficiencies:["Daggers", "Darts", "Slings", "Quarterstaffs", "Light Crossbows"],
   toolProficiencies:[""],
   equipment:["Dungeoneers Pack", "Explorers Pack"],
-  feats:[	"Spellcasting", "Sorcerous Origin"]
+  abilities:[	"Spellcasting", "Sorcerous Origin"]
 }
 
 var Warlock = {
@@ -172,7 +142,7 @@ var Warlock = {
   weaponProficiencies:["Simple Weapons"],
   toolProficiencies:[""],
   equipment:["Scholars Pack", "Dungeoneers Pack"],
-  feats:[	"Otherworldly Patron", "Pact Magic"	]
+  abilities:[	"Otherworldly Patron", "Pact Magic"	]
 }
 
 var Wizard = {
@@ -182,7 +152,7 @@ var Wizard = {
   weaponProficiencies:["Daggers", "Darts", "Slings", "Quarterstaffs", "Light Crossbows"],
   toolProficiencies:[""],
   equipment:["Scholars Pack", "Explorers Pack"],
-  feats:["Spellcasting", "Arcane Recovery"]
+  abilities:["Spellcasting", "Arcane Recovery"]
 }
 
 

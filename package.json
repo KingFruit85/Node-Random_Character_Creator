@@ -5,7 +5,6 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
-    "bootstrap": "file:bootstrap",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
     "ejs": "*",
@@ -22,7 +21,7 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "popper": "^1.0.1",
+    "request": "^2.88.0",
     "yargs": "*"
   },
   "scripts": {
