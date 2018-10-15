@@ -9,7 +9,9 @@ var Character = {
   proficiencies:{},
   character_attributes:{},
   combat_attributes:{},
-  spells:{}
+  spells:{},
+  equipment:{}
+
 };          //Creates an empty Character object
 //start adding properties, order is important here are some properties..
 //..are derived from existing properties
@@ -17,7 +19,6 @@ var Character = {
 ///////////////////////////////////////
   utils.getRandomClass(Character);/////
   utils.getRandomRace(Character);//////  These functions must be
-  utils.calcMovementSpeed(Character);
   utils.assignStats(Character);////////  called in this order
   utils.addSubRaceBonus(Character);////
 
@@ -39,21 +40,23 @@ var Character = {
   utils.getLanguages(Character);
   utils.getRandomHeight(Character);
   utils.getDefaultEquipment(Character);
-
+  utils.calcMovementSpeed(Character);
   utils.getSavingThrows(Character);
   utils.assignSpells(Character);
   utils.calcArmorClass(Character);
   utils.getFeatures(Character);
   utils.addFeatureBonues(Character);
-  Character.Level = 1;
-  Character.Backstory = backstory.backstory();
+  Character.character_attributes.level = 1;
+  Character.backstory = backstory.backstory();
 
   return Character;
+
 }
 
 x = newCharacter()
 
 console.log(JSON.stringify(x, undefined, 2))
+// console.log()
 
 
 exports.newCharacter = newCharacter

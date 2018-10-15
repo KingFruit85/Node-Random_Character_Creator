@@ -8,7 +8,6 @@ const weapons =require('./weapons.js');
 const spells =require('./spells.js');
 const armor =require('./armor.js');
 const tools =require('./tools.js');
-const equipment =require('./equipment');
 
 
 var weaponToString = (weapons) =>{
@@ -103,309 +102,268 @@ var altCalcBonus = (stat) => {
 
 //get default equipment
 var getDefaultEquipment = (Character) => {
+  Character.primary_weapon = [];
+  Character.secondary_weapon = [];
+  Character.armor = [];
+  Character.armor_class = [];
+  Character.equipment = [];
+  Character.primary_weapon_info = [];
 
-  Character.equipment.weapons = {};
-  Character.equipment.armor = {};
-  Character.equipment.tools = {};
-
-  if(Character.character_attributes.class === "Bard"){
-
-    Character.equipment.weapons =
-    {
-      leftHandedWeapon: _.sample(weapons.SimpleWeapons, weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Longsword),
-      rightHandedWeapon:{Name: "None"},
-      additionalWeapons:weapons.SimpleWeapons.Dagger
-    }
-
-    Character.equipment.armor                       = armor.LightArmor.Leather;
-    Character.equipment.tools.backpack              = {
-      pack:_.sample([equipment.EquipmentPacks.DiplomatsPack, equipment.EquipmentPacks.EntertainersPack]),
-      additionalItems:_.sample(tools.Tools.MusicalInstruments)
-    }
-
-  }
-  else if (Character.character_attributes.class === "Barbarian"){
+  if(Character.class === "Bard"){
 
 
-    r = getRandomNumber( 0 , 1 );
+    r = getRandomNumber( 1 , 3 );
 
     switch (true) {
-    case (r === 0):aw =
-    {
-      weapon1:_.sample(weapons.SimpleWeapons),
-      weapon2:weapons.barbWeps.BarbJavelin
-    };break;
+      case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Rapier);break;
+      case (r === 2):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Longsword) ;break;
+      case (r === 3):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      default:       Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
 
-    case (r === 1):aw =
-    {
-      weapon1:weapons.barbWeps.barbHandaxe,
-      weapon2:weapons.barbWeps.BarbJavelin
-    };break;
+      Character.equipment.push(_.sample(classes.Bard.equipment))
+      Character.equipment.push(_.sample(tools.Tools.MusicalInstruments).Name);
+      Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger) ;
+      Character.armor.push(armor.LightArmor.Leather);
+  }
+  else if (Character.class === "Barbarian"){
 
-    default: aw = "Error:Fell though Switch Case"};
+    r = getRandomNumber( 1 ,2 );
+    switch (true) {
+      case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Greataxe);break;
+      case (r === 2):Character.primary_weapon.push(_.sample(weapons.MartialMeleeWeapons)) ;break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
 
-    Character.equipment.weapons =
+    switch (true) {
+      case (r === 1):Character.secondary_weapon.push(weapons.SimpleWeapons.Handaxe);break;
+      case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
 
-    {
-      leftHandedWeapon:_.sample(weapons.MartialMeleeWeapons),
-      rightHandedWeapon:{Name: "None"},
-      additionalWeapons:aw
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")};
+    Character.armor.push(armor.LightArmor.No_Armor);
+    Character.equipment.push(["Explorers Pack", "4 x Javelins"]);
+
+
+// -------------------------------------------------------------------------------------------------------------
+  }
+  else if (Character.class === "Fighter"){
+
+    r = getRandomNumber( 1 , 2 );
+    var firstWeapon = _.sample(weapons.MartialMeleeWeapons);
+    var secondWeapon = _.sample(weapons.MartialMeleeWeapons);
+    var shield = armor.Shields.Shield;
+
+    switch (true) {
+      case (r === 1):Character.primary_weapon = {...{firstWeapon},...{shield}};break;
+      case (r === 2):Character.primary_weapon = {...{firstWeapon},...{secondWeapon}};break;
+        default: "Fell Through2"}
+
+    r = getRandomNumber( 1 , 2 )
+      switch (true) {
+       case (r === 1):Character.armor.push(armor.LightArmor.Leather);Character.equipment.push(classes.Fighter.defaultEquipment);break;
+       case (r === 2):Character.armor.push(armor.HeavyArmor.ChainMail);break;
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+      r=getRandomNumber( 1 , 2 )
+      switch (true) {
+        case (r === 1):Character.secondary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
+        case (r === 2):Character.secondary_weapon.push(weapons.SimpleWeapons.Handaxe);break;
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+        Character.equipment.push(_.sample(["Dungeoneers Pack", "Explorers Pack"]));
+
+
+ }
+// -------------------------------------------------------------------------------------------------------------
+
+
+ else if (Character.class === "Cleric"){
+
+   Character.primary_weapon.push(weapons.SimpleWeapons.Mace);
+   Character.primary_weapon.push(armor.Shields.Shield);
+
+   r = getRandomNumber( 1 , 3 )
+   switch (true) {
+     case (r === 1):Character.armor.push(armor.MediumArmor.ScaleMail);break;
+     case (r === 2):Character.armor.push(armor.LightArmor.Leather);break;
+     case (r === 3):Character.armor.push(armor.HeavyArmor.ChainMail);break;
+     default:Character.armor.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+   r = getRandomNumber( 1 , 2 )
+   switch (true) {
+     case (r === 1):Character.secondary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
+     case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+     default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+     Character.equipment.push(_.sample([["Priests Pack"],["Explorers Pack"]]));
+     Character.equipment.push("Holy Symbol");
+     Character.armor_class ++;
+     Character.armor_class ++;
+}
+
+else if (Character.class === "Druid"){
+
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+    case (r === 1):Character.primary_weapon.push(armor.Shields.Shield);break;
+    case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      default: Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+  r = getRandomNumber( 1 , 2 )
+  switch(true) {
+    case (r === 1):Character.secondary_weapon.push(weapons.MartialMeleeWeapons.Scimitar);break;
+    case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+    Character.armor.push(armor.LightArmor.Leather);
+    Character.equipment.push(classes.Druid.equipment);
+}
+
+else if (Character.class === "Monk"){
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+
+    case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
+    case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+  r = getRandomNumber( 1 , 2 )
+    switch (true) {
+      case (r === 1):Character.equipment.push(_.sample(tools.Tools.ArtisansTools).Name);break;
+      case (r === 2):Character.equipment.push(_.sample(tools.Tools.MusicalInstruments).Name);break;
+      default:Character.equipment.push("Error: Fell Though Switch Case(getDefaultEquipment)")
 
     }
 
-    Character.equipment.armor                     = armor.LightArmor.No_Armor;
-    Character.equipment.tools.backpack            = {
-      pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
-      additionalItems:{Name:"None"}
+      Character.equipment.push(_.sample([["Dungeoneers Pack"],["Explorers Pack"]]));
+      Character.equipment.push("10 x Darts");
+      Character.armor.push(armor.LightArmor.No_Armor);
+
+}
+
+else if (Character.class === "Paladin"){
+
+  var firstWeapon  = _.sample(weapons.MartialMeleeWeapons);
+  var secondWeapon = _.sample(weapons.MartialMeleeWeapons);
+  var shield = armor.Shields.Shield;
+
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+
+    case (r === 1):Character.primary_weapon = {...{firstWeapon},...{secondWeapon}} ;break;
+    case (r === 2):Character.primary_weapon = {...{firstWeapon},...{shield}} ;break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+  r = getRandomNumber( 1 , 2 )
+  switch(true) {
+    case (r === 1):Character.secondary_weapon = Array(5).fill(weapons.SimpleWeapons.Javelin);break;
+    case (r === 2):Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+      Character.armor.push(armor.HeavyArmor.ChainMail);
+      Character.equipment.push(_.sample(classes.Paladin.equipment)) ;
+      Character.equipment.push("Holy Symbol");
+
+}
+
+else if (Character.class === "Ranger"){
+
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+
+    case (r === 1):Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword,weapons.MartialMeleeWeapons.Shortsword);break;
+    case (r === 2):Character.primary_weapon.push(_.sample(weapons.SimpleWeapons),_.sample(weapons.SimpleWeapons));break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+      Character.secondary_weapon.push(weapons.MartialRangedWeapons.Longbow);
+
+  r = getRandomNumber( 1 , 2 )
+    switch (true) {
+      case r === 1:Character.armor.push(armor.LightArmor.Leather);break;
+      case r === 2:Character.armor.push(armor.MediumArmor.ScaleMail);break;
+      default:Character.armor.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+      Character.equipment.push(_.sample([["Dungeoneers Pack"],["Explorers Pack"]]));
     }
+
+
+  else if (Character.class === "Rogue"){
+
+    r = getRandomNumber( 1 , 2 )
+    switch (true) {
+      case r === 1:Character.primary_weapon.push(weapons.MartialMeleeWeapons.Rapier);break;
+      case r === 2:Character.primary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
+        default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+    r = getRandomNumber( 1 , 2 )
+    switch(true) {
+      case r === 1:Character.secondary_weapon.push(weapons.SimpleRangedWeapons.Shortbow);break;
+      case r === 2:Character.secondary_weapon.push(weapons.MartialMeleeWeapons.Shortsword);break;
+        default:Character.secondary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
+
+      Character.armor.push(armor.LightArmor.Leather);
+      Character.equipment.push(_.sample([["Burglars Pack"],
+                                         ["Dungeoneers Pack"],
+                                         ["Explorers Pack"]]),
+                                         ["Thieves Tools"]);
+      Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger,weapons.SimpleWeapons.Dagger);
 
   }
 
-  else if (Character.character_attributes.class === "Fighter"){
+  else if (Character.class === "Sorcerer"){
 
-    Character.equipment.armor              = _.sample([armor.LightArmor.Leather, armor.HeavyArmor.ChainMail]);
-    Character.equipment.tools.backpack     = {
-      pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
-      additionalItems:{Name:"None"}
-    }
+    r = getRandomNumber( 1 , 2 )
+    switch (true) {
+      case r === 1:Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+      case r === 2:Character.primary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
+        default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
-    r = getRandomNumber( 0 , 1 );
-    switch (true)
-    {
-      case (r === 0):rhw  = _.sample(weapons.MartialMeleeWeapons);
-                     lhw  = _.sample(weapons.MartialMeleeWeapons)
-                     ;break;
-      case (r === 1):rhw  = _.sample(weapons.MartialMeleeWeapons);
-                     lhw  = armor.Shields.Shield
-                     ;break;
-      default:       lhw  = "Error: Fell Though Switch Case"
-    };
+    Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger, weapons.SimpleWeapons.Dagger);
+    Character.equipment.push(_.sample(["Dungeoneers Pack"],["Explorers Pack"]));
+    Character.equipment.push(_.sample(["Component Pouch"],["Arcane Focus"]));
+    Character.armor.push(armor.LightArmor.No_Armor);
+}
 
-    if(Character.equipment.armor.Name  === "Leather Armor"){aw = [weapons.MartialRangedWeapons.Longbow];}
-      else if (Character.equipment.armor.Name === "Chain Mail"){aw = [weapons.SimpleRangedWeapons.LightCrossbow];}
-      else aw = ["None"];
+else if (Character.class === "Warlock"){
 
-    Character.equipment.weapons =
-    {
-      leftHandedWeapon: lhw,
-      rightHandedWeapon:rhw,
-      additionalWeapons:aw
-    };
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+    case r === 1:Character.primary_weapon.push(_.sample(weapons.SimpleWeapons));break;
+    case r === 2:Character.primary_weapon.push(weapons.SimpleRangedWeapons.LightCrossbow);break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
-    }
+      Character.secondary_weapon.push(_.sample(weapons.SimpleWeapons));
+      Character.secondary_weapon.push(weapons.SimpleWeapons.Dagger,weapons.SimpleWeapons.Dagger);
+      Character.armor.push(armor.LightArmor.Leather);
+      Character.equipment.push(_.sample(["Scholars Pack"],["Dungeoneers Pack"]));
+      Character.equipment.push(_.sample(["Component Pouch"],["Arcane Focus"]));
+}
 
-    else if (Character.character_attributes.class === "Cleric"){
+else if (Character.class === "Wizard"){
 
-      //NEED TO ADD THE FOLLOWING IF BACKGROUND PROFICIENCIES ADDED
-      //  a warhammer (if proficient)
-      //  chain mail (if proficient)
+  r = getRandomNumber( 1 , 2 )
+  switch (true) {
+    case r === 1:Character.primary_weapon.push(weapons.SimpleWeapons.Quarterstaff);break;
+    case r === 2:Character.primary_weapon.push(weapons.SimpleWeapons.Dagger);break;
+      default:Character.primary_weapon.push("Error: Fell Though Switch Case(getDefaultEquipment)")}
 
-      Character.equipment.weapons =
-      {
-        leftHandedWeapon: weapons.SimpleWeapons.Mace,
-        rightHandedWeapon:armor.Shields.Shield,
-        additionalWeapons:_.sample([weapons.SimpleRangedWeapons.LightCrossbow, _.sample(weapons.SimpleWeapons)])
-      };
+      Character.equipment.push(_.sample(["Scholars Pack"],["Explorers Pack"]));
+      Character.equipment.push(_.sample(["Component Pouch"],["Arcane Focus"]));
+      Character.equipment.push("Spellbook")
+      Character.armor.push(armor.LightArmor.No_Armor);
 
-
-      Character.equipment.armor                     = _.sample([armor.LightArmor.Leather,armor.MediumArmor.ScaleMail])
-      Character.equipment.tools.backpack            = {
-        pack:_.sample([equipment.EquipmentPacks.PriestsPack, equipment.EquipmentPacks.ExplorersPack]),
-        additionalItems: {Name:"Holy Symbol"}
-      }
-
-    }
-    else if (Character.character_attributes.class === "Druid"){
-
-      r = getRandomNumber( 0 , 3 );
-      switch (true){
-        case(r === 0):lhw = armor.Shields.Shield;
-                      rhw = _.sample(weapons.SimpleWeapons);break;
-
-        case (r === 1):lhw = armor.Shields.Shield;
-                      rhw = weapons.MartialMeleeWeapons.Scimitar;break;
-
-        case (r === 2):lhw = weapons.MartialMeleeWeapons.Scimitar;
-                      rhw = _.sample(weapons.SimpleWeapons);break;
-
-        case (r === 3):lhw = _.sample(weapons.SimpleRangedWeapons);
-                      rhw = _.sample(weapons.SimpleWeapons);break;
-      }
-
-
-      Character.equipment.weapons =
-      {
-        leftHandedWeapon: lhw,
-        rightHandedWeapon: rhw,
-        additionalWeapons: {Name:"None"}
-      }
-
-      Character.equipment.armor = armor.LightArmor.Leather
-      Character.equipment.tools.backpack = {
-        pack:equipment.EquipmentPacks.ExplorersPack,
-        additionalItems:{Name:"Druidic Focus"}
-      }
-    }
-
-    else if (Character.character_attributes.class === "Monk"){
-
-
-          Character.equipment.weapons =
-          {
-            leftHandedWeapon: _.sample([weapons.MartialMeleeWeapons.Shortsword, _.sample(weapons.SimpleWeapons)]),
-            rightHandedWeapon: {Name:"None"},
-            additionalWeapons: weapons.SimpleRangedWeapons.Dart
-          }
-
-          Character.equipment.tools.backpack = {
-            pack: _.sample([equipment.EquipmentPacks.ExplorersPack, equipment.EquipmentPacks.DungeoneersPack]),
-            additionalItems:{Name:"None"}
-          }
-          Character.equipment.armor     = armor.LightArmor.No_Armor;
-        }
-
-        else if (Character.character_attributes.class === "Paladin"){
-
-          r = getRandomNumber( 0 , 1 );
-          switch (true){
-
-          case ( r === 0 ):Character.equipment.weapons =
-          {
-            leftHandedWeapon: _.sample(weapons.MartialMeleeWeapons),
-            rightHandedWeapon: armor.Shields.Shield,
-            additionalWeapons: _.sample([weapons.palWeps.palJavelin, _.sample(weapons.SimpleWeapons)])
-          };break;
-
-          case ( r === 1):Character.equipment.weapons = {
-            leftHandedWeapon: _.sample(weapons.MartialMeleeWeapons),
-            rightHandedWeapon: _.sample(weapons.MartialMeleeWeapons),
-            additionalWeapons: _.sample([weapons.palWeps.palJavelin, _.sample(weapons.SimpleWeapons)])
-          };break;
-        }
-
-        Character.equipment.armor                     = armor.HeavyArmor.ChainMail
-        Character.equipment.tools.backpack            = {
-          pack:_.sample([equipment.EquipmentPacks.PriestsPack, equipment.EquipmentPacks.ExplorersPack]),
-          additionalItems: {Name:"Holy Symbol"}
-        }
-      }
-
-      else if (Character.character_attributes.class === "Ranger"){
-
-        r = getRandomNumber( 0 , 1 );
-        switch (true){
-
-        case ( r === 0 ):Character.equipment.weapons =
-        {
-          leftHandedWeapon: weapons.MartialMeleeWeapons.Shortsword,
-          rightHandedWeapon: weapons.MartialMeleeWeapons.Shortsword,
-          additionalWeapons: weapons.MartialRangedWeapons.Longbow
-        };break;
-
-        case ( r === 1):Character.equipment.weapons = {
-          leftHandedWeapon: _.sample(weapons.SimpleWeapons),
-          rightHandedWeapon: _.sample(weapons.SimpleWeapons),
-          additionalWeapons: weapons.MartialRangedWeapons.Longbow
-        };break;
-      }
-
-
-        Character.equipment.armor = _.sample([armor.LightArmor.Leather, armor.MediumArmor.ScaleMail])
-        Character.equipment.tools.backpack            = {
-          pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
-          additionalItems: {Name:"None"}
-        }
-      }
-
-      else if (Character.character_attributes.class === "Rogue"){
-
-        Character.equipment.weapons =
-        {
-          leftHandedWeapon: _.sample([weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Shortsword]),
-          rightHandedWeapon: _.sample([weapons.MartialMeleeWeapons.Shortsword, weapons.SimpleRangedWeapons.Shortbow]) ,
-          additionalWeapons: weapons.rogueWeps.rogueDaggers
-        }
-
-        Character.equipment.armor = armor.LightArmor.Leather
-        Character.equipment.tools.backpack =
-        {
-          pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack,equipment.EquipmentPacks.BurglarsPack]),
-          additionalItems: {Name:"Thieves’ Tools"}
-        }
-
-      }
-
-      else if (Character.character_attributes.class === "Sorcerer"){
-
-        Character.equipment.weapons =
-        {
-          leftHandedWeapon: _.sample([_.sample(weapons.SimpleWeapons), weapons.SimpleRangedWeapons.LightCrossbow]),
-          rightHandedWeapon: {Name:"None"},
-          additionalWeapons: weapons.rogueWeps.rogueDaggers
-        }
-
-        Character.equipment.armor = armor.LightArmor.No_Armor
-        Character.equipment.tools.backpack =
-        {
-          pack: _.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
-          additionalItems: _.sample(["Component Pouch", "Arcane Focus"])
-        }
-
-      }
-
-      else if (Character.character_attributes.class === "Warlock"){
-
-        Character.equipment.weapons =
-        {
-          leftHandedWeapon: _.sample([_.sample(weapons.SimpleWeapons), weapons.SimpleRangedWeapons.LightCrossbow]),
-          rightHandedWeapon: _.sample(weapons.SimpleWeapons),
-          additionalWeapons: weapons.rogueWeps.rogueDaggers
-        }
-
-        Character.equipment.armor = armor.LightArmor.Leather
-        Character.equipment.tools.backpack =
-        {
-          pack: _.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ScholarsPack]),
-          additionalItems: _.sample(["Component Pouch", "Arcane Focus"])
-        }
-
-      }
-      else if (Character.character_attributes.class === "Wizard"){
-
-        Character.equipment.weapons =
-        {
-          leftHandedWeapon: _.sample([weapons.SimpleWeapons.Dagger, weapons.SimpleWeapons.Quarterstaff]),
-          rightHandedWeapon:{Name:"Spellbook"},
-          additionalWeapons:{Name:"None"}
-        }
-
-        Character.equipment.armor = armor.LightArmor.No_Armor
-        Character.equipment.tools.backpack =
-        {
-          pack: _.sample([equipment.EquipmentPacks.ExplorersPack, equipment.EquipmentPacks.ScholarsPack]),
-          additionalItems: _.sampleSize([_.sample(["Component Pouch", "Arcane Focus"]), "Spellbook"], 2)
-        }
-
-      }
-
-
-
-
-
-  return Character;
+}
+return Character;
 }
 
 
  var calcArmorClass = (Character) => {
    switch (true) {
-     case (Character.equipment.armor.Name === "Padded Armor"):          Character.combat_attributes.armor_class = 11 + altCalcBonus(Character.stats.DEX);break;
-     case (Character.equipment.armor.Name === "Leather Armor"):         Character.combat_attributes.armor_class = 11 + altCalcBonus(Character.stats.DEX);break;
-     case (Character.equipment.armor.Name === "Studded Leather Armor"): Character.combat_attributes.armor_class = 12 + altCalcBonus(Character.stats.DEX);break;
-     case (Character.equipment.armor.Name === "Chain Mail"):            Character.combat_attributes.armor_class = 16;break;
-     case (Character.equipment.armor.Name === "Hide Armor"):            Character.combat_attributes.armor_class = 12 + _.inRange(altCalcBonus(Character.stats.DEX),2);break;
-     case (Character.equipment.armor.Name === "Scale Mail"):            Character.combat_attributes.armor_class = 14 + altCalcBonus(Character.stats.DEX);break;
-     case (Character.equipment.armor.Name === "No Armor"):              Character.combat_attributes.armor_class = 10 + altCalcBonus(Character.stats.DEX) + altCalcBonus(Character.stats.CON);break;
-     default: Character.combat_attributes.armor_class = ("Fell Through(calcArmorClass)")
+     case (Object.values(Character.armor)[0] === "Padded Armor"):          Character.combat_attributes.armor_class += 11 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Leather Armor"):         Character.combat_attributes.armor_class += 11 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Studded Leather Armor"): Character.combat_attributes.armor_class += 12 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "Chain Mail"):            Character.combat_attributes.armor_class += 16;break;
+     case (Object.values(Character.armor)[0] === "Hide Armor"):            Character.combat_attributes.armor_class += 12 + _.inRange(altCalcBonus(Character.stats.DEX),2);break;
+     case (Object.values(Character.armor)[0] === "Scale Mail"):            Character.combat_attributes.armor_class += 14 + altCalcBonus(Character.stats.DEX);break;
+     case (Object.values(Character.armor)[0] === "No Armor"):              Character.combat_attributes.armor_class += 10 + altCalcBonus(Character.stats.DEX) + altCalcBonus(Character.stats.CON);break;
+      default: Character.combat_attributes.armor_class = ("Fell Through(calcArmorClass)")
    }return Character;
  }
 
@@ -597,7 +555,7 @@ var getFeatures = (Character) => {
 var addFeatureBonues = (Character) => {
   switch (true) {
     case Character.abilities.includes("Defense"):Character.armor_class ++;break;
-    default:Character.armor_class = Character.armor_class;
+    default:"Nothing"
   }return Character;
 }
 
@@ -840,8 +798,8 @@ var addSubRaceBonus = (Character) => {
   if (Character.character_attributes.race === "Dwarf"){
     Character.stats.WIS +=1;
     Character.stats.CON +=2;
-    Character.combat_attributes.hit_points ++;
-    Character.racial_traits = ["Darkvision "," Dwarven Resilience "," Dwarven Combat Training "," Stonecunning "];
+    Character.hit_points ++;
+    Character["Racial Traits"] = ["Darkvision "," Dwarven Resilience "," Dwarven Combat Training "," Stonecunning "];
     Character.Subrace = ["Hill Dwarf"];
   }
   else if (Character.character_attributes.race === "Human") {
@@ -851,31 +809,31 @@ var addSubRaceBonus = (Character) => {
     Character.stats.WIS +=1;
     Character.stats.INT +=1;
     Character.stats.CHA +=1;
-    Character.racial_traits = [];
+    Character["Racial Traits"] = [];
     Character.Subrace = [];
   }
   else if (Character.character_attributes.race === "Elf") {
     Character.stats.INT +=1;
     Character.stats.DEX +=2;
-    Character.racial_traits = ["Darkvision","Keen Senses","Fey Ancestry", "Trance"];
+    Character["Racial Traits"] = ["Darkvision","Keen Senses","Fey Ancestry", "Trance"];
     Character.Subrace = ["High Elf"];
   }
   else if (Character.character_attributes.race === "Gnome"){
     Character.stats.INT +=2;
-    Character.stats.CON +=1;
-    Character.racial_traits = ["Gnome Cunning","Artificer’s Lore","Tinker"];
+    Character.stats.Con +=1;
+    Character["Racial Traits"] = ["Gnome Cunning","Artificer’s Lore","Tinker"];
     Character.Subrace = ["Rock Gnome"];
   }
   else if (Character.character_attributes.race === "Halfling"){
     Character.stats.DEX +=2;
     Character.stats.CHA +=1;
-    Character.racial_traits = ["Lucky","Brave","Halfling Nimbleness", "Naturally Stealty"];
+    Character["Racial Traits"] = ["Lucky","Brave","Halfling Nimbleness", "Naturally Stealty"];
     Character.Subrace = ["Lightfoot"];
   }
   else if (Character.character_attributes.race === "Dragonborn"){
     Character.stats.STR +=2;
     Character.stats.CHA +=1;
-    Character.racial_traits = ["Draconic Ancestry", "Breath Weapon","Damage Resistance"];
+    Character["Racial Traits"] = ["Draconic Ancestry", "Breath Weapon","Damage Resistance"];
     Character.Subrace = _.sample(races.dragonbornColour);
   }
   else if (Character.character_attributes.race === "HalfElf"){
@@ -886,17 +844,17 @@ var addSubRaceBonus = (Character) => {
     Character.stats.CHA +=2;
     Character.stats[a]  +=1;
     Character.stats[b]  +=1;
-    Character.racial_traits = ["Darkvision", "Fey Ancestry", "Skill Versatility"]
+    Character["Racial Traits"] = ["Darkvision", "Fey Ancestry", "Skill Versatility"]
   }
   else if (Character.character_attributes.race === "HalfOrc"){
     Character.stats.STR +=2;
     Character.stats.CON +=1;
-    Character.racial_traits = ["Darkvision", "Menacing","Relentless Endurance","Savage Attacks"];
+    Character["Racial Traits"] = ["Darkvision", "Menacing","Relentless Endurance","Savage Attacks"];
   }
   else if (Character.character_attributes.race === "Tiefling"){
     Character.stats.INT +=1;
     Character.stats.CHA +=2;
-    Character.racial_traits = ["Darkvision", "Hellish Resistance","Infernal Legacy"];
+    Character["Racial Traits"] = ["Darkvision", "Hellish Resistance","Infernal Legacy"];
     }
     return Character;
   }

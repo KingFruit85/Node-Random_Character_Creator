@@ -18,6 +18,14 @@ var barbWeps = {
   barbHandaxe:{Name:"2 x Handaxe" ,Cost:"5gp (each)", Damage:"1d6 slashing (each)", Weight:"2lb (each)" , Properties:"Light, thrown (range 20/60)"}
 }
 
+var palWeps = {
+  palJavelin:{Name:"5 x Javelin", Cost:"5sp (each)", Damage:"1d6 piercing (each)", Weight:"2lb (each)" , Properties:"Thrown (range 30/120)"}
+}
+
+var rogueWeps = {
+  rogueDaggers:{Name:"2 x Daggers" , Cost:"2gp (each)" , Damage: "1d4 piercing (each)", Weight:"1lb(each)" , Properties:"Finesse, light, thrown (range 20/60)"}
+}
+
 
 var SimpleRangedWeapons = {
 
@@ -67,6 +75,8 @@ var MartialRangedWeapons = {
 
 exports.SimpleWeapons = SimpleWeapons;
 exports.barbWeps = barbWeps;
+exports.palWeps = palWeps;
+exports.rogueWeps = rogueWeps;
 exports.SimpleRangedWeapons = SimpleRangedWeapons;
 exports.MartialMeleeWeapons = MartialMeleeWeapons;
 exports.MartialRangedWeapons = MartialRangedWeapons;

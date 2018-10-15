@@ -29,7 +29,7 @@ var Character = {
 
 
 // var charClasses = ["Barbarian","Bard","Cleric","Fighter"];
-var charClasses = ["Barbarian"];
+var charClasses = ["Bard"];
 
 var buildCharacter = () => {
   getChracterInfo(Character);
@@ -39,36 +39,53 @@ var buildCharacter = () => {
 }
 
 var getChracterInfo = (Character) => {
-  Character.class = _.sample(charClasses);
-  Character.race  = _.sample(races.race)
-  Character.sex   = _.sample(races.sex);
-  utils.assignStats(Character);
-  utils.addSubRaceBonus(Character);
-  utils.calcBaseHP(Character);
+  Character.class = "Bard";
+  // Character.race  = _.sample(races.race)
+  // Character.sex   = _.sample(races.sex);
+  // utils.assignStats(Character);
+  // utils.addSubRaceBonus(Character);
+  // utils.calcBaseHP(Character);
   return Character
 }
 
 
 var getDefaultEquipment = (Character) => {
-Character.characterEquipment = {}
+Character.equipment = {};
+Character.equipment.weapons = {};
+Character.equipment.armor = {};
+Character.equipment.tools = {};
 
 if(Character.class === "Bard"){
 
-    Character.characterEquipment.leftHandedWeapon    = _.sample(weapons.SimpleWeapons, weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Longsword);
-    Character.characterEquipment.rightHandedWeapon   = {Name: "None"};
-    Character.characterEquipment.additionalWeapons   = [weapons.SimpleWeapons.Dagger];
-    Character.characterEquipment.armor               = armor.LightArmor.Leather;
-    Character.characterEquipment.backpack            = _.sample([equipment.EquipmentPacks.DiplomatsPack, equipment.EquipmentPacks.EntertainersPack]);
-    Character.characterEquipment.additionalItems     = _.sample(tools.Tools.MusicalInstruments)
+    Character.equipment.weapons =
+
+    {
+      leftHandedWeapon: _.sample(weapons.SimpleWeapons, weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Longsword),
+      rightHandedWeapon:{Name: "None"},
+      additionalWeapons:weapons.SimpleWeapons.Dagger
+    }
+
+    Character.equipment.armor                       = armor.LightArmor.Leather;
+    Character.equipment.tools.backpack              = _.sample([equipment.EquipmentPacks.DiplomatsPack, equipment.EquipmentPacks.EntertainersPack]);
+    Character.equipment.tools.additionalItems       = _.sample(tools.Tools.MusicalInstruments)
 
 }
 
   else if (Character.class === "Barbarian"){
 
-    Character.characterEquipment.leftHandedWeapon    = _.sample(weapons.MartialMeleeWeapons);
-    Character.characterEquipment.rightHandedWeapon   = {Name: "None"};
-    Character.characterEquipment.armor               = armor.LightArmor.No_Armor;
-    Character.characterEquipment.backpack            = _.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]);
+    Character.equipment.weapons =
+
+    {
+      leftHandedWeapon:_.sample(weapons.MartialMeleeWeapons),
+      rightHandedWeapon:{Name: "None"},
+      additionalWeapons:
+
+    }
+
+    Character.equipment.armor                     = armor.LightArmor.No_Armor;
+    Character.equipment.tools.backpack            = _.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]);
+
+
     r = utils.getRandomNumber( 0 , 1 );
     switch (true) {
     case (r === 0):Character.characterEquipment.additionalWeapons = [_.sample(weapons.SimpleWeapons),weapons.barbWeps.BarbJavelin]
@@ -117,37 +134,37 @@ if(Character.class === "Bard"){
   return Character;
 }
 
-var printCharacterEquipmentPretty = (x) => {
-
-  console.log("----------------"+x.class+"----------------")
-  console.log("----------Character Equipment----------")
-  console.log("")
-  console.log("Left Handed Weapon:  " + x.getLeftWep())
-  console.log("Right Handed Weapon: " + x.getRightWep())
-  console.log("Additional Weapons:  " + x.getAddWep())
-  console.log("Armor: "               + x.getArmor())
-  console.log("Backpack: "            + x.getBackpack())
-  console.log("")
-  console.log("---------------------------------------")
-  return "";
-}
+// var printCharacterEquipmentPretty = (x) => {
+//
+//   console.log("----------------"+x.class+"----------------")
+//   console.log("----------Character Equipment----------")
+//   console.log("")
+//   console.log("Left Handed Weapon:  " + x.getLeftWep())
+//   console.log("Right Handed Weapon: " + x.getRightWep())
+//   console.log("Additional Weapons:  " + x.getAddWep())
+//   console.log("Armor: "               + x.getArmor())
+//   console.log("Backpack: "            + x.getBackpack())
+//   console.log("")
+//   console.log("---------------------------------------")
+//   return "";
+// }
 
 x = buildCharacter()
 // console.log(Object.values(x.stats))
 
-var txtFile = "C:\\Users\\Christopher\\Desktop\\dnd\\" + Math.random() + ".json"; //replace this with some character ref
-var str = JSON.stringify(x, undefined, 2);
-// console.log(JSON.stringify(x, undefined, 2));
-// console.log(str)
-
-fs.writeFile(txtFile, str, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-
-    console.log(`The file was saved as: ${txtFile}`);
-});
+// var txtFile = "C:\\Users\\Christopher\\Desktop\\dnd\\" + Math.random() + ".json"; //replace this with some character ref
+// var str = JSON.stringify(x, undefined, 2);
+// // console.log(JSON.stringify(x, undefined, 2));
+// // console.log(str)
+//
+// fs.writeFile(txtFile, str, function(err) {
+//     if(err) {
+//         return console.log(err);
+//     }
+//
+//     console.log(`The file was saved as: ${txtFile}`);
+// });
 
 // console.log(x.characterEquipment.additionalWeapons.length)
-// console.log(JSON.stringify(x))
+console.log(JSON.stringify(x, undefined, 2))
 // console.log(printCharacterEquipmentPretty(x))

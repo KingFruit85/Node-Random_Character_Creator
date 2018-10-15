@@ -1,9 +1,11 @@
 const weapons =require('./weapons.js');
 const armor =require('./armor.js');
-const equipment =require("./equipment");
+const equipment =require('./equipment');
+const abilities = require('./abilities')
 const _ = require ('lodash');
 
-const request = require('request');
+
+
 
 
 classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"},
@@ -31,8 +33,11 @@ var Barbarian = {
   armorProficiencies:["Light Armor", "Medium Armor", "Shields"],
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:["None"],
-  abilities:["Rage","Unarmored Defence"]
-  
+  abilities:
+  {
+    rage:{Name:"Rage", Description:abilities.rage},
+    unarmored_defense:{name:"Unarmored Defense", description:abilities.unarmored_defense}
+  }
 
 }
 
@@ -47,7 +52,12 @@ var Bard = {
   weaponProficiencies:["Simple Weapons",	"HandCrossbows", "Longswords",	"\n Rapiers",	"Shortswords"],
   toolProficiencies:["Harpsichord", "Piano", "Pipe organ","bells", "chimes", "drums", "gong","fiddle", "harp", "lute",
                       "mandolin","flute", "pan pipes", "recorder", "shawm", "trumpet"],
-  abilities:["Spellcasting","Ritual Casting","Bardic Inspiration"]
+  abilities:
+  {
+    spellcasting:{name:"Spellcasting", description:abilities.spellcasting},
+    ritual_casting:{name:"Ritual Casting", description:abilities.ritual_casting},
+    bardic_inspiration:{name:"Bardic Inspiration", description:abilities.bardic_inspiration}
+  }
 
 }
 
@@ -57,11 +67,21 @@ var Fighter = {
   armorProficiencies:["All Armor", "Shields"],
   weaponProficiencies:["Simple Weapons",	"Martial Weapons"],
   toolProficiencies:["None"],
-  abilities:["Second Wind"],
-  extraAbilities:["Archery","Defense","Dueling","Great Weapon Fighting","Protection ","Two-Weapon Fighting"]
+  abilities:
+  {
+    second_wind:{name:"Second Wind", description:abilities.second_wind},
+  },
+  extraAbilities:
+  [
+    {archery:{name:"Archery",description:abilities.archery}},
+    {defense:{name:"Defense",description:abilities.defense}},
+    {dueling:{name:"Dueling",description:abilities.dueling}},
+    {great_weapon_fighting:{name:"Great Weapon Fighting",description:abilities.great_weapon_fighting}},
+    {protection:{name:"Protection",description:abilities.protection}},
+    {two_weapon_fighting:{name:"Two Weapon Fighting",description:abilities.two_weapon_fighting}}
+  ]
+
 }
-
-
 
 var Cleric = {
   savingThrows:["Wisdom", "Charisma"],
@@ -69,7 +89,11 @@ var Cleric = {
   armorProficiencies:["Light Armor", "Medium Armor","Heavy Armor", "Shields"],
   weaponProficiencies:["Simple Weapons"],
   toolProficiencies:["None"],
-  abilities:["Spellcasting","Life Domain","Disciple Of Life"]
+  abilities:
+  {
+    spellcasting:{name:"Spellcasting",description:abilities.spellcasting},
+    disciple_of_life:{name:"Divine Domain:Disciple of Life",description:abilities.disciple_of_life}
+  }
 }
 
 var Druid = {
@@ -81,7 +105,13 @@ var Druid = {
   weaponProficiencies:[	"Clubs",	"Daggers",	"Darts",	"Javelins",	"Maces",
                         "Quarterstaffs \n",	"Scimitars",	"Sickles",	"Slings",	"Spears"],
   toolProficiencies:[""],
-  abilities:["Druidic",	"Spellcasting"],
+
+  abilities:
+  {
+    spellcasting:{name:"Spellcasting",description:abilities.spellcasting},
+    druidic:{name:"Druidic", description:abilities.druidic}
+  },
+
   equipment:["Explorers Pack", "Druidic focus", "Herbalism	Kit"]
 }
 
@@ -92,7 +122,11 @@ var Monk = {
   weaponProficiencies:["Simple Weapons", "Shortswords"],
   toolProficiencies:[""],
   equipment:["Dungeoneer’s	Pack","Explorer’s	Pack"],
-  abilities:["Unarmored Defense", "Martial Arts"]
+  abilities:
+  {
+    unarmored_defense:{name:"Unarmored Defense", description:abilities.unarmored_defense},
+    martial_arts:{name:"Martial Arts", description:abilities.martial_arts}
+  }
 }
 
 var Paladin = {
@@ -102,8 +136,16 @@ var Paladin = {
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:[""],
   equipment:["Priests	Pack","Explorer’s	Pack"],
-  abilities:[	"Divine Sense", "Lay on Hands"]
+  abilities:
+  {
+    divine_sense:{name:"Divine Sense", description:abilities.divine_sense},
+    lay_on_hands:{name:"Lay on Hands", description:abilities.lay_on_hands}
+  }
 }
+
+var rangerFavoredEnemy = ["aberrations", "beasts", "celestials", "constructs", "dragons",
+                          "elementals", "fey", "fiends", "giants", "monstrosities", "oozes",
+                          "plants", "undead"]
 
 var Ranger = {
   savingThrows:["Strength", "Dexterity"],
@@ -112,7 +154,12 @@ var Ranger = {
   weaponProficiencies:["Simple Weapons", "Martial Weapons"],
   toolProficiencies:[""],
   equipment:["Dungeoneer’s	Pack","Explorer’s	Pack"],
-  abilities:["Favored Enemy", "Natural Explorer"]
+  abilities:
+  {
+    favored_enemy:{name:`Favored Enemy: ${_.sample(rangerFavoredEnemy)}`, description:abilities.favored_enemy},
+    natural_explorer:{name:"Natural Explorer", description:abilities.natural_explorer}
+  }
+
 }
 
 var Rogue = {
@@ -122,7 +169,12 @@ var Rogue = {
   weaponProficiencies:["Simple Weapons", "Hand Crossbows", "Longswords", "Rapiers", "Shortswords"],
   toolProficiencies:["Thieves tools"],
   equipment:["Burglars Pack", "Dungeoneers Pack", "Explorers Pack"],
-  abilities:["Expertise", "Sneak Attack", "Thieves Cant"]
+  abilities:
+  {
+    expertise:{name:"Expertise", description:abilities.expertise},
+    sneak_attack:{name:"Sneak Attack", description:abilities.sneak_attack},
+    thieves_cant:{name:"Thieves Cant", description:abilities.thieves_cant}
+  }
 }
 
 var Sorcerer = {
@@ -132,7 +184,11 @@ var Sorcerer = {
   weaponProficiencies:["Daggers", "Darts", "Slings", "Quarterstaffs", "Light Crossbows"],
   toolProficiencies:[""],
   equipment:["Dungeoneers Pack", "Explorers Pack"],
-  abilities:[	"Spellcasting", "Sorcerous Origin"]
+  abilities:
+  {
+    spellcasting:{name:"Spellcasting", description:abilities.spellcasting},
+    sorcerous_origin:{name:"Sorcerous Origin", description:exports.sorcerous_origin}
+  }
 }
 
 var Warlock = {
@@ -142,7 +198,11 @@ var Warlock = {
   weaponProficiencies:["Simple Weapons"],
   toolProficiencies:[""],
   equipment:["Scholars Pack", "Dungeoneers Pack"],
-  abilities:[	"Otherworldly Patron", "Pact Magic"	]
+  abilities:
+  {
+    otherworldly_patron:{name:"Otherworldly Patron", description:abilities.otherworldly_patron},
+    pact_magic:{name:"Pact Magic", description:abilities.pact_magic}
+  }
 }
 
 var Wizard = {
@@ -152,26 +212,13 @@ var Wizard = {
   weaponProficiencies:["Daggers", "Darts", "Slings", "Quarterstaffs", "Light Crossbows"],
   toolProficiencies:[""],
   equipment:["Scholars Pack", "Explorers Pack"],
-  abilities:["Spellcasting", "Arcane Recovery"]
+  abilities:
+  {
+    spellcasting:{name:"Spellcasting", description:abilities.spellcasting},
+    arcane_recovery:{name:"Arcane Recovery", description:abilities.arcane_recovery}
+  }
 }
 
-
-
-
-
-var classTemplate = {
-
-  savingThrows:[" "],
-  skillProficiencies:[""],
-  armorProficiencies:[""],
-  weaponProficiencies:[""],
-  toolProficiencies:[""],
-  defaultEquipment:[""],
-  startingWeapons:[""],
-  defaultArmor:[""],
-  equipment:[""],
-  feats:[""]
-}
 
 
 exports.Wizard =  Wizard;
