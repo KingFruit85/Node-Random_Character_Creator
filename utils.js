@@ -9,6 +9,7 @@ const spells =require('./spells.js');
 const armor =require('./armor.js');
 const tools =require('./tools.js');
 const equipment =require('./equipment');
+const racial_traits =require('./racial_traits');
 
 
 var weaponToString = (weapons) =>{
@@ -841,9 +842,10 @@ var addSubRaceBonus = (Character) => {
     Character.stats.WIS +=1;
     Character.stats.CON +=2;
     Character.combat_attributes.hit_points ++;
-    Character.racial_traits = ["Darkvision "," Dwarven Resilience "," Dwarven Combat Training "," Stonecunning "];
-    Character.Subrace = ["Hill Dwarf"];
+    Character.racial_traits = racial_traits.dwarf_racial
+    Character.Subrace = {name:"Hill Dwarf"};
   }
+
   else if (Character.character_attributes.race === "Human") {
     Character.stats.STR +=1;
     Character.stats.DEX +=1;
@@ -851,31 +853,34 @@ var addSubRaceBonus = (Character) => {
     Character.stats.WIS +=1;
     Character.stats.INT +=1;
     Character.stats.CHA +=1;
-    Character.racial_traits = [];
+    Character.racial_traits = {name:"None"};
     Character.Subrace = [];
   }
+
   else if (Character.character_attributes.race === "Elf") {
     Character.stats.INT +=1;
     Character.stats.DEX +=2;
-    Character.racial_traits = ["Darkvision","Keen Senses","Fey Ancestry", "Trance"];
-    Character.Subrace = ["High Elf"];
+    Character.racial_traits = racial_traits.elf_racial;
+    Character.Subrace = {name:"High Elf"};
   }
+
   else if (Character.character_attributes.race === "Gnome"){
     Character.stats.INT +=2;
     Character.stats.CON +=1;
-    Character.racial_traits = ["Gnome Cunning","Artificer’s Lore","Tinker"];
-    Character.Subrace = ["Rock Gnome"];
+    Character.racial_traits = racial_traits.gnome_racial;
+    Character.Subrace = {name:"Rock Gnome"};
   }
+
   else if (Character.character_attributes.race === "Halfling"){
     Character.stats.DEX +=2;
     Character.stats.CHA +=1;
-    Character.racial_traits = ["Lucky","Brave","Halfling Nimbleness", "Naturally Stealty"];
-    Character.Subrace = ["Lightfoot"];
+    Character.racial_traits = racial_traits.halfling_racial;
+    Character.Subrace = {name:"Lightfoot"};
   }
   else if (Character.character_attributes.race === "Dragonborn"){
     Character.stats.STR +=2;
     Character.stats.CHA +=1;
-    Character.racial_traits = ["Draconic Ancestry", "Breath Weapon","Damage Resistance"];
+    Character.racial_traits = racial_traits.dragonborn_racial;
     Character.Subrace = _.sample(races.dragonbornColour);
   }
   else if (Character.character_attributes.race === "HalfElf"){
@@ -886,17 +891,17 @@ var addSubRaceBonus = (Character) => {
     Character.stats.CHA +=2;
     Character.stats[a]  +=1;
     Character.stats[b]  +=1;
-    Character.racial_traits = ["Darkvision", "Fey Ancestry", "Skill Versatility"]
+    Character.racial_traits = racial_traits.halfElf_racial;
   }
   else if (Character.character_attributes.race === "HalfOrc"){
     Character.stats.STR +=2;
     Character.stats.CON +=1;
-    Character.racial_traits = ["Darkvision", "Menacing","Relentless Endurance","Savage Attacks"];
+    Character.racial_traits = racial_traits.halfOrc_racial;
   }
   else if (Character.character_attributes.race === "Tiefling"){
     Character.stats.INT +=1;
     Character.stats.CHA +=2;
-    Character.racial_traits = ["Darkvision", "Hellish Resistance","Infernal Legacy"];
+    Character.racial_traits = racial_traits.tiefling_racial;
     }
     return Character;
   }

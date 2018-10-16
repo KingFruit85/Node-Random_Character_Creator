@@ -1,6 +1,8 @@
 // var race=["Human","Dwarf","Elf","Gnome","Halfling","Dragonborn","HalfElf","HalfOrc","Tiefling"];
 // var race=["Dragonborn"]; //testing.
 
+
+
 var race=[{race: "Human", www: "https://www.dndbeyond.com/characters/races/human"},
           {race: "Dwarf", www: "https://www.dndbeyond.com/characters/races/dwarf"},
           {race: "Elf", www: "https://www.dndbeyond.com/characters/races/elf"},
