@@ -1,14 +1,15 @@
+const allspells =require('./allspells.js');
 
 bardCantrips = {
-    DancingLights:"Dancing Lights",
-    Light:"Light",
-    MageHand:"Mage Hand",
-    Mending:"Mending",
-    Message:"Message",
-    MinorIllusion:"Minor Illusion",
-    Prestidigitation:"Prestidigitation",
-    TrueStrike:"True Strike",
-    ViciousMockery:"Vicious Mockery"
+    DancingLights:allspells.dancing_lights,
+    Light:allspells.light,
+    MageHand:allspells.mage_hand,
+    Mending:allspells.mending,
+    Message:allspells.message,//
+    MinorIllusion:allspells.minor_illusion,
+    Prestidigitation:allspells.prestidigitation,
+    TrueStrike:allspells.true_strike,
+    ViciousMockery:allspells.vicious_mockery
 }
 
 bardLevel1 = {
@@ -209,6 +210,9 @@ wizardLevel1 = {
   UnseenServant:"Unseen Servant"
 
 }
+
+
+
 
 exports.wizardLevel1 = wizardLevel1;
 exports.wizardCantrips = wizardCantrips;

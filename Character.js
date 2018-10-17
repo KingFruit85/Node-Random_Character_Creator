@@ -6,6 +6,7 @@ const backstory =require('./backstory.js')
 //creates a randomised Character object
 var newCharacter = () => {   //Declares a new function named newCharacter
 var Character = {
+
   proficiencies:{},
   character_attributes:{},
   combat_attributes:{},

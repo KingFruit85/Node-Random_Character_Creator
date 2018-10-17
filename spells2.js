@@ -1,7 +1,7 @@
 const _ = require ('lodash');
 
 
-
+spells = {
 
 bardCantrips = {
 
@@ -144,10 +144,10 @@ ViciousMockery:{
   school:"Enchantment",
   class:"Bard"
 }
-};
+}
 
 
-bardLevel1 = [
+bardLevel1 = {
 
   AnimalFriendship:{
     name:"Animal Friendship",
@@ -491,9 +491,9 @@ CharmPerson:{
     class:"Bard, Ritual Caster, Warlock, Wizard"
     }
 
-];
+}
 
-
+}
 
 
 var char = () => {
@@ -733,7 +733,7 @@ wizardLevel1 = {
 
 }
 
-
+console.log(JSON.stringify(spells))
 
 
 

@@ -100,7 +100,7 @@ var calcBonus = (stat) => {
 
 var altCalcBonus = (stat) => {
   return Math.floor( ( stat - 10 ) / 2 );
-}
+};
 
 //get default equipment
 var getDefaultEquipment = (Character) => {
