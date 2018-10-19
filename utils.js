@@ -445,45 +445,49 @@ var ageCalc = (Character) => {
 }
 
 var assignSpells = (Character) => {
-  Character.spells.cantrips = [];
-  Character.spells.firstLevelSpells = [];
-  Character.spells.spellSlots = [];
+  Character.spells.cantrips = {};
+  Character.spells.firstLevelSpells = {};
+  Character.spells.spellSlots = {};
 
   switch (true) {
     case (Character.character_attributes.class === "Bard"):
-    Character.spells.cantrips.push(_.sampleSize(spells.bardCantrips,2));
-    Character.spells.firstLevelSpells.push(_.sampleSize(spells.bardLevel1,4))
-    Character.spells.spellSlots.push(2);break;
+    Character.spells.cantrips         = _.sampleSize(spells.bardCantrips,2);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.bardLevel1,4);
+    Character.spells.spellSlots       = 2
+    ;break;
 
     case (Character.character_attributes.class === "Cleric"):
-    Character.spells.cantrips.push(_.sampleSize(spells.clericCantrips,3));
-    Character.spells.firstLevelSpells.push(_.sampleSize(spells.clericLevel1,calcBonus(Character.stats.WIS +1 )))
-    Character.spells.spellSlots.push(calcBonus(Character.stats.WIS)+1);break;
+    Character.spells.cantrips         = _.sampleSize(spells.clericCantrips,3);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.clericLevel1,calcBonus(Character.stats.WIS +1 ));
+    Character.spells.spellSlots       = calcBonus(Character.stats.WIS)+1
+    ;break;
 
+    case (Character.character_attributes.class === "Druid"):
+    Character.spells.cantrips         = _.sampleSize(spells.druidCantrips,2);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.druidLevel1,2)
+    ;break;
 
-    case (Character.character_attributes.class === "Druid"):Character.spells.cantrips.push(_.sampleSize(spells.druidCantrips,2));
-                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.druidLevel1,2));break;
+    case (Character.character_attributes.class === "Sorcerer"):
+    Character.spells.cantrips         = _.sampleSize(spells.sorcererCantrips,4);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.sorcererLevel1,2)
+    ;break;
 
+    case (Character.character_attributes.class === "Warlock"):
+    Character.spells.cantrips         = _.sampleSize(spells.warlockCantrips,2);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.warlockLevel1,2)
+    ;break;
 
-    case (Character.character_attributes.class === "Sorcerer"):Character.spells.cantrips.push(_.sampleSize(spells.sorcererCantrips,4));
-                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.sorcererLevel1,2));break;
+    case (Character.character_attributes.class === "Wizard"):
+    Character.spells.cantrips         = _.sampleSize(spells.wizardCantrips,3);
+    Character.spells.firstLevelSpells = _.sampleSize(spells.wizardLevel1,2)
+    ;break;
 
-
-    case (Character.character_attributes.class === "Warlock"):Character.spells.cantrips.push(_.sampleSize(spells.warlockCantrips,2));
-                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.warlockLevel1,2));break;
-
-
-    case (Character.character_attributes.class === "Wizard"):Character.spells.cantrips.push(_.sampleSize(spells.wizardCantrips,3));
-                                       Character.spells.firstLevelSpells.push(_.sampleSize(spells.wizardLevel1,2));break;
-
-
-      default:Character.spells.cantrips = ""
+    default:Character.spells.cantrips = "Error: Fell though switch statement (assignSpells())";
 
   }
   return Character;
-
 }
-"Non-Binary"
+
 
 //generate random name based off sex/race
 var getRandomName = (Character) => {
