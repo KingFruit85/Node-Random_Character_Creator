@@ -492,25 +492,25 @@ grease = {
 }
 
 inflict_wounds= {
-casting_time: "1 action",
-components: "V, S",
-description: "Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st.",
-duration: "Instantaneous",
-level: 1,
-range: "Touch",
-school: "Necromancy"
-}
+  casting_time: "1 action",
+  components: "V, S",
+  description: "Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st.",
+  duration: "Instantaneous",
+  level: 1,
+  range: "Touch",
+  school: "Necromancy"
+  }
 
 light= {
-name:"Light",
-casting_time: "1 action",
-components: "V, M (a firefly or phosphorescent moss)",
-description: "You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action. If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.",
-duration: "1 hour",
-level: 0,
-range: "Touch",
-school: "Evocation"
-}
+  name:"Light",
+  casting_time: "1 action",
+  components: "V, M (a firefly or phosphorescent moss)",
+  description: "You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action. If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.",
+  duration: "1 hour",
+  level: 0,
+  range: "Touch",
+  school: "Evocation"
+  }
 
 mending = {
   name:"Mending",
@@ -663,65 +663,64 @@ school: "Abjuration"
 }
 
 shocking_grasp= {
-casting_time: "1 action",
-components: "V, S",
-description: "Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can’t take reactions until the start of its next turn. The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
-duration: "Instantaneous",
-level: 0,
-range: "Touch",
-school: "Evocation"
-}
-
+  casting_time: "1 action",
+  components: "V, S",
+  description: "Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can’t take reactions until the start of its next turn. The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
+  duration: "Instantaneous",
+  level: 0,
+  range: "Touch",
+  school: "Evocation"
+  }
 
 silent_image= {
-casting_time: "1 action",
-components: "V, S, M (a bit of fleece)",
-description: "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot cube. The image appears at a spot within range and lasts for the duration. The image is purely visual; it isn’t accompanied by sound, smell, or other sensory effects. You can use your action to cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking. Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image.",
-duration: "Concentration, up to 10 minutes",
-level: 1,
-range: "60 feet",
-school: "Illusion"
-}
+  casting_time: "1 action",
+  components: "V, S, M (a bit of fleece)",
+  description: "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot cube. The image appears at a spot within range and lasts for the duration. The image is purely visual; it isn’t accompanied by sound, smell, or other sensory effects. You can use your action to cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking. Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image.",
+  duration: "Concentration, up to 10 minutes",
+  level: 1,
+  range: "60 feet",
+  school: "Illusion"
+  }
 
 sleep= {
-casting_time: "1 action",
-components: "V, S, M (a pinch of fine sand, rose petals, or a cricket)",
-description: "This spell sends creatures into a magical slumber. Roll 5d8; the total is how many hit points of creatures this spell can affect. Creatures within 20 feet of a point you choose within range are affected in ascending order of their current hit points (ignoring unconscious creatures). Starting with the creature that has the lowest current hit points, each creature affected by this spell falls unconscious until the spell ends, the sleeper takes damage, or someone uses an action to shake or slap the sleeper awake. Subtract each creature’s hit points from the total before moving on to the creature with the next lowest hit points. A creature’s hit points must be equal to or less than the remaining total for that creature to be affected. Undead and creatures immune to being charmed aren’t affected by this spell. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, roll an additional 2d8 for each slot level above 1st.",
-duration: "1 minute",
-level: 1,
-range: "90 feet",
-school: "Enchantment"
-}
+  casting_time: "1 action",
+  components: "V, S, M (a pinch of fine sand, rose petals, or a cricket)",
+  description: "This spell sends creatures into a magical slumber. Roll 5d8; the total is how many hit points of creatures this spell can affect. Creatures within 20 feet of a point you choose within range are affected in ascending order of their current hit points (ignoring unconscious creatures). Starting with the creature that has the lowest current hit points, each creature affected by this spell falls unconscious until the spell ends, the sleeper takes damage, or someone uses an action to shake or slap the sleeper awake. Subtract each creature’s hit points from the total before moving on to the creature with the next lowest hit points. A creature’s hit points must be equal to or less than the remaining total for that creature to be affected. Undead and creatures immune to being charmed aren’t affected by this spell. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, roll an additional 2d8 for each slot level above 1st.",
+  duration: "1 minute",
+  level: 1,
+  range: "90 feet",
+  school: "Enchantment"
+  }
 
 spare_the_dying= {
-casting_time: "1 action",
-components: "V, S",
-description: "You touch a living creature that has 0 hit points. The creature becomes stable. This spell has no effect on undead or constructs.",
-duration: "Instantaneous",
-level: 0,
-range: "Touch",
-school: "Necromancy"
-}
+  casting_time: "1 action",
+  components: "V, S",
+  description: "You touch a living creature that has 0 hit points. The creature becomes stable. This spell has no effect on undead or constructs.",
+  duration: "Instantaneous",
+  level: 0,
+  range: "Touch",
+  school: "Necromancy"
+  }
 
 thaumaturgy= {
-casting_time: "1 action",
-components: "V",
-description: "You manifest a minor wonder, a sign of supernatural power, within range. You create one of the following magical effects within range: • Your voice booms up to three times as loud as normal for 1 minute. • You cause flames to flicker, brighten, dim, or change color for 1 minute. • You cause harmless tremors in the ground for 1 minute. • You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or omi- nous whispers. • You instantaneously cause an unlocked door or win- dow to fly open or slam shut. • You alter the appearance of your eyes for 1 minute. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.",
-duration: "Up to 1 minute",
-level: 0,
-range: "30 feet",
-school: "Transmutation"
-}
+  casting_time: "1 action",
+  components: "V",
+  description: "You manifest a minor wonder, a sign of supernatural power, within range. You create one of the following magical effects within range: • Your voice booms up to three times as loud as normal for 1 minute. • You cause flames to flicker, brighten, dim, or change color for 1 minute. • You cause harmless tremors in the ground for 1 minute. • You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or omi- nous whispers. • You instantaneously cause an unlocked door or win- dow to fly open or slam shut. • You alter the appearance of your eyes for 1 minute. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.",
+  duration: "Up to 1 minute",
+  level: 0,
+  range: "30 feet",
+  school: "Transmutation"
+  }
 
 thunderwave= {
-casting_time: "1 action",
-components: "V, S",
-description: "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn’t pushed. In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell’s effect, and the spell emits a thunderous boom audible out to 300 feet. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.",
-duration: "Instantaneous",
-level: 1,
-range: "Self (15-foot cube)",
-school: "Evocation"
-}
+  casting_time: "1 action",
+  components: "V, S",
+  description: "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn’t pushed. In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell’s effect, and the spell emits a thunderous boom audible out to 300 feet. At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.",
+  duration: "Instantaneous",
+  level: 1,
+  range: "Self (15-foot cube)",
+  school: "Evocation"
+  }
 
 true_strike= {
   name:"True Strike",
@@ -746,22 +745,70 @@ vicious_mockery= {
 }
 
 
+exports.acid_splash = acid_splash;
+exports.bless = bless;
+exports.burning_hands = burning_hands;
+exports.charm_person = charm_person;
+exports.command = command;
+exports.comprehend_languages = comprehend_languages;
+exports.cone_of_cold = cone_of_cold;
+exports.cure_wounds = cure_wounds;
 exports.dancing_lights = dancing_lights;
+exports.detect_magic = detect_magic;
+exports.disguise_self = disguise_self;
+exports.faerie_fire = faerie_fire;
+exports.fire_bolt = fire_bolt;
+exports.guidance = guidance;
+exports.guiding_bolt = guiding_bolt;
+exports.healing_word = healing_word;
+exports.identify = identify;
+exports.animal_friendship = animal_friendship;
+exports.bane = bane;
+exports.feather_fall = feather_fall;
+exports.heroism = heroism;
+exports.hideous_laughter = hideous_laughter;
+exports.illusory_script = illusory_script;
+exports.longstrider = longstrider;
+exports.speak_with_animals = speak_with_animals;
+exports.unseen_servant = unseen_servant;
+exports.create_or_destroy_water = create_or_destroy_water;
+exports.detect_evil_and_good = detect_evil_and_good;
+exports.detect_poison_and_disease = detect_poison_and_disease;
+exports.protection_from_evil_and_good = protection_from_evil_and_good;
+exports.purify_food_and_drink = purify_food_and_drink;
+exports.produce_flame = produce_flame;
+exports.shillelagh = shillelagh;
+exports.entangle = entangle;
+exports.fog_cloud = fog_cloud;
+exports.jump = jump;
+exports.divine_favor = divine_favor;
+exports.alarm = alarm;
+exports.chill_touch = chill_touch;
+exports.color_spray = color_spray;
+exports.expeditious_retreat = expeditious_retreat;
+exports.false_life = false_life;
+exports.floating_disk = floating_disk;
+exports.grease = grease;
 exports.light = light;
-exports.mage_hand = mage_hand;
 exports.mending = mending;
 exports.message = message;
+exports.mage_armor = mage_armor;
+exports.mage_hand = mage_hand;
+exports.magic_missile = magic_missile;
 exports.minor_illusion = minor_illusion;
+exports.poison_spray = poison_spray;
 exports.prestidigitation = prestidigitation;
+exports.ray_of_frost = ray_of_frost;
+exports.resistance = resistance;
+exports.sacred_flame = sacred_flame;
+exports.sanctuary = sanctuary;
+exports.shield = shield;
+exports.shield_of_faith = shield_of_faith;
+exports.shocking_grasp = shocking_grasp;
+exports.silent_image = silent_image;
+exports.sleep = sleep;
+exports.spare_the_dying = spare_the_dying;
+exports.thaumaturgy = thaumaturgy;
+exports.thunderwave = thunderwave;
 exports.true_strike = true_strike;
 exports.vicious_mockery = vicious_mockery;
-exports.
-exports.
-exports.
-exports.
-exports.
-exports.
-exports.
-exports.
-exports.
-exports.
