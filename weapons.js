@@ -66,7 +66,7 @@ var MartialRangedWeapons = {
    Blowgun :{ Name:"Blowgun",	Cost:"10 gp",	Damage:"1 piercing",	Weight:"1 lb",	Properties:"Ammunition (range 25/100), loading"},
    HandCrossbow :{ Name:"Hand Crossbow",	Cost:"75 gp",	Damage:"1d6 piercing",	Weight:"3 lb", Properties:"Ammunition (range 30/120), light, loading"},
    HeavyCrossbow :{ Name:"Heavy Crossbow",	Cost:"50 gp",	Damage:"1d10 piercing",	Weight:"18 lb",	Properties:"Ammunition (range 100/400), heavy, loading two-handed"},
-   Longbow :{ Name:"Longbow",	Cost:"50 gp",	Damage:"1d8 piercing	Weight:2 lb",	Properties:"Ammunition (range 150/600), heavy, two-handed"},
+   Longbow :{ Name:"Longbow",	Cost:"50 gp",	Damage:"1d8 piercing",	Weight:"2 lb",	Properties:"Ammunition (range 150/600), heavy, two-handed"},
    Net :{ Name:"Net",	Cost:"1 gp",	Damage:"—",	Weight:"3 lb",	 Properties:"Special, thrown (range 5/15)"}
 
 

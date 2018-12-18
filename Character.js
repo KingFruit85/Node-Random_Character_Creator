@@ -49,6 +49,7 @@ var Character = {
   utils.addFeatureBonues(Character);
   Character.character_attributes.level = 1;
   Character.backstory = backstory.backstory();
+  Character.fullBackstory = backstory.fullBackstory();
 
   return Character;
 

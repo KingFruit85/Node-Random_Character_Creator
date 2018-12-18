@@ -174,9 +174,134 @@ var feeling = [
   "love",
   "hate",
   "dispise",
-  "couldn't care less about",
+
   "lust after",
   "fear",
+]
+
+var objectCondition = [
+  "fine",
+  "well built",
+  "poorly built",
+  "disheveled",
+  "dilapidated",
+  "exquisite",
+  "superb",
+  "awful"
+]
+
+var furniture = [
+  "chair",
+  "chaise lounge",
+  "ottoman",
+  "stool",
+  "bench",
+  "bed",
+  "hammock",
+  "desk",
+  "table",
+  "bookcase",
+  "cupboard",
+  "chest",
+  "filling cabinet"
+]
+
+var colours = [
+"Amaranth",
+"Amber",
+"Amethyst",
+"Apricot",
+"Aquamarine",
+"Azure",
+"Baby blue",
+"Beige",
+"Black",
+"Blue",
+"Blue-green",
+"Blue-violet",
+"Blush",
+"Bronze",
+"Brown",
+"Burgundy",
+"Byzantium",
+"Carmine",
+"Cerise",
+"Cerulean",
+"Champagne",
+"Chartreuse green",
+"Chocolate",
+"Cobalt blue",
+"Coffee",
+"Copper",
+"Coral",
+"Crimson",
+"Cyan",
+"Desert sand",
+"Electric blue",
+"Emerald",
+"Erin",
+"Gold",
+"Gray",
+"Green",
+"Harlequin",
+"Indigo",
+"Ivory",
+"Jade",
+"Jungle green",
+"Lavender",
+"Lemon",
+"Lilac",
+"Lime",
+"Magenta",
+"Magenta rose",
+"Maroon",
+"Mauve",
+"Navy blue",
+"Ocher",
+"Olive",
+"Orange",
+"Orange-red",
+"Orchid",
+"Peach",
+"Pear",
+"Periwinkle",
+"Persian blue",
+"Pink",
+"Plum",
+"Prussian blue",
+"Puce",
+"Purple",
+"Raspberry",
+"Red",
+"Red-violet",
+"Rose",
+"Ruby",
+"Salmon",
+"Sangria",
+"Sapphire",
+"Scarlet",
+"Silver",
+"Slate gray",
+"Spring bud",
+"Spring green",
+"Tan",
+"Taupe",
+"Teal",
+"Turquoise",
+"Ultramarine",
+"Violet",
+"Viridian",
+"White",
+"Yellow"
+]
+
+var hairStyle = [
+  "long",
+  "short",
+  "kept in a top knot",
+  "unwashed",
+  "dreadlocked",
+  "wavey"
 ]
 
 
@@ -324,4 +449,18 @@ var backstory = () =>{
   return {life:life(), likes:likes(), dislikes:dislikes(), flaws:flaws()}
 }
 
+
+var fullBackstory = () =>{
+  return (`You have been ${_.sample(mentalState)} recently. You admired a ${_.sample(objectCondition)} ${_.sample(furniture)} which made you feel ${_.sample(feeling)}.
+           Your eyes are ${_.sample(colours)} and your ${_.sample(colours)} hair is ${_.sample(hairStyle)}`)
+
+
+}
+
+
+
+
+
+
 exports.backstory = backstory;
+exports.fullBackstory = fullBackstory;
