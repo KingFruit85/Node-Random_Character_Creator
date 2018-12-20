@@ -133,7 +133,7 @@ var getDefaultEquipment = (Character) => {
     switch (true) {
     case (r === 0):aw =
     {
-      weapon1:_.sample(weapons.SimpleWeapons),
+      weapon1:getRandomItem(weapons.SimpleWeapons),
       weapon2:weapons.barbWeps.BarbJavelin
     };break;
 
@@ -148,7 +148,7 @@ var getDefaultEquipment = (Character) => {
     Character.equipment.weapons =
 
     {
-      leftHandedWeapon:_.sample(weapons.MartialMeleeWeapons),
+      leftHandedWeapon:getRandomItem(weapons.MartialMeleeWeapons),
       rightHandedWeapon:{Name: "None"},
       additionalWeapons:aw
 
@@ -156,7 +156,7 @@ var getDefaultEquipment = (Character) => {
 
     Character.equipment.armor                     = armor.LightArmor.No_Armor;
     Character.equipment.tools.backpack            = {
-      pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
+      pack:getRandomItem([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
       additionalItems:{Name:"None"}
     }
 
@@ -164,19 +164,19 @@ var getDefaultEquipment = (Character) => {
 
   else if (Character.character_attributes.class === "Fighter"){
 
-    Character.equipment.armor              = _.sample([armor.LightArmor.Leather, armor.HeavyArmor.ChainMail]);
+    Character.equipment.armor              = getRandomItem([armor.LightArmor.Leather, armor.HeavyArmor.ChainMail]);
     Character.equipment.tools.backpack     = {
-      pack:_.sample([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
+      pack:getRandomItem([equipment.EquipmentPacks.DungeoneersPack, equipment.EquipmentPacks.ExplorersPack]),
       additionalItems:{Name:"None"}
     }
 
     r = getRandomNumber( 0 , 1 );
     switch (true)
     {
-      case (r === 0):rhw  = _.sample(weapons.MartialMeleeWeapons);
-                     lhw  = _.sample(weapons.MartialMeleeWeapons)
+      case (r === 0):rhw  = getRandomItem(weapons.MartialMeleeWeapons);
+                     lhw  = getRandomItem(weapons.MartialMeleeWeapons)
                      ;break;
-      case (r === 1):rhw  = _.sample(weapons.MartialMeleeWeapons);
+      case (r === 1):rhw  = getRandomItem(weapons.MartialMeleeWeapons);
                      lhw  = armor.Shields.Shield
                      ;break;
       default:       lhw  = "Error: Fell Though Switch Case"
@@ -188,7 +188,7 @@ var getDefaultEquipment = (Character) => {
 
     Character.equipment.weapons =
     {
-      leftHandedWeapon: lhw,
+      leftHandedWeapon:lhw,
       rightHandedWeapon:rhw,
       additionalWeapons:aw
     };

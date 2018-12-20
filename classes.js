@@ -6,7 +6,7 @@ const _ = require ('lodash');
 
 
 
-classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"}]
+classes = [{class:"Fighter", www:"https://www.dndbeyond.com/characters/classes/barbarian"}]
 // classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"},
 //            {class:"Fighter",   www:"https://www.dndbeyond.com/characters/classes/fighter"},
 //            {class:"Barbarian", www:"https://www.dndbeyond.com/characters/classes/barbarian"},

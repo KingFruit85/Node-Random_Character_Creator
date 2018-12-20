@@ -59,7 +59,9 @@ x = newCharacter()
 
 
 // console.log(x.character_attributes.class)
-// console.log(x.equipment)
+console.log("------------")
+console.log(x.equipment.armor.Name)
+console.log("------------")
 console.log(JSON.stringify(x.equipment, undefined, 2))
 // console.log()
 
