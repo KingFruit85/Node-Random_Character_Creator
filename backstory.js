@@ -464,3 +464,4 @@ var fullBackstory = () =>{
 
 exports.backstory = backstory;
 exports.fullBackstory = fullBackstory;
+exports.hairStyle = hairStyle;

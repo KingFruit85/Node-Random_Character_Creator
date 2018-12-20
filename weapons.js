@@ -1,18 +1,18 @@
-var SimpleWeapons = {
+var SimpleWeapons = [
 
 
-  Club:{Name:"Club", Cost:"1sp", Damage:"1d4 bludgeoning", Weight:"2lb", Properties:"Light"},
-  Dagger:{Name:"Dagger" , Cost:"2gp" , Damage: "1d4 piercing", Weight:"1lb" , Properties:"Finesse, light, thrown (range 20/60)"},
-  Greatclub:{Name:"Greatclub" , Cost:"2sp" , Damage: "1d8 bludgeoning	", Weight:"10 lb" , Properties:"Two-handed"},
-  Handaxe:{Name:"Handaxe" , Cost:"5gp" , Damage: "1d6 slashing", Weight:"2lb" , Properties:"Light, thrown (range 20/60)"},
-  Javelin:{Name:"Javelin" , Cost:"5sp" , Damage: "1d6 piercing", Weight:"2lb" , Properties:"Thrown (range 30/120)"},
-  LightHammer:{Name:"Light Hammer" , Cost:"2gp" , Damage: "1d4 bludgeoning", Weight:"2lb" , Properties:"Light, thrown (range 20/60)"},
-  Mace:{Name:"Mace" , Cost:"5gp" , Damage: "1d6 bludgeoning", Weight:"4lb" , Properties:""},
-  Quarterstaff:{Name:"Quarterstaff" , Cost:"2sp" , Damage: "1d6 bludgeoning", Weight:"4lb" , Properties:"Versatile (1d8)"},
-  Sickle:{Name:"Sickle" , Cost:"1gp" , Damage: "1d4 slashing", Weight:"2lb" , Properties:"Light"},
-  Spear:{Name:"Spear" , Cost:"1gp" , Damage: "1d6 piercing", Weight:"3lb" , Properties:"Thrown (range 20/60), versatile (1d8)"}
+  {Name:"Club", Cost:"1sp", Damage:"1d4 bludgeoning", Weight:"2lb", Properties:"Light"},
+  {Name:"Dagger" , Cost:"2gp" , Damage: "1d4 piercing", Weight:"1lb" , Properties:"Finesse, light, thrown (range 20/60)"},
+  {Name:"Greatclub" , Cost:"2sp" , Damage: "1d8 bludgeoning	", Weight:"10 lb" , Properties:"Two-handed"},
+  {Name:"Handaxe" , Cost:"5gp" , Damage: "1d6 slashing", Weight:"2lb" , Properties:"Light, thrown (range 20/60)"},
+  {Name:"Javelin" , Cost:"5sp" , Damage: "1d6 piercing", Weight:"2lb" , Properties:"Thrown (range 30/120)"},
+  {Name:"Light Hammer" , Cost:"2gp" , Damage: "1d4 bludgeoning", Weight:"2lb" , Properties:"Light, thrown (range 20/60)"},
+  {Name:"Mace" , Cost:"5gp" , Damage: "1d6 bludgeoning", Weight:"4lb" , Properties:""},
+  {Name:"Quarterstaff" , Cost:"2sp" , Damage: "1d6 bludgeoning", Weight:"4lb" , Properties:"Versatile (1d8)"},
+  {Name:"Sickle" , Cost:"1gp" , Damage: "1d4 slashing", Weight:"2lb" , Properties:"Light"},
+  {Name:"Spear" , Cost:"1gp" , Damage: "1d6 piercing", Weight:"3lb" , Properties:"Thrown (range 20/60), versatile (1d8)"}
 
-}
+]
 var barbWeps = {
   BarbJavelin:{Name:"4 x Javelin", Cost:"5sp (each)", Damage:"1d6 piercing (each)", Weight:"2lb (each)" , Properties:"Thrown (range 30/120)"},
   barbHandaxe:{Name:"2 x Handaxe" ,Cost:"5gp (each)", Damage:"1d6 slashing (each)", Weight:"2lb (each)" , Properties:"Light, thrown (range 20/60)"}

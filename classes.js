@@ -6,20 +6,20 @@ const _ = require ('lodash');
 
 
 
-
-classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"},
-           {class:"Fighter",   www:"https://www.dndbeyond.com/characters/classes/fighter"},
-           {class:"Barbarian", www:"https://www.dndbeyond.com/characters/classes/barbarian"},
-           {class:"Cleric",    www:"https://www.dndbeyond.com/characters/classes/cleric"},
-           {class:"Druid",     www:"https://www.dndbeyond.com/characters/classes/druid"},
-           {class:"Monk",      www:"https://www.dndbeyond.com/characters/classes/monk"},
-           {class:"Paladin",   www:"https://www.dndbeyond.com/characters/classes/paladin"},
-           {class:"Ranger",    www:"https://www.dndbeyond.com/characters/classes/ranger"},
-           {class:"Rogue",     www:"https://www.dndbeyond.com/characters/classes/rogue"},
-           {class:"Sorcerer",  www:"https://www.dndbeyond.com/characters/classes/Sorcerer"},
-           {class:"Warlock",   www:"https://www.dndbeyond.com/characters/classes/Warlock"},
-           {class:"Wizard",    www:"https://www.dndbeyond.com/characters/classes/Wizard"}
-]
+classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"}]
+// classes = [{class:"Bard",      www:"https://www.dndbeyond.com/characters/classes/bard"},
+//            {class:"Fighter",   www:"https://www.dndbeyond.com/characters/classes/fighter"},
+//            {class:"Barbarian", www:"https://www.dndbeyond.com/characters/classes/barbarian"},
+//            {class:"Cleric",    www:"https://www.dndbeyond.com/characters/classes/cleric"},
+//            {class:"Druid",     www:"https://www.dndbeyond.com/characters/classes/druid"},
+//            {class:"Monk",      www:"https://www.dndbeyond.com/characters/classes/monk"},
+//            {class:"Paladin",   www:"https://www.dndbeyond.com/characters/classes/paladin"},
+//            {class:"Ranger",    www:"https://www.dndbeyond.com/characters/classes/ranger"},
+//            {class:"Rogue",     www:"https://www.dndbeyond.com/characters/classes/rogue"},
+//            {class:"Sorcerer",  www:"https://www.dndbeyond.com/characters/classes/Sorcerer"},
+//            {class:"Warlock",   www:"https://www.dndbeyond.com/characters/classes/Warlock"},
+//            {class:"Wizard",    www:"https://www.dndbeyond.com/characters/classes/Wizard"}
+// ]
 
 
 

@@ -76,12 +76,12 @@ var getProBonus = (Character) => {
 var getLanguages = (Character) => {
   switch (true) {
     case Character.character_attributes.race === "Dwarf": Character.character_attributes.primary_language = races.Dwarf.Languages; Character.character_attributes.secondary_language = races.Dwarf.ExtraLanguage; break;
-    case Character.character_attributes.race === "Human": Character.character_attributes.primary_language = races.Human.Languages; Character.character_attributes.secondary_language = _.sample(races.Human.ExtraLanguage); break;
+    case Character.character_attributes.race === "Human": Character.character_attributes.primary_language = races.Human.Languages; Character.character_attributes.secondary_language = getRandomItem(races.Human.ExtraLanguage); break;
     case Character.character_attributes.race === "Elf": Character.character_attributes.primary_language = races.Elf.Languages; Character.character_attributes.secondary_language = races.Elf.ExtraLanguage; break;
     case Character.character_attributes.race === "Gnome": Character.character_attributes.primary_language = races.Gnome.Languages; Character.character_attributes.secondary_language = races.Gnome.ExtraLanguage; break;
     case Character.character_attributes.race === "Halfling": Character.character_attributes.primary_language = races.Halfling.Languages; Character.character_attributes.secondary_language = races.Halfling.ExtraLanguage; break;
     case Character.character_attributes.race === "Dragonborn": Character.character_attributes.primary_language = races.Dragonborn.Languages; Character.character_attributes.secondary_language = races.Dragonborn.ExtraLanguage; break;
-    case Character.character_attributes.race === "HalfElf": Character.character_attributes.primary_language = races.HalfElf.Languages; Character.character_attributes.secondary_language = _.sample(races.HalfElf.ExtraLanguage); break;
+    case Character.character_attributes.race === "HalfElf": Character.character_attributes.primary_language = races.HalfElf.Languages; Character.character_attributes.secondary_language = getRandomItem(races.HalfElf.ExtraLanguage); break;
     case Character.character_attributes.race === "HalfOrc": Character.character_attributes.primary_language = races.HalfOrc.Languages; Character.character_attributes.secondary_language = races.HalfOrc.ExtraLanguage; break;
     case Character.character_attributes.race === "Tiefling": Character.character_attributes.primary_language = races.Tiefling.Languages; Character.character_attributes.secondary_language = races.Tiefling.ExtraLanguage; break;
     default:Character.character_attributes.primary_language   = "Error:Fell Through Switch Statement(getLanguages)";
@@ -113,15 +113,15 @@ var getDefaultEquipment = (Character) => {
 
     Character.equipment.weapons =
     {
-      leftHandedWeapon: _.sample(weapons.SimpleWeapons, weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Longsword),
+      leftHandedWeapon: getRandomItem([getRandomItem(weapons.SimpleWeapons), weapons.MartialMeleeWeapons.Rapier, weapons.MartialMeleeWeapons.Longsword]),
       rightHandedWeapon:{Name: "None"},
       additionalWeapons:weapons.SimpleWeapons.Dagger
     }
 
     Character.equipment.armor                       = armor.LightArmor.Leather;
     Character.equipment.tools.backpack              = {
-      pack:_.sample([equipment.EquipmentPacks.DiplomatsPack, equipment.EquipmentPacks.EntertainersPack]),
-      additionalItems:_.sample(tools.Tools.MusicalInstruments)
+      pack:getRandomItem([equipment.EquipmentPacks.DiplomatsPack, equipment.EquipmentPacks.EntertainersPack]),
+      additionalItems:getRandomItem(tools.Tools.MusicalInstruments)
     }
 
   }
@@ -952,6 +952,77 @@ var calcPassPerception = (Character) => {
   return Character;
 }
 
+var getRandomNumber = (min, max) =>
+
+{
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+
+};
+
+
+
+
+
+
+
+var getRandomItem = (collection) => {
+
+  if (Array.isArray(collection) === true)
+  {
+    index = getRandomNumber(0, collection.length -1);
+    return collection[index];
+  }
+  else
+  {
+    return "Supplied argument is not an array";
+  }
+};
+
+
+
+var getRandomItems = (collection, amount) => {
+  tempCollection = collection;
+  returnCollection = [];
+
+    if (Array.isArray(collection) === true && amount <= collection.length)
+
+    {
+      for ( i = amount; i > 0; i-- ){
+
+        index = getRandomNumber(0, collection.length -1);
+        returnCollection.push(tempCollection[index]);
+        tempCollection.splice(index,1);
+
+      }
+    }
+
+    else if (Array.isArray(collection) != true)
+    {
+
+      return "Supplied argument is not an array";
+
+    }
+
+    else if (Array.isArray(collection) === true && amount > collection.length)
+
+    {
+
+      return "Requested result number is larger than number of unique values in the array";
+
+    }
+
+    else
+
+    {
+
+      return "Opps, looks like something REALLY broke this time";
+
+    }
+
+    return returnCollection;
+
+};
 
 
 
@@ -989,3 +1060,5 @@ exports.getSavingThrows = getSavingThrows;
 exports.ageCalc = ageCalc;
 exports.getRandomHeight = getRandomHeight;
 exports.assignSpells = assignSpells;
+exports.getRandomItem = getRandomItem;
+exports.getRandomItems = getRandomItems;

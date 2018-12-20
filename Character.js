@@ -57,7 +57,10 @@ var Character = {
 
 x = newCharacter()
 
-console.log(JSON.stringify(x, undefined, 2))
+
+// console.log(x.character_attributes.class)
+// console.log(x.equipment)
+console.log(JSON.stringify(x.equipment, undefined, 2))
 // console.log()
 
 
